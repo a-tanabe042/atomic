@@ -274,7 +274,7 @@ function Members() {
                   </td>
                   <td className="max-w-[300px] overflow-auto">
                     {/* Skills */}
-                    <div className="flex flex-wrap gap-1 justify-left items-center">
+                    <div className="flex flex-wrap gap-1 justify-center items-center">
                       {member.skills && member.skills.length > 0 ? (
                         member.skills.slice(0, 3).map((skill, skillIndex) => (
                           <span

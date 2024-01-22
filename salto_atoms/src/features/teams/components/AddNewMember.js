@@ -141,6 +141,18 @@ const AddNewMember = () => {
 
   return (
     <>
+      <div>
+        <ProjectMemberList
+          members={selectedMembers}
+          onRemove={handleRemoveMember}
+        />
+        <button
+          onClick={handleSave}
+          className="btn btn-error text-white fixed right-5 bottom-5 rounded-full"
+        >
+          Save Members
+        </button>
+      </div>
       <TitleCard
         title="Add Member"
         topMargin="mt-4"
@@ -239,18 +251,6 @@ const AddNewMember = () => {
           </table>
         </div>
       </TitleCard>
-      <div>
-        <ProjectMemberList
-          members={selectedMembers}
-          onRemove={handleRemoveMember}
-        />
-        <button
-          onClick={handleSave}
-          className="btn btn-error text-white fixed right-5 bottom-5 rounded-full"
-        >
-          Save Members
-        </button>
-      </div>
     </>
   );
 };
