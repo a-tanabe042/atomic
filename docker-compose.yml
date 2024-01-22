@@ -1,0 +1,28 @@
+version: "3"
+services:
+  salto_code:
+    build:
+      context: ./salto_code
+      dockerfile: Dockerfile
+    image: salto_code
+    ports:
+      - "3001:3000"
+    networks:
+      strapi:
+    volumes:
+      - "./salto_code:/app"
+  
+  salto_atoms:
+    build:
+      context: ./salto_atoms
+      dockerfile: Dockerfile
+    image: salto_atoms
+    ports:
+      - "3000:3000"
+    networks:
+      strapi:
+    volumes:
+      - "./salto_atoms:/app"
+      
+networks:
+  strapi:
