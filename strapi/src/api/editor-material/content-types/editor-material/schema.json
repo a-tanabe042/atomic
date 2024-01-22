@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "editor_materials",
+  "info": {
+    "singularName": "editor-material",
+    "pluralName": "editor-materials",
+    "displayName": "editor_material",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "language": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 30
+    },
+    "extension": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": true,
+      "maxLength": 300
+    },
+    "initial_code": {
+      "type": "string",
+      "required": false
+    },
+    "deleted_flg": {
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "max": 1
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_basics",
+  "info": {
+    "singularName": "user-basic",
+    "pluralName": "user-basics",
+    "displayName": "User_basic",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user_id": {
+      "type": "integer"
+    },
+    "initial": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "integer"
+    },
+    "nearestStation": {
+      "type": "string"
+    }
+  }
+}

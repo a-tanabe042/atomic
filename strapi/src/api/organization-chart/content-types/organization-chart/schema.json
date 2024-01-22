@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "organization_charts",
+  "info": {
+    "singularName": "organization-chart",
+    "pluralName": "organization-charts",
+    "displayName": "Organization-chart",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dep_id": {
+      "type": "integer"
+    },
+    "section_id": {
+      "type": "integer"
+    },
+    "group_id": {
+      "type": "integer"
+    },
+    "deleted_flg": {
+      "required": true,
+      "default": 0,
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_infos",
+  "info": {
+    "singularName": "user-info",
+    "pluralName": "user-infos",
+    "displayName": "User_info",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user_id": {
+      "type": "integer"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "mail_address": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string",
+      "required": true
+    },
+    "dep_id": {
+      "type": "integer"
+    },
+    "pos_id": {
+      "type": "integer"
+    },
+    "del_flg": {
+      "type": "integer",
+      "default": 0
+    },
+    "kana_first_name": {
+      "type": "string"
+    },
+    "kana_last_name": {
+      "type": "string"
+    }
+  }
+}

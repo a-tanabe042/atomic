@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "divisions",
+  "info": {
+    "singularName": "division",
+    "pluralName": "divisions",
+    "displayName": "Division"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "div_id": {
+      "type": "integer"
+    },
+    "div_name": {
+      "type": "string"
+    },
+    "deleted_flg": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_saltos",
+  "info": {
+    "singularName": "user-salto",
+    "pluralName": "user-saltos",
+    "displayName": "user_salto",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "google_id": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 200
+    },
+    "email": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 100
+    },
+    "picture": {
+      "type": "string",
+      "required": false,
+      "maxLength": 1000
+    },
+    "deleted_flag": {
+      "type": "integer",
+      "default": 0,
+      "required": true,
+      "max": 1
+    },
+    "first_name": {
+      "type": "string",
+      "required": false
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "verified_email": {
+      "type": "string",
+      "required": true
+    },
+    "hd": {
+      "type": "string",
+      "required": false
+    },
+    "pos_id": {
+      "default": 8,
+      "type": "integer"
+    },
+    "skills": {
+      "type": "json",
+      "required": false
+    },
+    "goals": {
+      "type": "json"
+    },
+    "dep_id": {
+      "type": "integer",
+      "default": 0
+    },
+    "section_id": {
+      "type": "integer",
+      "default": 0
+    },
+    "group_id": {
+      "type": "integer",
+      "default": 0
+    },
+    "join_date": {
+      "type": "json"
+    },
+    "div_id": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
