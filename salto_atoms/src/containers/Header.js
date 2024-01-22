@@ -1,0 +1,163 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { themeChange } from "theme-change";
+import { Link } from "react-router-dom";
+import BellIcon from "@heroicons/react/24/outline/BellIcon";
+import Bars3Icon from "@heroicons/react/24/outline/Bars3Icon";
+import MoonIcon from "@heroicons/react/24/outline/MoonIcon";
+import SunIcon from "@heroicons/react/24/outline/SunIcon";
+import { openRightDrawer } from "../features/common/rightDrawerSlice";
+import { RIGHT_DRAWER_TYPES } from "../utils/globalConstantUtil";
+import useGoogleProfile from "../hooks/useGoogleProfile";
+import useStrapi from "../hooks/useStrapi";
+
+function Header() {
+  const dispatch = useDispatch();
+  const { pageTitle } = useSelector((state) => state.header);
+  const [currentTheme, setCurrentTheme] = useState(
+    localStorage.getItem("theme")
+  );
+  const [profilePicture, setProfilePicture] = useState("");
+  const [, setItemId] = useState(null);
+
+  const accessToken = localStorage.getItem("access_token");
+  const googleId = useGoogleProfile(accessToken);
+  const { data: membersData } = useStrapi("user-saltos", {});
+
+  // データの取得
+  useEffect(() => {
+    const user = membersData?.data?.find((user) => user.attributes.google_id === googleId);
+
+      if (user) {
+        setProfilePicture(user.attributes.picture || "");
+        setItemId(user.id); // Now you can use setItemId without error
+      }
+    
+  }, [membersData, googleId]);
+
+  useEffect(() => {
+    themeChange(false);
+    if (currentTheme === null) {
+      setCurrentTheme(
+        window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    themeChange(false);
+    if (currentTheme === null) {
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        setCurrentTheme("dark");
+      } else {
+        setCurrentTheme("light");
+      }
+    }
+  }, []);
+
+  // Opening right sidebar for notification
+  const openNotification = () => {
+    dispatch(
+      openRightDrawer({
+        header: "Notifications",
+        bodyType: RIGHT_DRAWER_TYPES.NOTIFICATION,
+      })
+    );
+  };
+
+  function logoutUser() {
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('access_token');
+    window.location.href = "/";
+}
+
+
+  return (
+    <>
+      <div className="navbar  flex justify-between bg-base-100  z-10 shadow-md ">
+        {/* Menu toogle for mobile view or small screen */}
+        <div className="">
+          <label
+            htmlFor="left-sidebar-drawer"
+            className="btn btn-primary drawer-button lg:hidden"
+          >
+            <Bars3Icon className="h-5 inline-block w-5" />
+          </label>
+          <h1 className="text-2xl font-semibold ml-2">{pageTitle}</h1>
+        </div>
+
+        <div className="order-last">
+          {/* Light and dark theme selection toogle **/}
+          <label className="swap ">
+            <input type="checkbox" />
+            <SunIcon
+              data-set-theme="light"
+              data-act-class="ACTIVECLASS"
+              className={
+                "fill-current w-6 h-6 " +
+                (currentTheme === "dark" ? "swap-on" : "swap-off")
+              }
+            />
+            <MoonIcon
+              data-set-theme="dark"
+              data-act-class="ACTIVECLASS"
+              className={
+                "fill-current w-6 h-6 " +
+                (currentTheme === "light" ? "swap-on" : "swap-off")
+              }
+            />
+          </label>
+
+          {/* Notification icon */}
+          <button
+            className="btn btn-ghost ml-4  btn-circle"
+            onClick={() => openNotification()}
+          >
+            <div className="indicator">
+              <BellIcon className="h-6 w-6" />
+            </div>
+          </button>
+
+          {/* Profile icon, opening menu on click */}
+          <div className="dropdown dropdown-end ml-4">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img
+                  src={
+                    profilePicture || "/logo512.png"
+                  }
+                  alt="profile"
+                />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li className="justify-between">
+                <Link to={"/app/settings-profile"}>
+                  Profile Settings
+                </Link>
+              </li>
+              <li className="">
+                <Link to={"/app/settings-billing"}>Create History</Link>
+              </li>
+              <div className="divider mt-0 mb-0"></div>
+              <li>
+                <a onClick={logoutUser}>Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default Header;

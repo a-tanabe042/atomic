@@ -1,0 +1,15 @@
+import React from 'react';
+import Lottie from 'lottie-react';
+import LoadingAnimation from '../../assets/lottie/loading.json'; // Lottieアニメーションファイルのパス
+
+const LoadingModal = () => {
+  return (
+    <div className="fixed inset-0 bg-white flex justify-center items-center">
+      <div className="bg-transparent p-5 rounded-lg flex items-center justify-center">
+        <Lottie animationData={LoadingAnimation}  />
+      </div>
+    </div>
+  );
+};
+
+export default LoadingModal;
