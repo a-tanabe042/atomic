@@ -35,7 +35,22 @@ services:
       - salto_code
     networks:
       - strapi
+  
+jenkins:
+    build: .
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    environment:
+      - DISPLAY=:0
+    networks:
+      - strapi
 
+volumes:
+  jenkins_home:
+  
 networks:
   strapi:
-
