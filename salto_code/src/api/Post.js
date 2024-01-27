@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 function UserInfo() {
+  const apiHost = process.env.REACT_APP_API_HOST;
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     // APIからデータを取得
-    fetch('http://localhost:1337/api/posts')
+    fetch(`${apiHost}/api/posts`)
       .then(response => response.json())
       .then(data => setUserData(data.data))
       .catch(error => console.error('Error fetching data:', error));

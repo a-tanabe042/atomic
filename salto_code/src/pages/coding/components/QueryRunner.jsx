@@ -20,6 +20,7 @@ const excludedColumns = [
 ];
 
 function QueryRunner() {
+  const apiHost = process.env.REACT_APP_API_HOST;
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [showErrorAlert, setShowErrorAlert] = useState(false);
@@ -54,7 +55,7 @@ function QueryRunner() {
       });
 
       const response = await fetch(
-        "http://localhost:1337/api/query-runner/run",
+        `${apiHost}/api/query-runner/run`,
         {
           method: "POST",
           headers: {

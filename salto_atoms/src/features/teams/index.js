@@ -53,7 +53,9 @@ function Teams() {
 
       <TabsLayout
         onTabChange={switchTab}
-        tabs={["Add Member", "Project", "Training"]}
+        tabs={["Add Member", "Training"]}
+        // tabs={["Add Member", "Project", "Training"]}
+
       />
       {activeTab === "Add Member" && <AddNewMember project={selectedProject} />}
       {activeTab === "Project" && <ProjectStatus project={selectedProject} />}

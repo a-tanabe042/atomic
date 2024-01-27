@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 function OAuthCallback() {
+  const apiHost = process.env.REACT_APP_API_HOST;
   const [loading, setLoading] = useState(true); // ローディング状態
   const [error, setError] = useState(""); // エラーメッセージ
 
@@ -63,7 +64,7 @@ function OAuthCallback() {
     try {
       // 1. ユーザーの存在チェック
       const existingUserResponse = await fetch(
-        `http://localhost:1337/api/user-saltos?google_id=${profile.id}`
+        `${apiHost}/api/user-saltos?google_id=${profile.id}`
       );
       if (!existingUserResponse.ok) {
         throw new Error("Failed to check if user exists");
@@ -74,7 +75,7 @@ function OAuthCallback() {
       if (existingUserData && existingUserData.length > 0) {
         const userId = existingUserData[0].id;
         const updateResponse = await fetch(
-          `http://localhost:1337/api/user-saltos/${userId}`,
+          `${apiHost}/api/user-saltos/${userId}`,
           {
             method: "PUT",
             headers: {
@@ -100,7 +101,7 @@ function OAuthCallback() {
         // 3. 新しいユーザーの場合の処理
         try {
           const response = await fetch(
-            "http://localhost:1337/api/user-saltos",
+            `${apiHost}/api/user-saltos`,
             {
               method: "POST",
               headers: {

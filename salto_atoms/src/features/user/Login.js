@@ -1,8 +1,9 @@
 import LandingIntro from "./LandingIntro";
 
 function Login() {
+  const apiHost = process.env.REACT_APP_API_HOST;
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:1337/api/connect/google";
+    window.location.href = `${apiHost}/api/connect/google`;
   };
 
   return (

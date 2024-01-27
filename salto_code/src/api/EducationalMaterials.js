@@ -4,6 +4,7 @@ import { problemsState } from '../state';
 import { useParams } from 'react-router-dom';
 
 function EducationalMaterials() {
+  const apiHost = process.env.REACT_APP_API_HOST;
   const { parameter } = useParams(); // URLパラメータから 'parameter' を取得
   const [, setProblems] = useRecoilState(problemsState); // Recoilの状態を使用
 
@@ -12,7 +13,7 @@ function EducationalMaterials() {
     const fetchData = async () => {
       try {
         // APIから教材データを取得
-        const response = await fetch(`http://localhost:1337/api/educational-materials?parameter=${parameter}`);
+        const response = await fetch(`${apiHost}/api/educational-materials?parameter=${parameter}`);
         if (!response.ok) {
           // レスポンスが不正の場合、エラーをスロー
           throw new Error('Network response was not ok');

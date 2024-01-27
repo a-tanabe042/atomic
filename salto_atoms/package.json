@@ -9,9 +9,6 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@dnd-kit/core": "^6.1.0",
-    "@dnd-kit/sortable": "^8.0.0",
-    "@dnd-kit/utilities": "^3.2.2",
     "@heroicons/react": "^2.0.13",
     "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.5",
@@ -22,7 +19,6 @@
     "chart.js": "^4.0.1",
     "daisyui": "^2.41.0",
     "dayjs": "^1.11.7",
-    "dnd-kit": "^0.0.0-2",
     "lottie-react": "^2.4.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",

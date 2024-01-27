@@ -2,11 +2,12 @@ import { useRecoilValue } from 'recoil';
 import { tabsState } from '../state';
 
 export const useSaveTabs = () => {
+  const apiHost = process.env.REACT_APP_API_HOST;
   const tabs = useRecoilValue(tabsState);
 
   const saveTabs = async (googleId) => {
     try {
-      const response = await fetch('http://localhost:1337/api/editor-tabs', {
+      const response = await fetch(`${apiHost}/api/editor-tabs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
