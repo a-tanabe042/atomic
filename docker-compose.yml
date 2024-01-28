@@ -37,15 +37,12 @@ services:
       - strapi
   
 jenkins:
-    build: .
+    image: jenkins/jenkins:lts-jdk11
     ports:
-      - "8080:8080"
+      - "8081:8080"
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
-      - /tmp/.X11-unix:/tmp/.X11-unix
-    environment:
-      - DISPLAY=:0
     networks:
       - strapi
 
