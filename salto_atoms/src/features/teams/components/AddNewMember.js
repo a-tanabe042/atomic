@@ -5,6 +5,15 @@ import TitleCard from "../../../components/Cards/TitleCard";
 import Filter from "../../../components/filter/Filter";
 import ProjectMemberList from "./ProjectMemberList";
 
+  // Dummy data for 3 members
+  const dummyMembers = [
+    { id: 'dummy1', first_name: '田邉', last_name: '太郎', post: 'member', department: 'システム開発2部 1課 1G', skills: ['React', 'Node.js'], picture: 'https://lh3.googleusercontent.com/a-/ALV-UjVQP_36cj3P1oYq5Cw8OnjkvvEXWXtKA26HfyGZ22Lv=s96-c' },
+    { id: 'dummy2', first_name: '山田', last_name: '太郎', post: 'member', department: 'システム開発2部 1課 3G', skills: ['Photoshop', 'Illustrator'], picture: 'https://lh3.googleusercontent.com/a-/ALV-UjVQP_36cj3P1oYq5Cw8OnjkvvEXWXtKA26HfyGZ22Lv=s96-c' },
+    { id: 'dummy3', first_name: '佐藤', last_name: '花子', post: '主任', department: 'システム開発2部 1課 2G', skills: ['Leadership', 'Communication'], picture: 'https://lh3.googleusercontent.com/a-/ALV-UjVQP_36cj3P1oYq5Cw8OnjkvvEXWXtKA26HfyGZ22Lv=s96-c' },
+    { id: 'dummy4', first_name: '鈴木', last_name: '一郎', post: 'member', department: 'システム開発2部 1課 2G', skills: ['Leadership', 'Communication'], picture: 'https://lh3.googleusercontent.com/a-/ALV-UjVQP_36cj3P1oYq5Cw8OnjkvvEXWXtKA26HfyGZ22Lv=s96-c' }
+
+  ];
+
 const AddNewMember = () => {
   const { data: membersData, loading: membersLoading } = useStrapi(
     "user-saltos",
@@ -33,7 +42,7 @@ const AddNewMember = () => {
     groupLoading ||
     divisionLoading;
 
-  const [selectedMembers, setSelectedMembers] = useState([]);
+  const [selectedMembers, setSelectedMembers] = useState(dummyMembers);
   const postsList =
     postData?.data.map((post) => post.attributes.pos_name) || [];
   const departmentsList =
@@ -141,6 +150,7 @@ const AddNewMember = () => {
 
   return (
     <>
+    
       <div>
         <ProjectMemberList
           members={selectedMembers}

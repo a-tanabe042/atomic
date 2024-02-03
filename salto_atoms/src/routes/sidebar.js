@@ -44,7 +44,7 @@ const routes = [
   {
     path: "/app/teams",
     icon: <UsersIcon className={iconClasses} />, // アイコン変更
-    name: "Teams",
+    name: "Project Teams",
   },
   {
     path: "/app/charts",

@@ -13,8 +13,8 @@ function Teams() {
   const [selectedProject, setSelectedProject] = useRecoilState(selectedProjectState);
   const [activeTab, setActiveTab] = useRecoilState(tabState);
   const projects = [
-    { id: 1, name: "Salto Codeの作成" },
-    { id: 2, name: "Salto Atomsの作成" },
+    { id: 1, name: "社内研修アプリの作成" },
+    { id: 2, name: "社内管理アプリの作成" },
     { id: 3, name: "Salto盛り上げよう会" },
   ];
 
@@ -53,7 +53,7 @@ function Teams() {
 
       <TabsLayout
         onTabChange={switchTab}
-        tabs={["Add Member", "Training"]}
+        tabs={["Add Member"]}
         // tabs={["Add Member", "Project", "Training"]}
 
       />

@@ -105,7 +105,7 @@ function Dashboard() {
             </div> */}
 
       {/** ---------------------- Different stats content 1 ------------------------- */}
-      <p className="text-2xl font-bold text-yellow-400 my-4">Project StatsI(立ち上げプロジェクトと参画プロジェクトの集計と詳細)</p>
+      <p className="text-2xl font-bold text-yellow-400 my-4">Project Stats(立ち上げプロジェクトと参画プロジェクトの集計と詳細)</p>
       <div className="grid lg:grid-cols-4 my-4 md:grid-cols-2 grid-cols-1 gap-6">
         {statsData.map((d, k) => {
           return <DashboardStats key={k} {...d} colorIndex={k} />;
