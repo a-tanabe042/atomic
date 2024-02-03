@@ -25,9 +25,9 @@ export const IsModalIframe = () => {
   return (
     <>
       {showModal && (
-        <div className="modal modal-open ">
-          <div className="modal-box w-11/12 max-w-5xl ">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
+        <div className="modal modal-open">
+          <div className="modal-box w-11/12 max-w-5xl">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {layouts.map((layout) =>
                 layout.id !== 6 ? (
                   <img
@@ -35,17 +35,17 @@ export const IsModalIframe = () => {
                     src={layout.src}
                     alt={`Display Mode ${layout.mode}`}
                     onClick={() => handleLayoutClick(layout.mode)}
-                    className="w-full h-auto cursor-pointer rounded-lg"
+                    className="w-full h-auto cursor-pointer rounded-lg object-cover" // object-cover を追加
                   />
                 ) : (
                   <div
                     key={layout.id}
                     onClick={() => handleLayoutClick(layout.mode)}
-                    className="w-full h-auto cursor-pointer rounded-lg"
+                    className="w-full h-auto cursor-pointer rounded-lg flex justify-center items-center" // Lottieを中央に配置
                   >
                     <Lottie
                       animationData={lottieFile}
-                      style={{ width: "90%", height: "90%" }}
+                      style={{ width: "100%", height: "auto" }} // Lottieのスタイル調整
                     />
                   </div>
                 )
