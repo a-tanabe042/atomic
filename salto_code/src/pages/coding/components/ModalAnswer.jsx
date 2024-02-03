@@ -21,6 +21,7 @@ function ModalAnswer() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const howToSteps = useRecoilValue(howToStepsState);
   const setHowToSteps = useSetRecoilState(howToStepsState);
+  const apiURL = process.env.REACT_APP_API_URL;
 
   // オブジェクトが等しいかどうかを判断するヘルパー関数
   const isObjectsEqual = (obj1, obj2) => {
@@ -78,7 +79,7 @@ function ModalAnswer() {
       setCurrentProblemIndex(newIndex);
     } else {
       // Redirect to home or any other route when the last question is completed
-      window.location.href = "http://localhost:3000/app/code";
+      window.location.href = `${apiURL}/app/code`;
     }
     closeModal();
   };

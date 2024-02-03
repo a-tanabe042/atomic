@@ -5,6 +5,7 @@ import IsClickLanguage from "./IsClickLanguage";
 import ProblemsData from "../../../utils/problemsData";
 
 function Problems() {
+  const apiURL = process.env.REACT_APP_CODE_API_URL;
   const [problems,] = useState(ProblemsData);
 
   const getPaymentStatus = (
@@ -70,7 +71,7 @@ function Problems() {
                   <td>{getPaymentStatus(problem.category, true)}</td>
                   <td>
                     <a
-                      href={`http://localhost:3001/${problem.parameter}`}
+                      href={`${apiURL}/${problem.parameter}`}
                       className="btn btn-success text-lg font-bold shadow-lg text-white btn-md transition duration-150 ease-in-out transform hover:scale-110 focus:outline-none focus:ring focus:ring-green-300 w-full"
                     >
                       {problem.problem_description}
