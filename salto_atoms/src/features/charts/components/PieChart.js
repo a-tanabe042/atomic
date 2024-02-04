@@ -8,7 +8,6 @@ import {
   } from 'chart.js';
   import { Pie } from 'react-chartjs-2';
   import TitleCard from '../../../components/Cards/TitleCard';
-  import Subtitle from '../../../components/Typography/Subtitle';
   
   ChartJS.register(ArcElement, Tooltip, Legend,
       Tooltip,

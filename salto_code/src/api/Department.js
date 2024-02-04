@@ -10,7 +10,7 @@ function UserInfo() {
       .then(response => response.json())
       .then(data => setUserData(data.data))
       .catch(error => console.error('Error fetching data:', error));
-  }, []);
+  }, [apiHost]);
 
   if (!userData || userData.length === 0) {
     return <div>Loading...</div>;

@@ -32,7 +32,7 @@ function EducationalMaterials() {
     };
 
     fetchData(); // データ取得関数を実行
-  }, [parameter, setProblems]); // 依存配列にparameterとsetProblemsを設定
+  }, [parameter, setProblems,apiHost]); // 依存配列にparameterとsetProblemsを設定
 
   return null; // このコンポーネントはUIをレンダリングしない
 }
