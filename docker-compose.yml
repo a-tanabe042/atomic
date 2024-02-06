@@ -13,17 +13,26 @@ services:
   #     - "./salto_code:/app"
   
   salto_atoms:
-    build:
-      context: ./salto_atoms
-      dockerfile: Dockerfile
-    image: salto_atoms
-    ports:
-      - "3000:3000"
+    build: ./salto_atoms
+    environment:
+      - NODE_ENV=production
     networks:
-      - strapi
+      - webnet
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80" # 本番環境でのポート設定
     volumes:
-      - "./salto_atoms:/app"
-  
-  
+      - ./nginx:/etc/nginx/conf.d # Nginxの設定ファイルをコンテナにマウント
+      - ./salto_atoms/build:/usr/share/nginx/html # salto_atomsのビルドされたファイルをNginxのドキュメントルートにマウント
+    depends_on:
+      - salto_atoms
+    networks:
+      - webnet # 修正: ネットワーク名を統一
+
 networks:
-  strapi:
+  webnet: {}
+  
+  
+
