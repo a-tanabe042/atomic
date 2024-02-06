@@ -28,8 +28,8 @@ COPY --from=builder /app/build /usr/share/nginx/html
 
 # 必要ならば他の設定ファイルや環境変数ファイルをここにコピー
 
-# ポート80を公開
-EXPOSE 80
+# ポート3000を公開
+EXPOSE 3000
 
 # Nginxをフォアグラウンドで実行
 CMD ["nginx", "-g", "daemon off;"]

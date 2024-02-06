@@ -13,11 +13,18 @@ services:
   #     - "./salto_code:/app"
   
   salto_atoms:
-    build: ./salto_atoms
+    build:
+     context: ./salto_atoms
+     dockerfile: Dockerfile
+     image: salto_atoms
+     ports:
+       - "3000:3000"
     environment:
       - NODE_ENV=production
     networks:
       - webnet
+    volumes:
+      - "./salto_atoms:/app"
 
   nginx:
     image: nginx:alpine
