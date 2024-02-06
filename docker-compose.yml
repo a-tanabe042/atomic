@@ -1,45 +1,36 @@
 version: "3"
 services:
-  # salto_code:
-  #   build:
-  #     context: ./salto_code
-  #     dockerfile: Dockerfile
-  #   image: salto_code
-  #   ports:
-  #     - "3001:3000"
-  #   networks:
-  #     - strapi
-  #   volumes:
-  #     - "./salto_code:/app"
-  
   salto_atoms:
     build:
-     context: ./salto_atoms
-     dockerfile: Dockerfile
-     image: salto_atoms
-     ports:
-       - "3000:3000"
+      context: ./salto_atoms
+      dockerfile: Dockerfile
+    image: salto_atoms # imageプロパティをbuildの外に移動
+    ports:
+      - "3000:3000"
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=production      
     networks:
-      - webnet
+      - strapi
     volumes:
       - "./salto_atoms:/app"
 
   nginx:
+    build:
+       context: ./nginx
+       dockerfile: Dockerfile
     image: nginx:alpine
     ports:
-      - "80:80" # 本番環境でのポート設定
+      - "80:80" 
     volumes:
-      - ./nginx:/etc/nginx/conf.d # Nginxの設定ファイルをコンテナにマウント
-      - ./salto_atoms/build:/usr/share/nginx/html # salto_atomsのビルドされたファイルをNginxのドキュメントルートにマウント
+      - ./nginx:/etc/nginx/conf.d
+      - ./salto_atoms/build:/usr/share/nginx/html 
+      - ./salto_atoms/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - salto_atoms
     networks:
-      - webnet # 修正: ネットワーク名を統一
+      - strapi
 
 networks:
-  webnet: {}
-  
-  
-
+  strapi:
+    name: Strapi
+    driver: bridge

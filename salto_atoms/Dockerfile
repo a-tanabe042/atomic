@@ -1,35 +1,18 @@
-# ステージ1: ビルド用のベースイメージ
-FROM node:18-alpine as builder
+FROM node:18-alpine
+# Installing libvips-dev for sharp Compatibility
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev
+ARG NODE_ENV=development
+ENV NODE_ENV=${NODE_ENV}
 
-# アプリケーションのディレクトリを設定
-WORKDIR /app
-
-# 依存関係のファイルをコピー
+WORKDIR /opt/
 COPY package.json package-lock.json ./
+RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install
 
-# 依存関係のインストール
-RUN npm install
-
-# アプリケーションのソースコードと必要なファイルをコピー
+WORKDIR /opt/app
 COPY . .
-
-# アプリケーションのビルド
-RUN npm run build
-
-# ステージ2: 実行用のベースイメージ
-# Nginxを使用する
-FROM nginx:alpine
-
-# Nginxの設定ファイルをコピー
-COPY /nginx.conf /etc/nginx/nginx.conf
-
-# ビルドされたファイルをNginxのサーブディレクトリにコピー
-COPY --from=builder /app/build /usr/share/nginx/html
-
-# 必要ならば他の設定ファイルや環境変数ファイルをここにコピー
-
-# ポート3000を公開
+ENV PATH /opt/node_modules/.bin:$PATH
+RUN chown -R node:node /opt/app
+USER node
+RUN ["npm", "run", "build"]
 EXPOSE 3000
-
-# Nginxをフォアグラウンドで実行
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "run", "start"]
