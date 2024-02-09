@@ -42,7 +42,7 @@ function BarChart(){
       };
 
     return(
-      <TitleCard title={"半期の何かしらの集計"}>
+      <TitleCard title={"半期集計"}>
             <Bar options={options} data={data} />
       </TitleCard>
 

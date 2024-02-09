@@ -1,18 +1,23 @@
-FROM node:18-alpine
-# Installing libvips-dev for sharp Compatibility
-RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev
-ARG NODE_ENV=development
-ENV NODE_ENV=${NODE_ENV}
+# ステージ1: ビルド用のベースイメージ
+FROM node:18
 
-WORKDIR /opt/
-COPY package.json package-lock.json ./
-RUN npm config set fetch-retry-maxtimeout 600000 -g && npm install
+# アプリケーションのディレクトリを設定
+WORKDIR /app
 
-WORKDIR /opt/app
+# 依存関係のファイルをコピー
+COPY package.json ./
+
+# 依存関係のインストール
+RUN npm install
+
+# アプリケーションのソースコードをコピー
 COPY . .
-ENV PATH /opt/node_modules/.bin:$PATH
-RUN chown -R node:node /opt/app
-USER node
-RUN ["npm", "run", "build"]
+
+# アプリケーションのビルド
+RUN npm run build
+
+# アプリケーションの開始
+CMD ["npm", "start"]
+
+# ポートの公開
 EXPOSE 3000
-CMD ["npm", "run", "start"]

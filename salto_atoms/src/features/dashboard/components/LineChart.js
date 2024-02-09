@@ -52,7 +52,7 @@ function LineChart(){
   
 
     return(
-      <TitleCard title={"月の何かしらの集計"}>
+      <TitleCard title={"月次集計"}>
           <Line data={data} options={options}/>
       </TitleCard>
     )

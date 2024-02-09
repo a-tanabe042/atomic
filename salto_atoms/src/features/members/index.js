@@ -232,8 +232,8 @@ function Members() {
                 <th className="text-xs text-center">Name</th>
                 <th className="text-xs text-center">Post</th>
                 <th className="text-xs text-center">Department</th>
-                <th className="text-xs text-center">Skill</th>
-                <th className="text-xs text-center">Goal</th>
+                <th className="text-xs text-center">スキル</th>
+                <th className="text-xs text-center">目標</th>
               </tr>
             </thead>
             <tbody>
