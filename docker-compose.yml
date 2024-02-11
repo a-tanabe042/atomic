@@ -5,7 +5,7 @@ services:
     build:
       context: ./salto_atoms
       dockerfile: Dockerfile
-    image: salto_atoms # imageプロパティをbuildの外に移動
+    image: salto_atoms 
     ports:
       - "3000:3000"     
     networks:
@@ -20,13 +20,83 @@ services:
     ports:
       - "80:80" 
     volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./salto_atoms/build:/usr/share/nginx/html 
-      - ./salto_atoms/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/api.conf:/etc/nginx/conf.d/api.conf
+      - ./salto_atoms/build:/usr/share/nginx/html
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+
     depends_on:
       - salto_atoms
     networks:
       - strapi
+
+  strapi:
+    container_name: strapi
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
+    image: strapi:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: strapiDB
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PORT: ${DATABASE_PORT}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ./strapi/config:/opt/app/config
+      - ./strapi/src:/opt/app/src
+      - ./strapi/package.json:/opt/package.json
+      - ./strapi/package-lock.json:/opt/package-lock.json
+
+      - ./strapi/.env:/opt/app/.env
+      - ./strapi/public/uploads:/opt/app/public/uploads
+    ports:
+      - '1337:1337'
+    networks:
+      - strapi
+    depends_on:
+      - strapiDB
+      
+  strapiDB:
+    container_name: strapiDB
+    platform: linux/amd64 
+    restart: unless-stopped
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_USER: ${DATABASE_USERNAME}
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - strapi-data:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    networks:
+      - strapi
+      
+  strapiAdminer:
+    container_name: strapiAdminer
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - '9090:8080'
+    environment:
+      - ADMINER_DEFAULT_SERVER=strapiDB
+    networks:
+      - strapi
+    depends_on:
+      - strapiDB
+
+volumes:
+  strapi-data:
 
 networks:
   strapi:
