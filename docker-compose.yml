@@ -1,35 +1,23 @@
 version: "3"
 services:
-  
   salto_atoms:
     build:
       context: ./salto_atoms
       dockerfile: Dockerfile
-    image: salto_atoms 
-    ports:
-      - "3000:3000"     
+    volumes:
+      - ./salto_atoms:/app  # ソースコードをコンテナにマウント (開発用)
     networks:
       - strapi
-    volumes:
-      - "./salto_atoms:/app"
 
   nginx:
-    build:
-       context: ./nginx
-    image: nginx:alpine
+    build: ./salto_atoms  # Nginxの設定とReactアプリのビルドを含むDockerfileを使用
     ports:
-      - "80:80" 
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./nginx/api.conf:/etc/nginx/conf.d/api.conf
-      - ./salto_atoms/build:/usr/share/nginx/html
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-
+      - "80:80"
     depends_on:
       - salto_atoms
     networks:
       - strapi
-
+      
   strapi:
     container_name: strapi
     build:
@@ -82,19 +70,6 @@ services:
     networks:
       - strapi
       
-  strapiAdminer:
-    container_name: strapiAdminer
-    image: adminer
-    restart: unless-stopped
-    ports:
-      - '9090:8080'
-    environment:
-      - ADMINER_DEFAULT_SERVER=strapiDB
-    networks:
-      - strapi
-    depends_on:
-      - strapiDB
-
 volumes:
   strapi-data:
 

@@ -1,14 +1,13 @@
 # ステージ1: ビルド用のベースイメージ
-FROM node:18
+FROM node:18 AS build
 
-# アプリケーションのディレクトリを設定
 WORKDIR /app
 
 # 依存関係のファイルをコピー
-COPY package.json ./
+COPY package.json package-lock.json ./
 
 # 依存関係のインストール
-RUN npm install
+RUN npm ci
 
 # アプリケーションのソースコードをコピー
 COPY . .
@@ -16,8 +15,17 @@ COPY . .
 # アプリケーションのビルド
 RUN npm run build
 
-# アプリケーションの開始
-CMD ["npm", "start"]
+# ステージ2: Nginxを使用して静的ファイルを提供
+FROM nginx:alpine
 
-# ポートの公開
-EXPOSE 3000
+# Nginxの設定ファイルをコピー
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx/api.conf /etc/nginx/conf.d/api.conf
+
+# Reactアプリのビルド成果物をコピー
+COPY --from=build /app/build /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
