@@ -21,10 +21,12 @@ FROM nginx:alpine
 # Nginxの設定ファイルをコピー
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY nginx/api.conf /etc/nginx/conf.d/api.conf
 
-# Reactアプリのビルド成果物をコピー
-COPY --from=build /app/build /usr/share/nginx/html
+# 目的のディレクトリを作成
+RUN mkdir -p /var/www/frivo-online.net
+
+# Reactアプリのビルド成果物を新しいディレクトリにコピー
+COPY --from=build /app/build /var/www/frivo-online.net
 
 EXPOSE 80
 
