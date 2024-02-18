@@ -51,7 +51,7 @@ services:
       - ./strapi/package.json:/opt/package.json
       - ./strapi/package-lock.json:/opt/package-lock.json
 
-      - .env.production:/opt/app/.env.production
+      - .env:/opt/app/.env
       - ./strapi/public/uploads:/opt/app/public/uploads
     ports:
       - '1337:1337'
