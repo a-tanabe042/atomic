@@ -15,6 +15,7 @@ COPY . .
 # アプリケーションのビルド
 RUN npm run build
 
+
 # ステージ2: Nginx を使用して静的ファイルを提供
 FROM nginx:alpine
 
