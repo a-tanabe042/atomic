@@ -1,38 +1,21 @@
-# ステージ1: ビルド用のベースイメージ
-FROM node:18 AS build
+# ベースイメージ
+FROM node:18
 
-# 本番環境変数をセット
-ENV NODE_ENV=production
-ENV REACT_APP_API_URL=https://frivo-online.net
-ENV REACT_APP_API_HOST=https://api.frivo-online.net
-
+# 作業ディレクトリを設定
 WORKDIR /app
 
 # 依存関係のファイルをコピー
 COPY package.json package-lock.json ./
 
 # 依存関係のインストール
-RUN npm ci
+RUN npm install
 
 # アプリケーションのソースコードをコピー
 COPY . .
 
-# アプリケーションのビルド
-RUN npm run build
+# 環境変数を設定
+ENV NODE_ENV=development
 
-# ステージ2: Nginxを使用して静的ファイルを提供
-FROM nginx:alpine
-
-# Nginxの設定ファイルをコピー
-COPY nginx/nginx.conf /etc/nginx/nginx.conf
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
-
-# 目的のディレクトリを作成
-RUN mkdir -p /var/www/frivo-online.net
-
-# Reactアプリのビルド成果物を新しいディレクトリにコピー
-COPY --from=build /app/build /var/www/frivo-online.net
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# 開発サーバーを起動
+EXPOSE 3000
+CMD ["npm", "start"]

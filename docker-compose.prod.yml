@@ -1,8 +1,37 @@
-version: '3'
+version: "3"
 services:
+  salto_atoms:
+    build:
+      context: ./salto_atoms
+      dockerfile: Dockerfile.prod
+      args:
+        - NODE_ENV=${NODE_ENV} 
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    volumes:
+      - .:/app
+    env_file:
+      - ./salto_atoms/.env.production
+    networks:
+      - strapi
+  nginx:
+    build:
+      context: ./nginx_prod
+      dockerfile: Dockerfile
+    volumes:
+      - ./salto_atoms/build:/usr/share/nginx/html  # React アプリのビルド成果物を Nginx にマウント
+    ports:
+      - "80:80"  # ホストマシンのポート 80 とコンテナのポート 80 をバインド
+    depends_on:
+      - salto_atoms  # salto_atoms サービスのビルドが完了するのを待つ
+    networks:
+      - strapi
+    
   strapi:
     container_name: strapi
-    build: .
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
     image: strapi:latest
     restart: unless-stopped
     environment:
@@ -17,13 +46,13 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       NODE_ENV: ${NODE_ENV}
     volumes:
-      - ./config:/opt/app/config
-      - ./src:/opt/app/src
-      - ./package.json:/opt/package.json
-      - ./package-lock.json:/opt/package-lock.json
+      - ./strapi/config:/opt/app/config
+      - ./strapi/src:/opt/app/src
+      - ./strapi/package.json:/opt/package.json
+      - ./strapi/package-lock.json:/opt/package-lock.json
 
-      - ./.env:/opt/app/.env
-      - ./public/uploads:/opt/app/public/uploads
+      - .env:/opt/app/.env
+      - ./strapi/public/uploads:/opt/app/public/uploads
     ports:
       - '1337:1337'
     networks:
@@ -33,7 +62,7 @@ services:
       
   strapiDB:
     container_name: strapiDB
-    platform: linux/amd64 #for platform error on Apple M1 chips
+    platform: linux/amd64 
     restart: unless-stopped
     image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
@@ -45,25 +74,11 @@ services:
       MYSQL_ROOT_HOST: '%'
     volumes:
       - strapi-data:/var/lib/mysql
-      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
     ports:
       - '3306:3306'
     networks:
       - strapi
       
-  strapiAdminer:
-    container_name: strapiAdminer
-    image: adminer
-    restart: unless-stopped
-    ports:
-      - '9090:8080'
-    environment:
-      - ADMINER_DEFAULT_SERVER=strapiDB
-    networks:
-      - strapi
-    depends_on:
-      - strapiDB
-
 volumes:
   strapi-data:
 
