@@ -4,6 +4,8 @@ services:
     build:
       context: ./salto_atoms
       dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
     volumes:
       - ./salto_atoms:/app  # ソースコードをコンテナにマウント (開発用)
     networks:
@@ -77,3 +79,4 @@ networks:
   strapi:
     name: Strapi
     driver: bridge
+

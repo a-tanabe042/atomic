@@ -1,6 +1,11 @@
 # ステージ1: ビルド用のベースイメージ
 FROM node:18 AS build
 
+# 本番環境変数をセット
+ENV NODE_ENV=production
+ENV REACT_APP_API_URL=https://frivo-online.net
+ENV REACT_APP_API_HOST=https://api.frivo-online.net
+
 WORKDIR /app
 
 # 依存関係のファイルをコピー
