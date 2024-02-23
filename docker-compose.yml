@@ -3,9 +3,9 @@ services:
   salto_atoms:
     build: ./salto_atoms
     volumes:
-      - ./salto_atoms:/app  # ソースコードの変更をリアルタイムで反映
+      - ./salto_atoms:/app 
     ports:
-      - "3000:3000"  # ホストとコンテナのポートをバインド
+      - "3000:3000"  
     environment:
       - NODE_ENV=development
       

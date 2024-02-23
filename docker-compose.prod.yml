@@ -5,28 +5,43 @@ services:
       context: ./salto_atoms
       dockerfile: Dockerfile.prod
       args:
-        NODE_ENV: production 
+        NODE_ENV: production
     environment:
-      NODE_ENV: production 
+      NODE_ENV: production
     volumes:
       - ./salto_atoms:/app
     env_file:
       - ./salto_atoms/.env.production
     networks:
       - strapi
+
   nginx:
-    build:
-      context: ./nginx_prod
+    build: 
+      context: ./nginx
       dockerfile: Dockerfile
+    image: nginx:alpine
     volumes:
-      - ./salto_atoms/build:/usr/share/nginx/html  # React アプリのビルド成果物を Nginx にマウント
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/certbot/letsencrypt:/etc/letsencrypt 
+      - ./salto_atoms/build:/usr/share/nginx/html
     ports:
-      - "80:80"  # ホストマシンのポート 80 とコンテナのポート 80 をバインド
+      - "80:80"
+      - "443:443"
     depends_on:
-      - salto_atoms  # salto_atoms サービスのビルドが完了するのを待つ
+      - certbot
     networks:
       - strapi
-    
+
+  certbot:
+    image: certbot/certbot:latest
+    container_name: certbot
+    volumes:
+      - ./nginx/certbot/letsencrypt:/etc/letsencrypt
+    command: certonly --webroot --webroot-path=/usr/share/nginx/html --email ${CERTBOT_EMAIL} --agree-tos --no-eff-email --staging -d ${CERTBOT_DOMAIN}
+    networks:
+      - strapi
+
   strapi:
     container_name: strapi
     build:
@@ -46,7 +61,6 @@ services:
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       NODE_ENV: production 
     volumes:
-      - ./strapi/config:/opt/app/config
       - ./strapi/src:/opt/app/src
       - ./strapi/package.json:/opt/package.json
       - ./strapi/package-lock.json:/opt/package-lock.json
