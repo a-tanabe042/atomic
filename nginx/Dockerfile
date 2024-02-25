@@ -1,12 +1,5 @@
-# ステージ1: Certbotのインストール
-FROM nginx:alpine
+FROM nginx:latest
 
-# Nginxの設定ファイルをコピー
+# Nginx設定ファイルのコピー (必要に応じて)
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY conf.d/default.conf /etc/nginx/conf.d/default.conf
-
-
-EXPOSE 80 443
-
-CMD ["nginx", "-g", "daemon off;"]
-

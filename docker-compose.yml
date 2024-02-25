@@ -1,38 +1,44 @@
 version: "3"
 services:
   salto_atoms:
-    build: ./salto_atoms
+    build: 
+      context: ./salto_atoms
+      dockerfile: Dockerfile.dev
+    environment:
+      - NODE_ENV=development
     volumes:
       - ./salto_atoms:/app 
     ports:
       - "3000:3000"  
-    environment:
-      - NODE_ENV=development
-      
+  
   strapi:
     container_name: strapi
     build:
       context: ./strapi
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     image: strapi:latest
     restart: unless-stopped
     environment:
+      APP_KEYS: ${APP_KEYS}
+      API_TOKEN_SALT: ${API_TOKEN_SALT}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT}
+
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      DATABASE_CLIENT: ${DATABASE_CLIENT}
       DATABASE_HOST: strapiDB
+      DATABASE_PORT: ${DATABASE_PORT}
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PORT: ${DATABASE_PORT}
-      JWT_SECRET: ${JWT_SECRET}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      NODE_ENV: ${NODE_ENV}
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      JWT_SECRET: ${JWT_SECRET}
+
+      NODE_ENV: development
     volumes:
       - ./strapi/config:/opt/app/config
       - ./strapi/src:/opt/app/src
       - ./strapi/package.json:/opt/package.json
       - ./strapi/package-lock.json:/opt/package-lock.json
-      - .env:/opt/app/.env
       - ./strapi/public/uploads:/opt/app/public/uploads
     ports:
       - '1337:1337'
@@ -67,7 +73,7 @@ services:
     ports:
       - '9090:8080'
     environment:
-      - ADMINER_DEFAULT_SERVER=strapiDB
+      ADMINER_DEFAULT_SERVER: strapiDB
     networks:
       - strapi
     depends_on:
@@ -80,4 +86,3 @@ networks:
   strapi:
     name: Strapi
     driver: bridge
-

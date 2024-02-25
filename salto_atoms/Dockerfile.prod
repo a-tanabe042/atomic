@@ -12,6 +12,9 @@ RUN npm install
 # アプリケーションのソースコードをコピー
 COPY . .
 
+# 環境変数を設定
+ENV NODE_ENV=${NODE_ENV}
+
 # アプリケーションのビルド
 RUN npm run build
 
