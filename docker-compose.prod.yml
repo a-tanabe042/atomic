@@ -13,21 +13,21 @@ services:
     networks:
       - strapi
 
-  nginx:
-    build: 
-      context: ./nginx
-      dockerfile: Dockerfile
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-      - ./nginx/log:/var/log/nginx
-      - ./nginx/letsencrypt:/etc/letsencrypt
-      - ./salto_atoms/build:/usr/share/nginx/html
-    ports:
-      - "80:80"
-      - "443:443"
-    networks:
-      - strapi
+  # nginx:
+  #   build: 
+  #     context: ./nginx
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+  #     - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+  #     - ./nginx/log:/var/log/nginx
+  #     - ./nginx/letsencrypt:/etc/letsencrypt
+  #     - ./salto_atoms/build:/usr/share/nginx/html
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   networks:
+  #     - strapi
 
   strapi:
     container_name: strapi
