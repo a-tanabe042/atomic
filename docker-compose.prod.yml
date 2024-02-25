@@ -56,7 +56,7 @@ services:
       - ./strapi/package.json:/opt/package.json
       - ./strapi/package-lock.json:/opt/package-lock.json
       - .env.production:/opt/app/.env.production
-      - ./strapi/public/uploads:/opt/app/public/uploads
+      - prod_data:/opt/app/public/uploads
     ports:
       - '1337:1337'
     networks:
@@ -84,7 +84,8 @@ services:
       - strapi
       
 volumes:
-  strapi-data:
+  prod_data: 
+    external: true
 
 networks:
   strapi:
