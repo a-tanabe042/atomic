@@ -56,7 +56,7 @@ function Charts() {
         <GoalsChannels />
       </div>
       
-      <h1 className="text-center mt-12">↓↓↓↓↓Comming Soon↓↓↓↓↓</h1>
+      {/* <h1 className="text-center mt-12">↓↓↓↓↓Comming Soon↓↓↓↓↓</h1>
       <div className="grid lg:grid-cols-2 mt-0 grid-cols-1 gap-6 mt-4">
         <StackBarChart />
         <BarChart />
@@ -65,7 +65,7 @@ function Charts() {
       <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
         <ScatterChart />
         <LineChart />
-      </div>
+      </div> */}
     </>
   );
 }

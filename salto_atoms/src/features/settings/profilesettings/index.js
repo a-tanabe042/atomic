@@ -114,7 +114,7 @@ const ProfileSettings = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="label" htmlFor="firstName">
-            First Name
+            性
           </label>
           <input
             type="text"
@@ -127,7 +127,7 @@ const ProfileSettings = () => {
         </div>
         <div>
           <label className="label" htmlFor="lastName">
-            Last Name
+            名
           </label>
           <input
             type="text"
@@ -161,7 +161,7 @@ const ProfileSettings = () => {
         </div>
         <div>
           <label className="label" htmlFor="JoinDate">
-            Join Date
+            入社日
           </label>
           <JoinDate />
         </div>
@@ -176,7 +176,7 @@ const ProfileSettings = () => {
 
       <div className="mt-16">
         <button className="btn btn-primary float-right" onClick={handleUpdate}>
-          Update
+          更新する
         </button>
       </div>
     </TitleCard>

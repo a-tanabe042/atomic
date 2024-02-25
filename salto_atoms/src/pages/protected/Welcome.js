@@ -15,7 +15,7 @@ function InternalPage(){
     return(
       <div className="h-3/5 bg-base-200">
             <DocGettingStarted />
-            <Link to="/app/dashboard"><button className="btn bg-base-100 btn-outline mt-4">Get Started</button></Link>
+            {/* <Link to="/app/members"><button className="btn bg-base-100 btn-outline mt-4">Get Started</button></Link> */}
     </div>
     )
 }

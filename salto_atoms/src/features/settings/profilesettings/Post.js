@@ -47,7 +47,7 @@ const Post = () => {
     <div className="flex-1">
       {/* Post 選択 */}
       <label className="label" htmlFor="post">
-        Post
+        役職
       </label>
       <select
         id="post"
@@ -67,7 +67,7 @@ const Post = () => {
       {isDivisionVisible && (
         <div>
           <label className="label" htmlFor="division">
-            Division
+            本部
           </label>
           <select
             id="division"

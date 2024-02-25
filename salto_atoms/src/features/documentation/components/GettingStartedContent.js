@@ -12,58 +12,51 @@ function GettingStartedContent(){
     return(
         <>
             <article className="prose">
-              <h1 className="">Salto Atoms</h1>
+            <h1 className="">Project Architecture</h1>
+        {/* Typography*/}
+        <h2 id="getstarted1">Frontend</h2>
+        <ul>
+          <li>React</li>
+          <li>Tailwind CSS</li>
+          <li>DaisyUI</li>
+        </ul>
+        <h2>Backend</h2>
+        <ul>
+          <li>Strapi</li>
+        </ul>
+        <h2>インフラストラクチャ</h2>
+        <ul>
+          <li>AWS EC2</li>
+          <li>Docker</li>
+          <li>Nginx</li>
+        </ul>
+        <h2>CI/CD</h2>
+        <ul>
+          <li>Jenkins</li>
+        </ul>
+        <h2>バージョン管理</h2>
+        <ul>
+          <li>GitHub</li>
+        </ul>
 
 
-              {/* Introduction */}
-              <h2 className="" id="getstarted1">Introduction</h2>
-              <p>A free dashboard template using <span className='font-bold'>Daisy UI</span> and react js. With the help of Dasisy UI, it comes with <span className='font-bold'>fully customizable and themable CSS</span> and power of Tailwind CSS utility classes. We have also added <span className='font-bold'>redux toolkit</span>  and configured it for API calls and state management.</p> 
-              <p>User authentication has been implemented using JWT token method (ofcourse you need backend API for generating and verifying token). This template can be used to start your next SaaS project or build new internal tools in your company.</p>
-              <h4> Core libraries used - </h4>
-              <ul>
-                  <li><a href="https://reactjs.org/" target="_blank">React JS v18.2.0</a></li>
-                  <li><a href="https://reactrouter.com/en/main" target="_blank">React Router v6.4.3</a></li>
-                  <li><a href="https://tailwindcss.com/" target="_blank">Tailwind CSS v3.2.4</a></li>
-                  <li><a href="https://daisyui.com/" target="_blank">Daisy UI v2.41.0</a></li>
-                  <li><a href="https://heroicons.com/" target="_blank">HeroIcons v2.0.13</a></li>
-                  <li><a href="https://redux-toolkit.js.org/" target="_blank">Redux toolkit v1.9.0</a></li>
-                  <li><a href="https://react-chartjs-2.js.org/" target="_blank">React ChartJS 2 v5.0.1</a></li>
-              </ul>
-              <h4>Major features - </h4>
-              <p className=''>Almost all major UI components are available in Daisy UI library. Apart from this logic has been added for following - </p>
-              <ul>
-                  <li> <span className='font-bold'>Light/dark</span> mode toggle</li>
-                  <li> Token based user authentication</li>
-                  <li> <span className='font-bold'>Submenu support</span> in sidebar</li>
-                  <li> Store management using <span className='font-bold'>redux toolkit</span></li>
-                  <li> <span className='font-bold'>Daisy UI</span> components</li>
-                  <li> <span className='font-bold'>Right and left sidebar</span>, Universal loader, notifications and other components</li>
-                  <li> React <span className='font-bold'>chart js 2</span> examples</li>
-              </ul>
-              
-
-
-
+ 
 
               {/* How to Use */}
-              <h2 id="getstarted2">How to use?</h2>
+              {/* <h2 id="getstarted2">How to use?</h2>
                 <p>
-                    Just clone the repo from github and then run following command (Make sure you have node js installed )<br/>
-                    <a href="https://github.com/srobbin01/daisyui-admin-dashboard-template" className='text-sm text-blue-500' target="_blank">Repo Link</a>
-                    <br />
-                    <code> npm install </code><br />
-                    <code>npm start</code>
-                </p>
+                  Profileの設定をおねがいします。
+                </p>  */}
 
 
               {/* Tailwind CSS*/}
-              <h2 id="getstarted3">Tailwind CSS</h2>
+              {/* <h2 id="getstarted3">Tailwind CSS</h2>
                 <p>
                 Tailwind CSS is a utility-first CSS framework with predefined classes that you can use to build and design the UI directly in the JSX. We have also included Daisy UI Component, that is based on tailwind CSS.
-                </p>
+                </p> */}
 
               {/* Daisy UI */}
-              <h2 id="getstarted4">Daisy UI</h2>
+              {/* <h2 id="getstarted4">Daisy UI</h2>
 
               <p><a href="https://daisyui.com/" target="_blank" className='text-xl btn-link'>Daisy UI</a>, a popular free and opensource tailwind component library has been used for this template. It has a rich collection of components, layouts and is fully customizable and themeable.</p>
               
@@ -92,30 +85,30 @@ function GettingStartedContent(){
                         <button className="btn btn-primary">Button</button>
                   </div>
                 </div>
-
+ */}
 
 
                    {/* Chart JS */}
-              <h2 id="getstarted5">Chart JS</h2>
+              {/* <h2 id="getstarted5">Chart JS</h2>
                  <p>
                  Chart JS library has rich components of different charts available. It is based on  <a href="https://www.chartjs.org/" target="_blank" alt=""> Chart.js</a> library, the most popular charting library. We have added this library and added couple of examples in seperate page.
-                 </p>
+                 </p> */}
 
 
 
                   {/* Redux Toolkit */}
-              <h2 id="getstarted6">Redux Toolkit</h2>
+              {/* <h2 id="getstarted6">Redux Toolkit</h2>
                  <p>
                  The Redux Toolkit package helps in writing redux logic easily. It was originally created to help address three common concerns about Redux:
                     <li>Configuring a Redux store is too complicated</li>
                     <li>I have to add a lot of packages to get Redux to do anything useful</li>
                     <li>Redux requires too much boilerplate code"</li>
                     This library has been configured and used for showing notifications, modals and loading data from API in leads page.
-                 </p>
+                 </p> */}
 
 
                   {/* Hero Icons */}
-              <h2 id="getstarted7">Hero Icons</h2>
+              {/* <h2 id="getstarted7">Hero Icons</h2>
                 <p><a href="https://heroicons.com/" target="_blank" className='text-xl btn-link'>HeroIcons</a> library has been used for all the icons in this templates. It has a rich collection of SVG icons, and is made by the makers of Tailwind CSS.</p>
 
                 <p className='mt-4'>Each icon can be imported individually as a React component, check <a href="https://github.com/tailwindlabs/heroicons" target="_blank" className='btn-link'>documentation</a></p>
@@ -138,11 +131,11 @@ function GettingStartedContent(){
                 {"import BellIcon from '@heroicons/react/24/solid/BellIcon'"}</code></pre>
 
                 <div className="badge badge-secondary">This is better way for importing icons</div>
-
+ */}
 
 
                  {/* Project Structure */}
-              <h2 id="getstarted8">Project Structure</h2>
+              {/* <h2 id="getstarted8">Project Structure</h2>
               <h4>Folders - </h4>
               <ul className='mt-0'>
                   <li>app - store management, auth and libraries settings are present</li>
@@ -160,7 +153,7 @@ function GettingStartedContent(){
                     <li>index.js - Entry point of project</li>
                     <li>package.json - All dependencies and npm scripts</li>
                     <li>tailwind.config.js - Tailwind CSS configuration file, add theme customization and new themes in this file</li>
-                </ul>
+                </ul> */}
 
 
                 <div className='h-24'></div>

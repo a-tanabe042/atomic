@@ -115,14 +115,14 @@ function Header() {
           </label>
 
           {/* Notification icon */}
-          <button
+          {/* <button
             className="btn btn-ghost ml-4  btn-circle"
             onClick={() => openNotification()}
           >
             <div className="indicator">
               <BellIcon className="h-6 w-6" />
             </div>
-          </button>
+          </button> */}
 
           {/* Profile icon, opening menu on click */}
           <div className="dropdown dropdown-end ml-4">
@@ -146,7 +146,7 @@ function Header() {
                 </Link>
               </li>
               <li className="">
-                <Link to={"/app/settings-billing"}>Create History</Link>
+                <Link to={"/app/settings-team"}>所属部署</Link>
               </li>
               <div className="divider mt-0 mb-0"></div>
               <li>

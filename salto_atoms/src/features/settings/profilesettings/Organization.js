@@ -137,7 +137,7 @@ const Organization = () => {
     <div className="flex justify-between items-center space-x-4">
       {/* Department Dropdown */}
       <div className="flex-1">
-        <label className="label" htmlFor="department">Department</label>
+        <label className="label" htmlFor="department">部署</label>
         <select
           id="department"
           className="select w-full border border-gray-300 rounded-lg bg-slate-100 text-black"
@@ -155,7 +155,7 @@ const Organization = () => {
       {/* Section Dropdown */}
       <div className="flex-1">
         <label className="label" htmlFor="section">
-          Section
+          課
         </label>
         <select
           id="section"
@@ -176,7 +176,7 @@ const Organization = () => {
       {/* Group Dropdown */}
       <div className="flex-1">
         <label className="label" htmlFor="group">
-          Group
+          グループ
         </label>
         <select
           id="group"

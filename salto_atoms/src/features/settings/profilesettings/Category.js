@@ -160,7 +160,7 @@ const Category = () => {
     <>
       {/* Editable fields and buttons for skills */}
       <EditableFields
-        label="Skill"
+        label="スキル"
         fields={editableSkills}
         editMode={editMode.skills}
         toggleEditMode={() => toggleEditMode("skills")}
@@ -171,7 +171,7 @@ const Category = () => {
 
       {/* Editable fields for goals */}
       <EditableFields
-        label="Goal"
+        label="目標"
         fields={editableGoals}
         editMode={editMode.goals}
         toggleEditMode={() => toggleEditMode("goals")}
@@ -201,7 +201,7 @@ const EditableFields = ({
             className={`btn ${buttonColor} btn-sm`}
             onClick={toggleEditMode}
           >
-            {editMode ? "Close" : "Edit"}
+            {editMode ? "保存" : "編集"}
           </button>
           {editMode && (
             <button className="btn btn-sm btn-error ml-2" onClick={resetFields}>

@@ -7,7 +7,7 @@ function InternalPage(){
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(setPageTitle({ title : "SALTO図鑑"}))
+        dispatch(setPageTitle({ title : "Salto図鑑"}))
       }, [])
 
 

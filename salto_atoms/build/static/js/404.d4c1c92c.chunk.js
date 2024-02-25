@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkadmin_dashboard_template_dashwind=self.webpackChunkadmin_dashboard_template_dashwind||[]).push([[404],{4404:(a,e,t)=>{t.r(e),t.d(e,{default:()=>h});var s=t(2791),d=t(9434),n=t(5054),u=t(1020),c=t(184);const h=function(){const a=(0,d.I0)();return(0,s.useEffect)((()=>{a((0,n.Iw)({title:"SALTO\u56f3\u9451"}))}),[]),(0,c.jsx)(u.Z,{})}}}]);
-//# sourceMappingURL=404.d4c1c92c.chunk.js.map
