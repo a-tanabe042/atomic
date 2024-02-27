@@ -4,7 +4,6 @@ import routes from "../routes";
 import { Suspense, lazy } from "react";
 import SuspenseContent from "./SuspenseContent";
 import { useEffect, useRef } from "react";
-
 const Page404 = lazy(() => import("../pages/protected/404"));
 
 function PageContent() {

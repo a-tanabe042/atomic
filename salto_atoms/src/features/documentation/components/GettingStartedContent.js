@@ -32,6 +32,7 @@ function GettingStartedContent() {
         <h2 id="getstarted2">How to use?</h2>
         <p>Profileの設定をおねがいします。</p>
       </article>
+      <p className="pt-20"></p>
     </>
   );
 }

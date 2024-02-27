@@ -1,12 +1,10 @@
-import { lazy } from 'react'
-
-const Welcome = lazy(() => import('../pages/protected/Welcome'))
-const Page404 = lazy(() => import('../pages/protected/404'))
-const Charts = lazy(() => import('../pages/protected/Charts'))
-const Members = lazy(() => import('../pages/protected/Members'))
-const Team = lazy(() => import('../pages/protected/Team'))
-const ProfileSettings = lazy(() => import('../pages/protected/ProfileSettings'))
-const GettingStarted = lazy(() => import('../pages/GettingStarted'))
+import Welcome from '../pages/protected/Welcome';
+import Page404 from '../pages/protected/404';
+import Charts from '../pages/protected/Charts';
+import Members from '../pages/protected/Members';
+import Team from '../pages/protected/Team';
+import ProfileSettings from '../pages/protected/ProfileSettings';
+import GettingStarted from '../pages/GettingStarted';
 
 const routes = [
   {
