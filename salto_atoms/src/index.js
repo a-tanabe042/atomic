@@ -9,9 +9,8 @@ import { RecoilRoot } from 'recoil'; // Import RecoilRoot
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
     <Suspense fallback={<SuspenseContent />}>
-        <RecoilRoot> {/* Add RecoilRoot here */}
+        <RecoilRoot> 
             <Provider store={store}>
                 <App />
             </Provider>

@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { useDispatch } from "react-redux"
 import { setPageTitle} from "../common/headerSlice"
 import GettingStartedNav from "./components/GettingStartedNav"
 import GettingStartedContent from "./components/GettingStartedContent"
@@ -7,11 +6,8 @@ import GettingStartedContent from "./components/GettingStartedContent"
 
 
 function GettingStarted(){
-
-    const dispatch = useDispatch()
-
     useEffect(() => {
-        dispatch(setPageTitle({ title : "Documentation"}))
+        setPageTitle({ title : "Documentation"})
       }, [])
 
 

@@ -10,7 +10,6 @@ import {
   selectedGroupState,
   joinDateState,
 } from "../../../state";
-import { useDispatch } from "react-redux";
 import TitleCard from "../../../components/Cards/TitleCard";
 import { showNotification } from "../../common/headerSlice";
 import useGoogleProfile from "../../../hooks/useGoogleProfile";
@@ -37,7 +36,6 @@ const ProfileSettings = () => {
   const [showModal, setShowModal] = useState(true);
 
   const [, setResponse] = useState("");
-  const dispatch = useDispatch();
 
   const accessToken = localStorage.getItem("access_token");
   const googleId = useGoogleProfile(accessToken);
@@ -91,17 +89,15 @@ const ProfileSettings = () => {
       };
       const result = await updateData(itemId, updatedUser);
       setResponse(JSON.stringify(result, null, 2));
-      dispatch(
+      
         showNotification({ message: "Data updated successfully", status: 1 })
-      );
+      
     } catch (error) {
       console.error(error);
-      dispatch(
         showNotification({
           message: `Update failed: ${error.message}`,
           status: 0,
         })
-      );
     }
   };
 

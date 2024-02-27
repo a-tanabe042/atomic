@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { themeChange } from "theme-change";
 import { Link } from "react-router-dom";
-import BellIcon from "@heroicons/react/24/outline/BellIcon";
 import Bars3Icon from "@heroicons/react/24/outline/Bars3Icon";
 import MoonIcon from "@heroicons/react/24/outline/MoonIcon";
 import SunIcon from "@heroicons/react/24/outline/SunIcon";
-import { openRightDrawer } from "../features/common/rightDrawerSlice";
-import { RIGHT_DRAWER_TYPES } from "../utils/globalConstantUtil";
 import useGoogleProfile from "../hooks/useGoogleProfile";
 import useStrapi from "../hooks/useStrapi";
 
 function Header() {
-  const dispatch = useDispatch();
-  const { pageTitle } = useSelector((state) => state.header);
+  const { pageTitle } = (state) => state.header;
   const [currentTheme, setCurrentTheme] = useState(
     localStorage.getItem("theme")
   );
@@ -26,13 +21,14 @@ function Header() {
 
   // データの取得
   useEffect(() => {
-    const user = membersData?.data?.find((user) => user.attributes.google_id === googleId);
+    const user = membersData?.data?.find(
+      (user) => user.attributes.google_id === googleId
+    );
 
-      if (user) {
-        setProfilePicture(user.attributes.picture || "");
-        setItemId(user.id); // Now you can use setItemId without error
-      }
-    
+    if (user) {
+      setProfilePicture(user.attributes.picture || "");
+      setItemId(user.id);
+    }
   }, [membersData, googleId]);
 
   useEffect(() => {
@@ -61,22 +57,11 @@ function Header() {
     }
   }, []);
 
-  // Opening right sidebar for notification
-  const openNotification = () => {
-    dispatch(
-      openRightDrawer({
-        header: "Notifications",
-        bodyType: RIGHT_DRAWER_TYPES.NOTIFICATION,
-      })
-    );
-  };
-
   function logoutUser() {
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('access_token');
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("access_token");
     window.location.href = "/";
-}
-
+  }
 
   return (
     <>
@@ -114,26 +99,11 @@ function Header() {
             />
           </label>
 
-          {/* Notification icon */}
-          {/* <button
-            className="btn btn-ghost ml-4  btn-circle"
-            onClick={() => openNotification()}
-          >
-            <div className="indicator">
-              <BellIcon className="h-6 w-6" />
-            </div>
-          </button> */}
-
           {/* Profile icon, opening menu on click */}
           <div className="dropdown dropdown-end ml-4">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img
-                  src={
-                    profilePicture || "/logo512.png"
-                  }
-                  alt="profile"
-                />
+                <img src={profilePicture || "/logo512.png"} alt="profile" />
               </div>
             </label>
             <ul
@@ -141,9 +111,7 @@ function Header() {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li className="justify-between">
-                <Link to={"/app/settings-profile"}>
-                  Profile Settings
-                </Link>
+                <Link to={"/app/settings-profile"}>Profile Settings</Link>
               </li>
               <li className="">
                 <Link to={"/app/settings-team"}>所属部署</Link>
