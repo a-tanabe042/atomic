@@ -1,5 +1,3 @@
-import TemplatePointers from "./components/TemplatePointers"
-
 function LandingIntro(){
 
     return(

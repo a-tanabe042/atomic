@@ -4,7 +4,7 @@ import LoadingAnimation from '../../assets/lottie/loading.json'; // Lottieアニ
 
 const LoadingModal = () => {
   return (
-    <div className="fixed inset-0 bg-white flex justify-center items-center">
+    <div className="fixed inset-0  flex justify-center items-center">
       <div className="bg-transparent p-5 rounded-lg flex items-center justify-center">
         <Lottie animationData={LoadingAnimation}  />
       </div>

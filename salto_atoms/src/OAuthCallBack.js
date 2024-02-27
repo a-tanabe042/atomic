@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 function OAuthCallback() {
   const apiHost = process.env.REACT_APP_API_HOST;
-  const [loading, setLoading] = useState(true); // ローディング状態
-  const [error, setError] = useState(""); // エラーメッセージ
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(""); 
 
   useEffect(() => {
     const handleLogin = async () => {

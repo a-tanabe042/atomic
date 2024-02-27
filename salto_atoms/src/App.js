@@ -1,7 +1,6 @@
 import React, { lazy, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { themeChange } from "theme-change";
-import "./App.css";
 import AuthGuard from "./app/AuthGuard";
 
 const Layout = lazy(() => import("./containers/Layout"));

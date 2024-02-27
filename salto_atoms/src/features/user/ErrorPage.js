@@ -2,8 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
-import ErrorAnimation from "../../assets/lottie/error.json"; // Lottieアニメーションファイルのインポート
-
+import ErrorAnimation from "../../assets/lottie/error.json"; 
 const ErrorPage = () => {
   const navigate = useNavigate();
 

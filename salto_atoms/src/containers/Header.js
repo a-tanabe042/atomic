@@ -19,7 +19,6 @@ function Header() {
   const googleId = useGoogleProfile(accessToken);
   const { data: membersData } = useStrapi("user-saltos", {});
 
-  // データの取得
   useEffect(() => {
     const user = membersData?.data?.find(
       (user) => user.attributes.google_id === googleId
@@ -66,7 +65,6 @@ function Header() {
   return (
     <>
       <div className="navbar  flex justify-between bg-base-100  z-10 shadow-md ">
-        {/* Menu toogle for mobile view or small screen */}
         <div className="">
           <label
             htmlFor="left-sidebar-drawer"
@@ -78,7 +76,6 @@ function Header() {
         </div>
 
         <div className="order-last">
-          {/* Light and dark theme selection toogle **/}
           <label className="swap ">
             <input type="checkbox" />
             <SunIcon
@@ -98,8 +95,6 @@ function Header() {
               }
             />
           </label>
-
-          {/* Profile icon, opening menu on click */}
           <div className="dropdown dropdown-end ml-4">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">

@@ -2,7 +2,6 @@ import {
     Chart as ChartJS,
     Filler,
     ArcElement,
-    Title,
     Tooltip,
     Legend,
   } from 'chart.js';

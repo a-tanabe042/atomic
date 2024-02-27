@@ -6,7 +6,7 @@ const Filter = ({ removeFilter, applyFilter, applySearch, posts, departments }) 
   const [searchText, setSearchText] = useState("");
 
   const showFiltersAndApply = (param) => {
-    setSearchText(param); // Set the searchText to the selected filter
+    setSearchText(param); 
     applyFilter(param);
   };
 
@@ -20,7 +20,6 @@ const Filter = ({ removeFilter, applyFilter, applySearch, posts, departments }) 
     };
 
     handleSearch();
-    // ここで、依存配列に searchText のみを含めます。
   }, [searchText]); 
   
 
