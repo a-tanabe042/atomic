@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkadmin_dashboard_template_dashwind=self.webpackChunkadmin_dashboard_template_dashwind||[]).push([[689],{2689:(e,a,t)=>{t.r(a),t.d(a,{default:()=>c});var s=t(2791),d=t(9434),n=t(5054),r=t(1020),u=t(184);const c=function(){const e=(0,d.I0)();return(0,s.useEffect)((()=>{e((0,n.Iw)({title:"Problem"}))}),[]),(0,u.jsx)(r.Z,{})}}}]);
-//# sourceMappingURL=689.8e128a9d.chunk.js.map

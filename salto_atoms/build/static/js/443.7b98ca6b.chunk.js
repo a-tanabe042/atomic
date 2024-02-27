@@ -1,2 +1,0 @@
-(self.webpackChunkadmin_dashboard_template_dashwind=self.webpackChunkadmin_dashboard_template_dashwind||[]).push([[443],{8378:()=>{},5443:(a,e,t)=>{"use strict";t.r(e),t.d(e,{default:()=>h});var d=t(2791),n=t(9434),s=t(5054),r=t(8378),u=t.n(r),c=t(184);const h=function(){const a=(0,n.I0)();return(0,d.useEffect)((()=>{a((0,s.Iw)({title:"Calendar"}))}),[]),(0,c.jsx)(u(),{})}}}]);
-//# sourceMappingURL=443.7b98ca6b.chunk.js.map
