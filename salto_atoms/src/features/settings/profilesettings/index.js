@@ -11,7 +11,6 @@ import {
   joinDateState,
 } from "../../../state";
 import TitleCard from "../../../components/Cards/TitleCard";
-import { showNotification } from "../../common/headerSlice";
 import useGoogleProfile from "../../../hooks/useGoogleProfile";
 import useStrapi from "../../../hooks/useStrapi";
 import Organization from "./Organization";
@@ -88,16 +87,9 @@ const ProfileSettings = () => {
         join_date: joinDate,
       };
       const result = await updateData(itemId, updatedUser);
-      setResponse(JSON.stringify(result, null, 2));
-      
-        showNotification({ message: "Data updated successfully", status: 1 })
-      
+      setResponse(JSON.stringify(result, null, 2));      
     } catch (error) {
       console.error(error);
-        showNotification({
-          message: `Update failed: ${error.message}`,
-          status: 0,
-        })
     }
   };
 

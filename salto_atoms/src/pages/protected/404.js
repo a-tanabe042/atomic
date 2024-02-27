@@ -1,12 +1,6 @@
-import { useEffect } from 'react'
-import { setPageTitle } from '../../features/common/headerSlice'
 import FaceFrownIcon  from '@heroicons/react/24/solid/FaceFrownIcon'
 
 function InternalPage(){
-    useEffect(() => {
-        setPageTitle({ title : ""})
-      }, [])
-
     return(
         <div className="hero h-4/5 bg-base-200">
             <div className="hero-content text-accent text-center">

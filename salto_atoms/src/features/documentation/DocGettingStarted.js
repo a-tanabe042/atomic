@@ -1,16 +1,7 @@
-import { useEffect } from "react"
-import { setPageTitle} from "../common/headerSlice"
 import GettingStartedNav from "./components/GettingStartedNav"
 import GettingStartedContent from "./components/GettingStartedContent"
 
-
-
 function GettingStarted(){
-    useEffect(() => {
-        setPageTitle({ title : "Documentation"})
-      }, [])
-
-
     return(
         <>
             <div className="bg-base-100  flex overflow-hidden  rounded-lg" style={{height : "82vh"}}>
