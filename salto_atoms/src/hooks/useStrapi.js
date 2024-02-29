@@ -8,7 +8,6 @@ const useStrapi = (endpoint, queryCondition) => {
   const [error, setError] = useState(null);
   const url = `${BASE_URL}/${endpoint}`;
 
-  // データの取得
   const findData = async () => {
     try {
       setLoading(true);
@@ -29,7 +28,7 @@ const useStrapi = (endpoint, queryCondition) => {
     }
   };
 
-  const queryConditionString = JSON.stringify(queryCondition); // 複雑な式を変数に抽出
+  const queryConditionString = JSON.stringify(queryCondition); 
 
   useEffect(() => {
     findData(); 
