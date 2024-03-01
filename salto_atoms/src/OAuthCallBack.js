@@ -15,9 +15,6 @@ function OAuthCallback() {
         "access_token"
       );
 
-      console.log("idToken:", idToken);
-      console.log("accessToken:", accessToken);
-
       if (idToken && accessToken) {
         localStorage.setItem("id_token", idToken);
         localStorage.setItem("access_token", accessToken);

@@ -1,10 +1,11 @@
 import React from "react";
+
 //API request hooks
 import useFetchUsers from '../../hooks/useFetchUsers';
 import useFetchDepartments from '../../hooks/useFetchDepartments';
 //data components
-import  User from "./components/data/User";
-import Department from './components/data/Department';
+import  User from "./components/layout/User";
+import Department from './components/layout/Department';
 // UI components
 import TitleCard from "../../components/Cards/TitleCard";
 import Table from "./components/Table";

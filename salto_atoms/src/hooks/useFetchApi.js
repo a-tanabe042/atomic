@@ -7,7 +7,7 @@ const useFetchApi = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Read
+  // 1.Read
   const fetchData = useCallback(async (endpoint) => {
     setLoading(true);
     try {
@@ -16,7 +16,7 @@ const useFetchApi = () => {
       const result = await response.json();
       setData(prevData => ({
         ...prevData,
-        [endpoint]: result // Store data under an endpoint-specific key
+        [endpoint]: result 
       }));
     } catch (e) {
       setError(e.message);
@@ -26,7 +26,7 @@ const useFetchApi = () => {
   }, []);
   
 
-  // Create
+  // 2.Create
   const createData = useCallback(async (endpoint, payload) => {
     setLoading(true);
     try {
@@ -45,7 +45,7 @@ const useFetchApi = () => {
     }
   }, []);
 
-  // Update
+  // 3.Update
   const updateData = useCallback(async (endpoint, payload) => {
     setLoading(true);
     try {
@@ -64,7 +64,7 @@ const useFetchApi = () => {
     }
   }, []);
 
-  // Delete
+  // 4.Delete
   const deleteData = useCallback(async (endpoint) => {
     setLoading(true);
     try {
