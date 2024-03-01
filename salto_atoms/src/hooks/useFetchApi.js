@@ -1,54 +1,85 @@
-import { useState, useEffect } from 'react';
+import { useCallback, useState } from 'react';
 
 const apiHost = process.env.REACT_APP_API_HOST;
 
-const useFetchApi = (endpoints) => {
+const useFetchApi = () => {
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const serializedEndpoints = JSON.stringify(endpoints);
+  // Read
+  const fetchData = useCallback(async (endpoint) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${apiHost}/${endpoint}`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const result = await response.json();
+      setData(prevData => ({
+        ...prevData,
+        [endpoint]: result // Store data under an endpoint-specific key
+      }));
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+  
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        setError(null);
+  // Create
+  const createData = useCallback(async (endpoint, payload) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${apiHost}/${endpoint}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const result = await response.json();
+      setData(result);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
-        const parsedEndpoints = JSON.parse(serializedEndpoints); // Parse back to use in the effect
+  // Update
+  const updateData = useCallback(async (endpoint, payload) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${apiHost}/${endpoint}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const result = await response.json();
+      setData(result);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
-        const results = await Promise.all(
-          parsedEndpoints.map(({ endpoint, queryCondition }) =>
-            fetch(`${apiHost}/${endpoint}`, {
-              headers: { 'Content-Type': 'application/json' },
-              ...queryCondition,
-            })
-            .then(response => {
-              if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-              return response.json();
-            })
-          )
-        );
+  // Delete
+  const deleteData = useCallback(async (endpoint) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${apiHost}/${endpoint}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
-        const newData = parsedEndpoints.reduce((acc, { endpoint }, index) => {
-          acc[endpoint] = results[index];
-          return acc;
-        }, {});
-
-        setData(newData);
-      } catch (e) {
-        setError(e.message);
-        console.error("Error fetching data:", e.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  // Use the serialized string as a dependency
-  }, [serializedEndpoints]);
-
-  return { data, loading, error };
+  return { data, loading, error, fetchData, createData, updateData, deleteData };
 };
 
 export default useFetchApi;
