@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-const apiHost = process.env.REACT_APP_API_HOST;
+const API_HOST = process.env.REACT_APP_API_HOST;
 
 const useFetchApi = () => {
   const [data, setData] = useState({});
@@ -11,7 +11,7 @@ const useFetchApi = () => {
   const fetchData = useCallback(async (endpoint) => {
     setLoading(true);
     try {
-      const response = await fetch(`${apiHost}/${endpoint}`);
+      const response = await fetch(`${API_HOST}/${endpoint}`);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const result = await response.json();
       setData(prevData => ({
@@ -30,7 +30,7 @@ const useFetchApi = () => {
   const createData = useCallback(async (endpoint, payload) => {
     setLoading(true);
     try {
-      const response = await fetch(`${apiHost}/${endpoint}`, {
+      const response = await fetch(`${API_HOST}/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -49,7 +49,7 @@ const useFetchApi = () => {
   const updateData = useCallback(async (endpoint, payload) => {
     setLoading(true);
     try {
-      const response = await fetch(`${apiHost}/${endpoint}`, {
+      const response = await fetch(`${API_HOST}/${endpoint}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -68,7 +68,7 @@ const useFetchApi = () => {
   const deleteData = useCallback(async (endpoint) => {
     setLoading(true);
     try {
-      const response = await fetch(`${apiHost}/${endpoint}`, {
+      const response = await fetch(`${API_HOST}/${endpoint}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);

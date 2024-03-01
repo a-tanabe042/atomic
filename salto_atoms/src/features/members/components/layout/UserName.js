@@ -1,6 +1,6 @@
 import React from 'react';
 
-const User = ({ item }) => {
+const UserName = ({ item }) => {
   return (
     <div className="flex items-center space-x-3">
       <div className="avatar">
@@ -20,4 +20,4 @@ const User = ({ item }) => {
   );
 };
 
-export default User;
+export default UserName;

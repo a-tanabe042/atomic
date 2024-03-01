@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-const apiHost = process.env.REACT_APP_API_HOST;
-const BASE_URL = `${apiHost}/api`;
+const API_HOST = process.env.REACT_APP_API_HOST;
+const BASE_URL = `${API_HOST}/api`;
 
 const useStrapi = (endpoint, queryCondition) => {
   const [data, setData] = useState(null);

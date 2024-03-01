@@ -22,7 +22,7 @@ function Table({ columns, data }) {
             </tr>
           )) : (
             <tr>
-              <td colSpan={columns.length}>No data available.</td>
+              <td colSpan={columns.length}>-</td>
             </tr>
           )}
         </tbody>
