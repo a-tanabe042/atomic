@@ -6,7 +6,11 @@ const Affiliation = ({ item, departments, sections, groups }) => {
   const groupName = groups[item.attributes.group_id] || 'Unknown';  
   
   return (
-    <span>{departmentName} {sectionName} {groupName}</span>
+    <div className='text-center text-xs'>
+      <span>{departmentName}</span>
+      <span>{sectionName}</span>
+      <span>{groupName}</span>
+    </div>
   );
 };
 

@@ -6,13 +6,14 @@ import useFetchDepartments from '../../hooks/useFetchDepartments';
 import useFetchSections from '../../hooks/useFetchSections';
 import useFetchGroups from '../../hooks/useFetchGroups';
 //layout components
-import UserName from "./components/layout/UserName";
-import Post from './components/layout/Post';
-import Affiliation from './components/layout/Affiliation';
-import JoinDate from './components/layout/JoinDate';
+import UserName from "../../components/table/UserName";
+import Email from '../../components/table/Email';
+import Post from '../../components/table/Post';
+import Affiliation from '../../components/table/Affiliation';
+import JoinDate from '../../components/table/JoinDate';
 // UI components
 import TitleCard from "../../components/Cards/TitleCard";
-import Table from "./components/Table";
+import Table from "../../components/Table";
 
 
 function Members() {
@@ -26,6 +27,10 @@ function Members() {
     {
       header: "名前",
       render: (item) => <UserName item={item} />,
+    },
+    {
+      header: "メールアドレス",
+      render: (item) => <Email item={item} />,
     },
     {
       header: '役職',

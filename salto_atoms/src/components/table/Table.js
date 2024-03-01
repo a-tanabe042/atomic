@@ -13,7 +13,7 @@ function Table({ columns, data }) {
         </thead>
         <tbody>
           {Array.isArray(data) ? data.map((item, rowIndex) => (
-            <tr key={rowIndex} className="bg-white shadow-lg rounded-lg overflow-hidden mb-4">
+            <tr key={rowIndex} className=" overflow-hidden mb-4">
               {columns.map((column, colIndex) => (
                 <td key={colIndex} className="p-4">
                   {column.render(item)}

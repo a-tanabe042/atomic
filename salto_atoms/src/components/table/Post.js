@@ -4,7 +4,9 @@ const Post = ({ item, posts}) => {
   const postName = posts[item.attributes.pos_id] || 'Unknown';  
   
   return (
-    <span>{postName}</span>
+    <div className='text-center text-xs'>
+      <span>{postName}</span>
+    </div>
   );
 };
 
