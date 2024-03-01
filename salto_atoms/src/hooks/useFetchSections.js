@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
 
-const useFetchDepartments = () => {
-  const API_ENDPOINT = 'api/departments';
+const useFetchSections = () => {
+  const API_ENDPOINT = 'api/sections';
   const { data, fetchData } = useFetchApi({});
-  const [departments, setDepartments] = useState([]);
+  const [sections, setSections] = useState([]);
 
   useEffect(() => {
     fetchData(API_ENDPOINT);
@@ -13,14 +13,14 @@ const useFetchDepartments = () => {
   useEffect(() => {
     if (data && data[API_ENDPOINT]) {
       const map = data[API_ENDPOINT].data.reduce((acc, {attributes}) => {
-        acc[attributes.dep_id] = attributes.dep_name;
+        acc[attributes.section_id] =  attributes.section_name;
         return acc;
       }, {});
-      setDepartments(map);
+      setSections(map);
     }
   }, [data]);
 
-  return departments;
+  return sections;
 };
 
-export default useFetchDepartments;
+export default useFetchSections;

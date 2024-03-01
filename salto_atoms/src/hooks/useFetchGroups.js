@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
 
-const useFetchDepartments = () => {
-  const API_ENDPOINT = 'api/departments';
+const useFetchGroups = () => {
+  const API_ENDPOINT = 'api/groups';
   const { data, fetchData } = useFetchApi({});
-  const [departments, setDepartments] = useState([]);
+  const [groups, setGroups] = useState([]);
 
   useEffect(() => {
     fetchData(API_ENDPOINT);
@@ -13,14 +13,14 @@ const useFetchDepartments = () => {
   useEffect(() => {
     if (data && data[API_ENDPOINT]) {
       const map = data[API_ENDPOINT].data.reduce((acc, {attributes}) => {
-        acc[attributes.dep_id] = attributes.dep_name;
+        acc[attributes.group_id] = attributes.group_name;
         return acc;
       }, {});
-      setDepartments(map);
+      setGroups(map);
     }
   }, [data]);
 
-  return departments;
+  return groups;
 };
 
-export default useFetchDepartments;
+export default useFetchGroups;

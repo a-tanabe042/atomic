@@ -3,9 +3,11 @@ import React from "react";
 //API request hooks
 import useFetchUsers from '../../hooks/useFetchUsers';
 import useFetchDepartments from '../../hooks/useFetchDepartments';
-//data components
+import useFetchSections from '../../hooks/useFetchSections';
+import useFetchGroups from '../../hooks/useFetchGroups';
+//layout components
 import  User from "./components/layout/User";
-import Department from './components/layout/Department';
+import Affiliation from './components/layout/Affiliation';
 // UI components
 import TitleCard from "../../components/Cards/TitleCard";
 import Table from "./components/Table";
@@ -14,23 +16,24 @@ import Table from "./components/Table";
 function Members() {
   const users = useFetchUsers();
   const departments = useFetchDepartments();
+  const sections = useFetchSections();
+  const groups = useFetchGroups();
 
-  if (!users || !departments) return <div>Loading...</div>;
 
   const columns = [
     {
-      header: "Name",
+      header: "名前",
       render: (item) => <User item={item} />,
     },
     {
-      header: 'Department',
-      render: (item) => <Department dep_id={item.attributes.dep_id} departments={departments} />,
+      header: '所属部署',
+      render: (item) => <Affiliation item={item} departments={departments} sections={sections} groups={groups} />,
     },
   ];
 
   return (
     <>
-      <TitleCard title="Members" topMargin="mt-2">
+      <TitleCard title="社員名簿" topMargin="mt-2">
         <Table columns={columns} data={users || []} />
       </TitleCard>
     </>
