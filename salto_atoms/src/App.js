@@ -5,7 +5,7 @@ import AuthGuard from "./app/AuthGuard";
 
 const Layout = lazy(() => import("./containers/Layout"));
 const Login = lazy(() => import("./pages/Login"));
-const OAuthCallback = lazy(() => import("./OAuthCallBack"));
+const AuthCallback = lazy(() => import("./AuthCallBack"));
 const ErrorPage = lazy(()=> import("./features/user/ErrorPage"));
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/app/*" element={<Layout />} />
-          <Route path="/oauth/callback" element={<OAuthCallback />} />
+          <Route path="/oauth/callback" element={<AuthCallback />} />
           <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </AuthGuard>

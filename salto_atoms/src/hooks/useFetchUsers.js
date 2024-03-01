@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
 
 const useFetchUsers = () => {
+  const API_ENDPOINT = 'api/user-saltos';
   const { data, fetchData } = useFetchApi({});
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetchData('api/user-saltos');
+    fetchData(API_ENDPOINT);
   }, [fetchData]);
 
   useEffect(() => {
-    if (data && data['api/user-saltos']) {
-      setUsers(data['api/user-saltos'].data);
+    if (data && data[API_ENDPOINT]) {
+      setUsers(data[API_ENDPOINT].data);
     }
   }, [data]);
 

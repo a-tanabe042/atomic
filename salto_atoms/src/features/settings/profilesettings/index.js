@@ -11,7 +11,7 @@ import {
   joinDateState,
 } from "../../../state";
 import TitleCard from "../../../components/Cards/TitleCard";
-import useGoogleProfile from "../../../hooks/useGoogleProfile";
+import useFetchGoogleId from "../../../hooks/useFetchGoogleId";
 import useStrapi from "../../../hooks/useStrapi";
 import Organization from "./Organization";
 import Category from "./Category";
@@ -37,7 +37,7 @@ const ProfileSettings = () => {
   const [, setResponse] = useState("");
 
   const accessToken = localStorage.getItem("access_token");
-  const googleId = useGoogleProfile(accessToken);
+  const googleId = useFetchGoogleId(accessToken);
   const {data: membersData,loading: membersLoading,updateData} = useStrapi("user-saltos", {});
 
   // データの取得

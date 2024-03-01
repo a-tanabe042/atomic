@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Bars3Icon from "@heroicons/react/24/outline/Bars3Icon";
 import MoonIcon from "@heroicons/react/24/outline/MoonIcon";
 import SunIcon from "@heroicons/react/24/outline/SunIcon";
-import useGoogleProfile from "../hooks/useGoogleProfile";
+import useFetchGoogleId from "../hooks/useFetchGoogleId";
 import useStrapi from "../hooks/useStrapi";
 
 function Header() {
@@ -16,7 +16,7 @@ function Header() {
   const [, setItemId] = useState(null);
 
   const accessToken = localStorage.getItem("access_token");
-  const googleId = useGoogleProfile(accessToken);
+  const googleId = useFetchGoogleId(accessToken);
   const { data: membersData } = useStrapi("user-saltos", {});
 
   useEffect(() => {

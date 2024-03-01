@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function OAuthCallback() {
+function AuthCallback() {
   const API_HOST = process.env.REACT_APP_API_HOST;
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(""); 
@@ -73,9 +73,9 @@ function OAuthCallback() {
 
       // 2. プロフィール情報の更新（ユーザーが存在する場合）
       if (existingUserData && existingUserData.length > 0) {
-        const userId = existingUserData[0].id;
+        const googleId = existingUserData[0].id;
         const updateResponse = await fetch(
-          `${API_HOST}/api/user-saltos/${userId}`,
+          `${API_HOST}/api/user-saltos/${googleId}`,
           {
             method: "PUT",
             headers: {
@@ -147,4 +147,4 @@ function OAuthCallback() {
   return <div>Loading...</div>;
 }
 
-export default OAuthCallback;
+export default AuthCallback;

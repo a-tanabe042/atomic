@@ -13,7 +13,7 @@ import Affiliation from '../../components/table/Affiliation';
 import JoinDate from '../../components/table/JoinDate';
 // UI components
 import TitleCard from "../../components/Cards/TitleCard";
-import Table from "../../components/Table";
+import Table from "../../components/table/Table";
 
 
 function Members() {
