@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+{/* GoogleIdの取得 */} 
 const useFetchGoogleId = (accessToken) => {
   const [googleId, setGoogleId] = useState("");
   const navigate = useNavigate();

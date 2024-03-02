@@ -1,5 +1,6 @@
 import React from "react";
 
+{/* 入社年月日 */} 
 const JoinDate = ({ item }) => {
   return (
     <div className="text-center text-xs">

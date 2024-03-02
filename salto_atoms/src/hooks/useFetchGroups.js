@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
 
+{/* 所属グループの取得 */} 
 const useFetchGroups = () => {
   const API_ENDPOINT = 'api/groups';
   const { data, fetchData } = useFetchApi({});
@@ -12,13 +13,14 @@ const useFetchGroups = () => {
 
   useEffect(() => {
     if (data && data[API_ENDPOINT]) {
-      const map = data[API_ENDPOINT].data.reduce((acc, {attributes}) => {
-        acc[attributes.group_id] = attributes.group_name;
-        return acc;
-      }, {});
-      setGroups(map);
+      const groupsArray = data[API_ENDPOINT].data.map(({ attributes }) => ({
+        group_id: attributes.group_id,
+        group_name: attributes.group_name
+      }));
+      setGroups(groupsArray);
     }
   }, [data]);
+  
 
   return groups;
 };

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
 
+{/* 全ユーザー情報の取得 */} 
 const useFetchUsers = () => {
   const API_ENDPOINT = 'api/user-saltos';
   const { data, fetchData } = useFetchApi({});

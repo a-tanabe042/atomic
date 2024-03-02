@@ -1,5 +1,6 @@
 import React from 'react';
 
+{/* MailAddress */} 
 const Email = ({ item }) => {
   return (
     <div className='text-center text-xs'>

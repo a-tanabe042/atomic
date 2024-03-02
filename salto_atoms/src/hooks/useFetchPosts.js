@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
 
+{/* 役職の取得 */} 
 const useFetchPosts = () => {
   const API_ENDPOINT = 'api/posts';
   const { data, fetchData } = useFetchApi({});

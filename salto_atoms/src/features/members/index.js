@@ -6,16 +6,16 @@ import useFetchDepartments from '../../hooks/useFetchDepartments';
 import useFetchSections from '../../hooks/useFetchSections';
 import useFetchGroups from '../../hooks/useFetchGroups';
 //layout components
-import UserName from "../../components/table/UserName";
-import Email from '../../components/table/Email';
-import Post from '../../components/table/Post';
-import Affiliation from '../../components/table/Affiliation';
-import JoinDate from '../../components/table/JoinDate';
+import UserName from "../../components/layout/UserName";
+import Email from '../../components/layout/Email';
+import Post from '../../components/layout/Post';
+import Affiliation from '../../components/layout/Affiliation';
+import JoinDate from '../../components/layout/JoinDate';
 // UI components
 import TitleCard from "../../components/Cards/TitleCard";
-import Table from "../../components/table/Table";
+import Table from "../../components/layout/Table";
 
-
+{/* 社員名簿 */} 
 function Members() {
   const users = useFetchUsers();
   const posts = useFetchPosts();

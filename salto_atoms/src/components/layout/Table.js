@@ -1,5 +1,6 @@
 import React from 'react';
 
+{/*layout : テーブル */} 
 function Table({ columns, data }) {
   return (
     <div className="overflow-auto w-full py-2">

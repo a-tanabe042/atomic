@@ -1,45 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 //api request hooks
-import useFetchGoogleId from "../../../hooks/useFetchGoogleId";
-import useFetchUsers from "../../../hooks/useFetchUsers";
+import useFetchLoginUser from "../../../hooks/useFetchLoginUser";
+import useFilterUsers from "../../../hooks/useFilterUsers";
 import useFetchPosts from "../../../hooks/useFetchPosts";
 import useFetchDepartments from "../../../hooks/useFetchDepartments";
 import useFetchSections from "../../../hooks/useFetchSections";
 import useFetchGroups from "../../../hooks/useFetchGroups";
 //layout components
-import UserName from "../../../components/table/UserName";
-import Post from "../../../components/table/Post";
-import UserAffiliation from "../../../components/user/UserAffiliation";
+import UserName from "../../../components/layout/UserName";
+import Post from "../../../components/layout/Post";
+import UserAffiliation from "../../../components/layout/UserAffiliation";
 // UI components
 import TitleCard from "../../../components/Cards/TitleCard";
-import Table from "../../../components/table/Table";
+import Table from "../../../components/layout/Table";
 
+{/* 所属部署 */} 
 function Team() {
-  const accessToken = localStorage.getItem("access_token");
-  const googleId = useFetchGoogleId(accessToken);
-  const users = useFetchUsers();
+  const loginUser = useFetchLoginUser(); 
   const posts = useFetchPosts();
   const departments = useFetchDepartments();
   const sections = useFetchSections();
   const groups = useFetchGroups();
-  const [loginUser, setLoginUser] = useState(null);
-  const [filteredUsers, setFilteredUsers] = useState([]);
 
-  useEffect(() => {
-    const user = users.find((user) => user.attributes.google_id === googleId);
-    setLoginUser(user);
-  }, [googleId, users]);
+  // フィルタ条件 : ログインユーザーと条件が一致したユーザー情報を取得
+  const filterAffiliation = loginUser
+    ? {
+        dep_id: loginUser.attributes.dep_id,
+        section_id: loginUser.attributes.section_id,
+        group_id: loginUser.attributes.group_id,
+      }
+    : {};
 
-
-  useEffect(() => {
-    if (loginUser) {
-      const dep_id = loginUser.attributes.dep_id;
-      const usersInSameDepartment = users.filter(
-        (user) => user.attributes.dep_id === dep_id
-      );
-      setFilteredUsers(usersInSameDepartment);
-    }
-  }, [loginUser, users]);
+  const filterUsers = useFilterUsers(filterAffiliation);
 
   const columns = [
     {
@@ -54,7 +46,7 @@ function Team() {
 
   return (
     <>
-      <TitleCard title="社員名簿" topMargin="mt-2">
+      <TitleCard title="所属部署" topMargin="mt-2">
         {loginUser && (
           <UserAffiliation
             loginUser={loginUser}
@@ -63,7 +55,7 @@ function Team() {
             groups={groups}
           />
         )}
-        <Table columns={columns} data={filteredUsers || []} />
+        <Table columns={columns} data={filterUsers || []} />
       </TitleCard>
     </>
   );

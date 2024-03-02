@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 
 const API_HOST = process.env.REACT_APP_API_HOST;
 
+{/* API : Create, Read, Update, Delete */} 
 const useFetchApi = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -25,7 +26,6 @@ const useFetchApi = () => {
     }
   }, []);
   
-
   // 2.Create
   const createData = useCallback(async (endpoint, payload) => {
     setLoading(true);

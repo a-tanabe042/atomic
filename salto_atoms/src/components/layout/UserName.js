@@ -1,5 +1,6 @@
 import React from 'react';
 
+{/*　名前 */} 
 const UserName = ({ item }) => {
   return (
     <div className="flex items-center space-x-3">
