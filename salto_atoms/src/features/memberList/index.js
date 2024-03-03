@@ -15,8 +15,8 @@ import JoinDate from '../../components/layout/JoinDate';
 import TitleCard from "../../components/Cards/TitleCard";
 import Table from "../../components/layout/Table";
 
-{/* 社員名簿 */} 
-function Members() {
+/* 社員名簿 */
+function MemberList() {
   const users = useFetchUsers();
   const posts = useFetchPosts();
   const departments = useFetchDepartments();
@@ -55,4 +55,4 @@ function Members() {
   );
 }
 
-export default Members;
+export default MemberList;

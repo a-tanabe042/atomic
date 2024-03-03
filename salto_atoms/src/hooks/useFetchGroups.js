@@ -4,25 +4,24 @@ import useFetchApi from './useFetchApi';
 /* 所属グループの取得 */
 const useFetchGroups = () => {
   const API_ENDPOINT = 'api/groups';
-  const { data, fetchData } = useFetchApi({});
-  const [groups, setGroups] = useState([]);
+  const { data: groupsData, fetchData: fetchGroups } = useFetchApi({});
+  const [groupsList, setGroupsList] = useState([]);
 
   useEffect(() => {
-    fetchData(API_ENDPOINT);
-  }, [fetchData]);
+    fetchGroups(API_ENDPOINT);
+  }, [fetchGroups]);
 
   useEffect(() => {
-    if (data && data[API_ENDPOINT]) {
-      const groupsArray = data[API_ENDPOINT].data.map(({ attributes }) => ({
-        group_id: attributes.group_id,
-        group_name: attributes.group_name
+    if (groupsData && groupsData[API_ENDPOINT]) {
+      const groupsArray = groupsData[API_ENDPOINT].data.map(({ attributes: group }) => ({
+        group_id: group.group_id,
+        group_name: group.group_name
       }));
-      setGroups(groupsArray);
+      setGroupsList(groupsArray);
     }
-  }, [data]);
-  
+  }, [groupsData]);
 
-  return groups;
+  return groupsList;
 };
 
 export default useFetchGroups;

@@ -7,7 +7,7 @@ const useFetchGoogleId = (accessToken) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    let isLoading = true; 
+    let isMounted = true; 
 
     const fetchGoogleProfile = async () => {
       if (!accessToken) return;
@@ -19,17 +19,20 @@ const useFetchGoogleId = (accessToken) => {
           throw new Error("Failed to fetch Google profile");
         }
         const profile = await response.json();
-        if (isLoading) setGoogleId(profile.id);
+        if (isMounted) setGoogleId(profile.id); 
       } catch (error) {
         console.error("Error fetching Google profile:", error);
         navigate('/error');
       }
     };
+
     fetchGoogleProfile();
+
     return () => {
-      isLoading = false; 
+      isMounted = false; 
     };
   }, [accessToken, navigate]);
+
   return googleId;
 };
 

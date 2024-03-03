@@ -4,25 +4,24 @@ import useFetchApi from './useFetchApi';
 /* 所属課の取得 */
 const useFetchSections = () => {
   const API_ENDPOINT = 'api/sections';
-  const { data, fetchData } = useFetchApi({});
-  const [sections, setSections] = useState([]);
+  const { data: sectionsData, fetchData: fetchSections } = useFetchApi({});
+  const [sectionsList, setSectionsList] = useState([]);
 
   useEffect(() => {
-    fetchData(API_ENDPOINT);
-  }, [fetchData]);
+    fetchSections(API_ENDPOINT);
+  }, [fetchSections]);
 
   useEffect(() => {
-    if (data && data[API_ENDPOINT]) {
-      const sectionsArray = data[API_ENDPOINT].data.map(({ attributes }) => ({
-        section_id: attributes.section_id,
-        section_name: attributes.section_name
+    if (sectionsData && sectionsData[API_ENDPOINT]) {
+      const sectionsArray = sectionsData[API_ENDPOINT].data.map(({ attributes: section }) => ({
+        section_id: section.section_id,
+        section_name: section.section_name
       }));
-      setSections(sectionsArray);
+      setSectionsList(sectionsArray);
     }
-  }, [data]);
-  
+  }, [sectionsData]);
 
-  return sections;
+  return sectionsList;
 };
 
 export default useFetchSections;

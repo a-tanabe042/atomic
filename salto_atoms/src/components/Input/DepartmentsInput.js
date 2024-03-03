@@ -15,7 +15,6 @@ const DepartmentsInput = ({ departmentId, setDepartmentId }) => {
   const handleChange = (e) => {
     const newDepartmentId = e.target.value === "" ? null : e.target.value;
     setSelectedDepartment(newDepartmentId);
-    // Assuming setDepartmentId can handle null values appropriately
     setDepartmentId(newDepartmentId);
   };
 
@@ -27,10 +26,10 @@ const DepartmentsInput = ({ departmentId, setDepartmentId }) => {
       <select
         id="department"
         className="select w-full border border-gray-300 rounded-lg bg-slate-100 text-black"
-        value={selectedDepartment || ""} // Ensure the select resets to the placeholder when null
+        value={selectedDepartment || ""} 
         onChange={handleChange}
       >
-        <option value="">選択して下さい</option>
+        <option value="">選択してください</option>
         {departments.map((dep) => (
           <option key={dep.dep_id} value={dep.dep_id}>
             {dep.dep_name}

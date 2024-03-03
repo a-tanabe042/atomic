@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 
 const API_HOST = process.env.REACT_APP_API_HOST;
 
-/* APIの取得 */
+/* APIの取得 CRUD */
 const useFetchApi = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -52,13 +52,13 @@ const useFetchApi = () => {
         body: JSON.stringify(payload),
       });
       if (!response.ok) {
-        const errorResponse = await response.text(); // ここを改善
+        const errorResponse = await response.text(); 
         throw new Error(`HTTP error! status: ${response.status}, body: ${errorResponse}`);
       }
       const result = await response.json();
       setData(result);
     } catch (e) {
-      setError(e.toString()); // ここを改善
+      setError(e.toString()); 
     } finally {
       setLoading(false);
     }

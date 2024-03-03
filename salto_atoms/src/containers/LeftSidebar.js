@@ -14,10 +14,10 @@ function LeftSidebar() {
       <label htmlFor="left-sidebar-drawer" className="drawer-overlay"></label>
       <ul className="menu w-80 bg-base-100 text-base-content">
         <button
-          className="btn btn-ghost bg-base-300  btn-circle z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden"
+          className="btn btn-ghost bg-base-300 z-50 top-0 right-0 m-4 absolute lg:hidden"
           onClick={() => close()}
         >
-          <XMarkIcon className="h-5 inline-block w-5" />
+          <XMarkIcon className="h-4 inline-block w-4" />
         </button>
 
         <li className=" font-semibold text-xl">
@@ -27,8 +27,8 @@ function LeftSidebar() {
               src="/logo192.png"
               alt="Salto Atoms Logo"
             />
-            Salto Atoms
-          </Link>{" "}
+            SALTO Atoms
+          </Link>
         </li>
         {routes.map((route, k) => {
           return (
@@ -48,7 +48,7 @@ function LeftSidebar() {
                   {route.icon} {route.name}
                   {location.pathname === route.path ? (
                     <span
-                      className="absolute inset-y-0 left-0 w-1 rounded-tr-md rounded-br-md bg-primary "
+                      className="absolute inset-y-0 left-0 w-1 rounded-tr-md rounded-br-md bg-primary"
                       aria-hidden="true"
                     ></span>
                   ) : null}

@@ -1,12 +1,11 @@
-import React, { lazy, useEffect } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { themeChange } from "theme-change";
 import AuthGuard from "./app/AuthGuard";
-
-const Layout = lazy(() => import("./containers/Layout"));
-const Login = lazy(() => import("./pages/Login"));
-const AuthCallback = lazy(() => import("./AuthCallBack"));
-const ErrorPage = lazy(()=> import("./features/user/ErrorPage"));
+import Layout from "./containers/Layout";
+import Login from "./pages/Login";
+import AuthCallback from "./app/AuthCallBack";
+import ErrorPage from "./features/user/ErrorPage";
 
 function App() {
   useEffect(() => {

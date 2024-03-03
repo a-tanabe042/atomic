@@ -9,9 +9,14 @@ const submenuIconClasses = `h-5 w-5`;
 
 const routes = [
   {
-    path: "/app/members",
+    path: "/app/member-list",
     icon: <BookOpenIcon className={iconClasses} />, 
-    name: "Salto 図鑑",
+    name: "Member List",
+  },
+  {
+    path: "/app/affiliation",
+    icon: <BuildingOfficeIcon className={iconClasses} />, 
+    name: "Affiliation",
   },
   {
     path: "", 
@@ -21,14 +26,8 @@ const routes = [
       {
         path: "/app/settings-profile", 
         icon: <UserIcon className={submenuIconClasses} />, 
-        name: "Profile", 
-      },
-      {
-        path: "/app/settings-team", 
-        icon: <BuildingOfficeIcon className={submenuIconClasses} />, 
-        name: "所属部署", 
-      },
- 
+        name: "Profile Settings", 
+      }, 
     ],
   },
 ];

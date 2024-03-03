@@ -1,12 +1,11 @@
-import DocGettingStarted from '../features/documentation/DocGettingStarted'
+import DocGettingStarted from "../features/documentation/DocGettingStarted";
 
-function ExternalPage(){
-
-    return(
-        <div className="">
-            <DocGettingStarted />
-        </div>
-    )
+function ExternalPage() {
+  return (
+    <div className="">
+      <DocGettingStarted />
+    </div>
+  );
 }
 
-export default ExternalPage
+export default ExternalPage;

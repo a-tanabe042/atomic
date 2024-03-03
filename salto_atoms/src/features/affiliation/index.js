@@ -1,23 +1,23 @@
 import React, { useMemo } from 'react';
 //api request hooks
-import useFetchLoginUser from "../../../hooks/useFetchLoginUser";
-import useFilterUsers from "../../../hooks/useFilterUsers";
-import useFetchPosts from "../../../hooks/useFetchPosts";
-import useFetchDepartments from "../../../hooks/useFetchDepartments";
-import useFetchSections from "../../../hooks/useFetchSections";
-import useFetchGroups from "../../../hooks/useFetchGroups";
+import useFetchLoginUser from "../../hooks/useFetchLoginUser";
+import useFilterUsers from "../../hooks/useFilterUsers";
+import useFetchPosts from "../../hooks/useFetchPosts";
+import useFetchDepartments from "../../hooks/useFetchDepartments";
+import useFetchSections from "../../hooks/useFetchSections";
+import useFetchGroups from "../../hooks/useFetchGroups";
 //layout components
-import UserName from "../../../components/layout/UserName";
-import Post from "../../../components/layout/Post";
-import Email from "../../../components/layout/Email";
-import UserAffiliation from "../../../components/layout/UserAffiliation";
+import UserName from "../../components/layout/UserName";
+import Post from "../../components/layout/Post";
+import Email from "../../components/layout/Email";
+import UserAffiliation from "../../components/layout/UserAffiliation";
 // UI components
-import TitleCard from "../../../components/Cards/TitleCard";
-import Table from "../../../components/layout/Table";
-import JoinDate from '../../../components/layout/JoinDate';
+import TitleCard from "../../components/Cards/TitleCard";
+import Table from "../../components/layout/Table";
+import JoinDate from '../../components/layout/JoinDate';
 
-{/* 所属部署 */} 
-function Team() {
+/* 所属部署 */
+function Affiliation() {
   const loginUser = useFetchLoginUser(); 
   const posts = useFetchPosts();
   const departments = useFetchDepartments();
@@ -39,7 +39,7 @@ function Team() {
       render: (item) => <UserName item={item} />,
     },
     {
-      header: "Email",
+      header: "メールアドレス",
       render: (item) => <Email item={item} />,
     },
     {
@@ -69,4 +69,4 @@ function Team() {
   );
 }
 
-export default Team;
+export default Affiliation;

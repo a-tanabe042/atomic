@@ -9,11 +9,11 @@ const PostInput = ({ postId, setPostId }) => {
   );
 
   useEffect(() => {
-    setSelectedPost(postId);
+    setSelectedPost(postId || "");
   }, [postId]);
 
   const handleChange = (e) => {
-    const newPostId = e.target.value;
+    const newPostId = e.target.value === "" ? null : e.target.value;
     setSelectedPost(newPostId);
     setPostId(newPostId);
   };
@@ -29,7 +29,7 @@ const PostInput = ({ postId, setPostId }) => {
         value={selectedPost}
         onChange={handleChange}
       >
-        <option value="">選択して下さい</option>
+        <option value="">選択してください</option>
         {posts.map((pos) => (
           <option key={pos.pos_id} value={pos.pos_id}>
             {pos.pos_name}

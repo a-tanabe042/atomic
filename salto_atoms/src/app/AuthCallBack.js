@@ -1,66 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 function AuthCallback() {
   const API_HOST = process.env.REACT_APP_API_HOST;
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(""); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  useEffect(() => {
-    const handleLogin = async () => {
-      setLoading(true);
-      const idToken = new URLSearchParams(window.location.search).get(
-        "id_token"
-      );
-      const accessToken = new URLSearchParams(window.location.search).get(
-        "access_token"
-      );
-
-      if (idToken && accessToken) {
-        localStorage.setItem("id_token", idToken);
-        localStorage.setItem("access_token", accessToken);
-
-        try {
-          await fetchGoogleProfile(accessToken);
-          window.location.href = "/app/welcome";
-        } catch (err) {
-          setError("プロフィールの取得に失敗しました。");
-          window.location.href = "/login";
-        }
-      } else {
-        setError("認証情報が不足しています。");
-        window.location.href = "/login";
-      }
-
-      setLoading(false);
-    };
-
-    handleLogin();
-  }, []);
-
-  const fetchGoogleProfile = async (accessToken) => {
-    try {
-      const response = await fetch(
-        "https://www.googleapis.com/oauth2/v2/userinfo",
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-
-      if (response.ok) {
-        const profile = await response.json();
-        console.log("Google Profile:", profile);
-        await saveProfile(profile);
-      } else {
-        throw new Error("Failed to fetch Google profile");
-      }
-    } catch (error) {
-      console.error("Error fetching Google profile:", error);
-    }
-  };
-
-  const saveProfile = async (profile) => {
+  const saveProfile = useCallback(async (profile) => {
     try {
       // 1. ユーザーの存在チェック
       const existingUserResponse = await fetch(
@@ -134,7 +79,59 @@ function AuthCallback() {
     } catch (error) {
       console.error("Error handling profile in Strapi:", error);
     }
-  };
+  }, [API_HOST]);
+  const fetchGoogleProfile = useCallback(async (accessToken) => {
+    try {
+      const response = await fetch(
+        "https://www.googleapis.com/oauth2/v2/userinfo",
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+  
+      if (response.ok) {
+        const profile = await response.json();
+        console.log("Google Profile:", profile);
+        await saveProfile(profile); // ここで saveProfile を使用しています
+      } else {
+        throw new Error("Failed to fetch Google profile");
+      }
+    } catch (error) {
+      console.error("Error fetching Google profile:", error);
+    }
+  }, [saveProfile]); 
+
+  useEffect(() => {
+    const handleLogin = async () => {
+      setLoading(true);
+      const idToken = new URLSearchParams(window.location.search).get("id_token");
+      const accessToken = new URLSearchParams(window.location.search).get("access_token");
+
+      if (idToken && accessToken) {
+        localStorage.setItem("id_token", idToken);
+        localStorage.setItem("access_token", accessToken);
+
+        try {
+          await fetchGoogleProfile(accessToken);
+          window.location.href = "/app/welcome";
+        } catch (err) {
+          setError("プロフィールの取得に失敗しました。");
+          window.location.href = "/login";
+        }
+      } else {
+        setError("認証情報が不足しています。");
+        window.location.href = "/login";
+      }
+
+      setLoading(false);
+    };
+
+    handleLogin();
+  }, [fetchGoogleProfile]);
+
+
 
   if (loading) {
     return <div>Loading...</div>; // ローディング表示

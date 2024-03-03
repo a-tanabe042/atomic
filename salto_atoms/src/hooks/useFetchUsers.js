@@ -4,20 +4,20 @@ import useFetchApi from './useFetchApi';
 /* 全ユーザー情報の取得 */
 const useFetchUsers = () => {
   const API_ENDPOINT = 'api/user-saltos';
-  const { data, fetchData } = useFetchApi({});
-  const [users, setUsers] = useState([]);
+  const { data: usersData, fetchData: fetchUsers } = useFetchApi({});
+  const [usersList, setUsersList] = useState([]);
 
   useEffect(() => {
-    fetchData(API_ENDPOINT);
-  }, [fetchData]);
+    fetchUsers(API_ENDPOINT);
+  }, [fetchUsers]);
 
   useEffect(() => {
-    if (data && data[API_ENDPOINT]) {
-      setUsers(data[API_ENDPOINT].data);
+    if (usersData && usersData[API_ENDPOINT]) {
+      setUsersList(usersData[API_ENDPOINT].data);
     }
-  }, [data]);
+  }, [usersData]);
 
-  return users;
+  return usersList;
 };
 
 export default useFetchUsers;

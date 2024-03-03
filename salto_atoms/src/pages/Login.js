@@ -1,13 +1,7 @@
-import Login from '../features/user/Login'
+import Login from "../features/user/Login";
 
-function ExternalPage(){
-
-
-    return(
-        <div className="">
-                <Login />
-        </div>
-    )
+function ExternalPage() {
+  return <Login />;
 }
 
-export default ExternalPage
+export default ExternalPage;

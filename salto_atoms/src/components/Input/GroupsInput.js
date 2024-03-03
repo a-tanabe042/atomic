@@ -9,11 +9,11 @@ const GroupsInput = ({ groupId, setGroupId }) => {
   );
 
   useEffect(() => {
-    setSelectedGroup(groupId);
+    setSelectedGroup(groupId || "");
   }, [groupId]);
 
   const handleChange = (e) => {
-    const newGroupId = e.target.value;
+    const newGroupId = e.target.value === "" ? null : e.target.value;
     setSelectedGroup(newGroupId);
     setGroupId(newGroupId);
   };
@@ -29,7 +29,7 @@ const GroupsInput = ({ groupId, setGroupId }) => {
         value={selectedGroup}
         onChange={handleChange}
       >
-        <option value="">選択して下さい</option>
+        <option value="">選択してください</option>
         {groups.map((group) => (
           <option key={group.group_id} value={group.group_id}>
             {group.group_name}

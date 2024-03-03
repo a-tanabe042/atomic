@@ -1,27 +1,27 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
 
-/* 所属部署の取得 */
+/* 役職の取得 */
 const useFetchPosts = () => {
   const API_ENDPOINT = 'api/posts';
-  const { data, fetchData } = useFetchApi({});
-  const [posts, setPosts] = useState([]);
+  const { data: postData, fetchData: fetchPosts } = useFetchApi({});
+  const [postsList, setPostsList] = useState([]);
 
   useEffect(() => {
-    fetchData(API_ENDPOINT);
-  }, [fetchData]);
+    fetchPosts(API_ENDPOINT);
+  }, [fetchPosts]);
 
   useEffect(() => {
-    if (data && data[API_ENDPOINT]) {
-      const postArray = data[API_ENDPOINT].data.map(({ attributes }) => ({
-        pos_id: attributes.pos_id,
-        pos_name: attributes.pos_name
+    if (postData && postData[API_ENDPOINT]) {
+      const postsArray = postData[API_ENDPOINT].data.map(({ attributes: post }) => ({
+        pos_id: post.pos_id,
+        pos_name: post.pos_name
       }));
-      setPosts(postArray);
+      setPostsList(postsArray);
     }
-  }, [data]);
+  }, [postData]);
 
-  return posts;
+  return postsList;
 };
 
 export default useFetchPosts;

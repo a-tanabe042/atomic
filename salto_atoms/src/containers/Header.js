@@ -8,29 +8,21 @@ import useFetchGoogleId from "../hooks/useFetchGoogleId";
 import useFetchLoginUser from "../hooks/useFetchLoginUser";
 
 function Header() {
-  const { pageTitle } = (state) => state.header;
   const [currentTheme, setCurrentTheme] = useState(
     localStorage.getItem("theme")
   );
   const [profilePicture, setProfilePicture] = useState("");
-
   const accessToken = localStorage.getItem("access_token");
   const googleId = useFetchGoogleId(accessToken);
-  const loginUser = useFetchLoginUser(); 
-
-  console.log("loginUser", loginUser);
-  console.log("googleId", googleId);
-
+  const loginUser = useFetchLoginUser();
 
   useEffect(() => {
     if (loginUser && loginUser.attributes.google_id === googleId) {
       setProfilePicture(loginUser.attributes.picture || "/logo512.png");
     }
   }, [loginUser, googleId]);
-  
 
   useEffect(() => {
-    themeChange(false);
     if (currentTheme === null) {
       setCurrentTheme(
         window.matchMedia &&
@@ -39,20 +31,7 @@ function Header() {
           : "light"
       );
     }
-  }, [currentTheme]);
-
-  useEffect(() => {
     themeChange(false);
-    if (currentTheme === null) {
-      if (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      ) {
-        setCurrentTheme("dark");
-      } else {
-        setCurrentTheme("light");
-      }
-    }
   }, [currentTheme]);
 
   function logoutUser() {
@@ -71,7 +50,6 @@ function Header() {
           >
             <Bars3Icon className="h-4 inline-block w-4" />
           </label>
-          <h1 className="text-2xl font-semibold ml-2">{pageTitle}</h1>
         </div>
 
         <div className="order-last">
@@ -104,11 +82,11 @@ function Header() {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li className="justify-between">
+              <li className="justify-between mb-1">
                 <Link to={"/app/settings-profile"}>Profile Settings</Link>
               </li>
               <li className="">
-                <Link to={"/app/settings-team"}>所属部署</Link>
+                <Link to={"/app/affiliation"}>Affiliation</Link>
               </li>
               <div className="divider mt-0 mb-0"></div>
               <li>

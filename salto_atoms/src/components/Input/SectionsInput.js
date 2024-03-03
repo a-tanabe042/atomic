@@ -9,11 +9,11 @@ const SectionsInput = ({ sectionId, setSectionId }) => {
   );
 
   useEffect(() => {
-    setSelectedSection(sectionId);
+    setSelectedSection(sectionId || "");
   }, [sectionId]);
 
   const handleChange = (e) => {
-    const newSectionId = e.target.value;
+    const newSectionId = e.target.value === "" ? null : e.target.value;
     setSelectedSection(newSectionId);
     setSectionId(newSectionId);
   };
@@ -29,7 +29,7 @@ const SectionsInput = ({ sectionId, setSectionId }) => {
         value={selectedSection}
         onChange={handleChange}
       >
-        <option value="">選択して下さい</option>
+        <option value="">選択してください</option>
         {sections.map((section) => (
           <option key={section.section_id} value={section.section_id}>
             {section.section_name}

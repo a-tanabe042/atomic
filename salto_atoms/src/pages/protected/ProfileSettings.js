@@ -1,9 +1,7 @@
-import ProfileSettings from '../../features/settings/profilesettings'
+import ProfileSettings from "../../features/settings/profilesettings";
 
-function InternalPage(){
-    return(
-        <ProfileSettings />
-    )
+function InternalPage() {
+  return <ProfileSettings />;
 }
 
-export default InternalPage
+export default InternalPage;

@@ -9,16 +9,13 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
-    "chart.js": "^4.0.1",
     "daisyui": "^2.41.0",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",
-    "react-chartjs-2": "^5.0.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
     "react-tailwindcss-datepicker": "^1.6.0",
-    "recoil": "^0.7.7",
     "theme-change": "^2.2.0"
   },
   "homepage": "https://frivo-online.net/",

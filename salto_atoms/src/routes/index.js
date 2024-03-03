@@ -1,7 +1,7 @@
 import Welcome from '../pages/protected/Welcome';
 import Page404 from '../pages/protected/404';
-import Members from '../pages/protected/Members';
-import Team from '../pages/protected/Team';
+import MemberList from '../pages/protected/MemberList';
+import Affiliation from '../pages/protected/Affiliation';
 import ProfileSettings from '../pages/protected/ProfileSettings';
 import GettingStarted from '../pages/GettingStarted';
 
@@ -11,12 +11,12 @@ const routes = [
     component: Welcome, 
   },
   {
-    path: '/settings-team',
-    component: Team,
+    path: '/member-list',
+    component: MemberList,
   },
   {
-    path: '/members',
-    component: Members,
+    path: '/affiliation',
+    component: Affiliation,
   },
   {
     path: '/settings-profile',

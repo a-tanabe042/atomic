@@ -9,7 +9,7 @@ const AuthGuard = ({ children }) => {
     if (!token) {
       navigate('/login');
     }
-  }, []);
+  }, [navigate]);
 
   return <>{children}</>;
 };
