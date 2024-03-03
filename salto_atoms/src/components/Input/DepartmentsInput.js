@@ -9,12 +9,13 @@ const DepartmentsInput = ({ departmentId, setDepartmentId }) => {
   );
 
   useEffect(() => {
-    setSelectedDepartment(departmentId);
+    setSelectedDepartment(departmentId || "");
   }, [departmentId]);
 
   const handleChange = (e) => {
-    const newDepartmentId = e.target.value;
+    const newDepartmentId = e.target.value === "" ? null : e.target.value;
     setSelectedDepartment(newDepartmentId);
+    // Assuming setDepartmentId can handle null values appropriately
     setDepartmentId(newDepartmentId);
   };
 
@@ -26,7 +27,7 @@ const DepartmentsInput = ({ departmentId, setDepartmentId }) => {
       <select
         id="department"
         className="select w-full border border-gray-300 rounded-lg bg-slate-100 text-black"
-        value={selectedDepartment}
+        value={selectedDepartment || ""} // Ensure the select resets to the placeholder when null
         onChange={handleChange}
       >
         <option value="">選択して下さい</option>

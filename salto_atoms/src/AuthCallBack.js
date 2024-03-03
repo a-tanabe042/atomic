@@ -94,8 +94,8 @@ function AuthCallback() {
 
         if (!updateResponse.ok) {
           const errorData = await updateResponse.json();
-          console.error("Error updating profile in Strapi:", errorData);
-          throw new Error("Failed to update profile in Strapi");
+          console.error("Error updating profile:", errorData);
+          throw new Error("Failed to update profile");
         }
       } else {
         // 3. 新しいユーザーの場合の処理

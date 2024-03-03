@@ -10,7 +10,7 @@ const submenuIconClasses = `h-5 w-5`;
 const routes = [
   {
     path: "/app/members",
-    icon: <BookOpenIcon className={iconClasses} />, // アイコン変更
+    icon: <BookOpenIcon className={iconClasses} />, 
     name: "Salto 図鑑",
   },
   {

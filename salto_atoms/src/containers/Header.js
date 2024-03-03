@@ -5,7 +5,7 @@ import Bars3Icon from "@heroicons/react/24/outline/Bars3Icon";
 import MoonIcon from "@heroicons/react/24/outline/MoonIcon";
 import SunIcon from "@heroicons/react/24/outline/SunIcon";
 import useFetchGoogleId from "../hooks/useFetchGoogleId";
-import useStrapi from "../hooks/useStrapi";
+import useFetchLoginUser from "../hooks/useFetchLoginUser";
 
 function Header() {
   const { pageTitle } = (state) => state.header;
@@ -13,22 +13,21 @@ function Header() {
     localStorage.getItem("theme")
   );
   const [profilePicture, setProfilePicture] = useState("");
-  const [, setItemId] = useState(null);
 
   const accessToken = localStorage.getItem("access_token");
   const googleId = useFetchGoogleId(accessToken);
-  const { data: membersData } = useStrapi("user-saltos", {});
+  const loginUser = useFetchLoginUser(); 
+
+  console.log("loginUser", loginUser);
+  console.log("googleId", googleId);
+
 
   useEffect(() => {
-    const user = membersData?.data?.find(
-      (user) => user.attributes.google_id === googleId
-    );
-
-    if (user) {
-      setProfilePicture(user.attributes.picture || "");
-      setItemId(user.id);
+    if (loginUser && loginUser.attributes.google_id === googleId) {
+      setProfilePicture(loginUser.attributes.picture || "/logo512.png");
     }
-  }, [membersData, googleId]);
+  }, [loginUser, googleId]);
+  
 
   useEffect(() => {
     themeChange(false);
@@ -40,7 +39,7 @@ function Header() {
           : "light"
       );
     }
-  }, []);
+  }, [currentTheme]);
 
   useEffect(() => {
     themeChange(false);
@@ -54,7 +53,7 @@ function Header() {
         setCurrentTheme("light");
       }
     }
-  }, []);
+  }, [currentTheme]);
 
   function logoutUser() {
     localStorage.removeItem("id_token");
@@ -113,7 +112,7 @@ function Header() {
               </li>
               <div className="divider mt-0 mb-0"></div>
               <li>
-                <a onClick={logoutUser}>Logout</a>
+                <button href="" onClick={logoutUser}>Logout</button>
               </li>
             </ul>
           </div>

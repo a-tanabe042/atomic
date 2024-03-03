@@ -7,8 +7,8 @@ import GettingStarted from '../pages/GettingStarted';
 
 const routes = [
   {
-    path: '/welcome', // the url
-    component: Welcome, // view rendered
+    path: '/welcome', 
+    component: Welcome, 
   },
   {
     path: '/settings-team',
