@@ -1,4 +1,3 @@
-// ProfileSettings.js
 import React, { useState, useEffect } from "react";
 import TitleCard from "../../../components/Cards/TitleCard";
 import useFetchApi from "../../../hooks/useFetchApi";
@@ -17,15 +16,11 @@ const ProfileSettings = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [joinDate, setJoinDate] = useState({ 
-    startDate: null, 
-    endDate: null 
-    });
+  const [joinDate, setJoinDate] = useState({ startDate: null, endDate: null });
   const [postId, setPostId] = useState("");
   const [departmentId, setDepartmentId] = useState("");
   const [sectionId, setSectionId] = useState("");
   const [groupId, setGroupId] = useState("");
-  console.log("first_name:", firstName);
 
   useEffect(() => {
     if (loginUser) {

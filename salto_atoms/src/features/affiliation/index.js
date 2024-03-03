@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useState,useMemo, useEffect } from 'react';
 //api request hooks
 import useFetchLoginUser from "../../hooks/useFetchLoginUser";
 import useFilterUsers from "../../hooks/useFilterUsers";
@@ -15,9 +15,12 @@ import UserAffiliation from "../../components/layout/UserAffiliation";
 import TitleCard from "../../components/Cards/TitleCard";
 import Table from "../../components/layout/Table";
 import JoinDate from '../../components/layout/JoinDate';
+//loading component
+import Loading from "../../components/loading/Loading";
 
 /* 所属部署 */
 function Affiliation() {
+  const [isLoading, setLoading] = useState(true);
   const loginUser = useFetchLoginUser(); 
   const posts = useFetchPosts();
   const departments = useFetchDepartments();
@@ -51,6 +54,19 @@ function Affiliation() {
       render: (item) => <JoinDate item={item} />,
     },
   ];
+
+  useEffect(() => {
+    // マウント時に1秒後にローディング状態を解除
+    const timer = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timer); // クリーンアップ関数でタイマーをクリア
+  }, []); // 空の依存配列でマウント時のみ実行
+
+  if (isLoading) {
+    return <Loading />; // ローディング中はLoadingコンポーネントを表示
+  }
+
+
+
 
   return (
     <>

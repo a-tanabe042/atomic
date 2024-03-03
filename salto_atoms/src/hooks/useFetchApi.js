@@ -1,12 +1,15 @@
 import { useCallback, useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { loadingState } from '../state'; 
+import { errorState } from '../state'; 
 
 const API_HOST = process.env.REACT_APP_API_HOST;
 
 /* APIの取得 CRUD */
 const useFetchApi = () => {
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const setLoading = useSetRecoilState(loadingState);
+  const setError = useSetRecoilState(errorState);
 
   const fetchData = useCallback(async (endpoint) => {
     setLoading(true);
@@ -23,7 +26,7 @@ const useFetchApi = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [setError, setLoading]);
   
   const createData = useCallback(async (endpoint, payload) => {
     setLoading(true);
@@ -41,7 +44,7 @@ const useFetchApi = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [setError, setLoading]);
 
   const updateData = useCallback(async (endpoint, payload) => {
     setLoading(true);
@@ -62,7 +65,7 @@ const useFetchApi = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [setError, setLoading]);
 
   const deleteData = useCallback(async (endpoint) => {
     setLoading(true);
@@ -76,9 +79,12 @@ const useFetchApi = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [setError, setLoading]);
 
-  return { data, loading, error, fetchData, createData, updateData, deleteData };
+  return { data, fetchData, createData, updateData, deleteData };
 };
 
 export default useFetchApi;
+
+
+
