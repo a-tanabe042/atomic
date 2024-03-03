@@ -1,10 +1,11 @@
 // FirstNameInput.js
 import React from 'react';
 
+/* メールフォーム */
 const EmailInput = ({ email}) => {
   return (
-    <div>
-       <label className="label" htmlFor="email">
+    <div className="flex-1"> 
+       <label htmlFor='email' className="label" >
             Email
            </label>
           <input

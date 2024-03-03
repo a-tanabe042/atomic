@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
 
-{/* 所属部署の取得 */} 
+/* 所属部署の取得 */
 const useFetchDepartments = () => {
   const API_ENDPOINT = 'api/departments';
   const { data, fetchData } = useFetchApi({});

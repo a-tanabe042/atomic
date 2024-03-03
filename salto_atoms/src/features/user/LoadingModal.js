@@ -1,7 +1,8 @@
 import React from 'react';
 import Lottie from 'lottie-react';
-import LoadingAnimation from '../../assets/lottie/loading.json'; // Lottieアニメーションファイルのパス
+import LoadingAnimation from '../../assets/lottie/loading.json'; 
 
+/* ローディングモーダル(実装なし) */
 const LoadingModal = () => {
   return (
     <div className="fixed inset-0  flex justify-center items-center">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useFetchSections from "../../hooks/useFetchSections";
 
+/* 課フォーム */
 const SectionsInput = ({ sectionId, setSectionId }) => {
   const sections = useFetchSections();
   const [selectedSection, setSelectedSection] = useState(
@@ -19,8 +20,8 @@ const SectionsInput = ({ sectionId, setSectionId }) => {
 
   return (
     <div className="flex-1">
-      <label htmlFor="section" className="label">
-        部署
+      <label htmlFor="section"  className="label">
+        課
       </label>
       <select
         id="section"
@@ -28,7 +29,7 @@ const SectionsInput = ({ sectionId, setSectionId }) => {
         value={selectedSection}
         onChange={handleChange}
       >
-        <option value="">Select section</option>
+        <option value="">選択して下さい</option>
         {sections.map((section) => (
           <option key={section.section_id} value={section.section_id}>
             {section.section_name}

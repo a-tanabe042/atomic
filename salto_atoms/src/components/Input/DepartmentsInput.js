@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useFetchDepartments from "../../hooks/useFetchDepartments";
 
+/* 部署フォーム */
 const DepartmentsInput = ({ departmentId, setDepartmentId }) => {
   const departments = useFetchDepartments();
   const [selectedDepartment, setSelectedDepartment] = useState(
@@ -28,7 +29,7 @@ const DepartmentsInput = ({ departmentId, setDepartmentId }) => {
         value={selectedDepartment}
         onChange={handleChange}
       >
-        <option value="">Select Department</option>
+        <option value="">選択して下さい</option>
         {departments.map((dep) => (
           <option key={dep.dep_id} value={dep.dep_id}>
             {dep.dep_name}

@@ -2,13 +2,12 @@ import { useCallback, useState } from 'react';
 
 const API_HOST = process.env.REACT_APP_API_HOST;
 
-{/* API : Create, Read, Update, Delete */} 
+/* APIの取得 */
 const useFetchApi = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // 1.Read
   const fetchData = useCallback(async (endpoint) => {
     setLoading(true);
     try {
@@ -20,13 +19,12 @@ const useFetchApi = () => {
         [endpoint]: result 
       }));
     } catch (e) {
-      setError(e.message);
+      setError(e.toString());
     } finally {
       setLoading(false);
     }
   }, []);
   
-  // 2.Create
   const createData = useCallback(async (endpoint, payload) => {
     setLoading(true);
     try {
@@ -39,13 +37,12 @@ const useFetchApi = () => {
       const result = await response.json();
       setData(result);
     } catch (e) {
-      setError(e.message);
+      setError(e.toString());
     } finally {
       setLoading(false);
     }
   }, []);
 
-  // 3.Update
   const updateData = useCallback(async (endpoint, payload) => {
     setLoading(true);
     try {
@@ -54,17 +51,19 @@ const useFetchApi = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      if (!response.ok) {
+        const errorResponse = await response.text(); // ここを改善
+        throw new Error(`HTTP error! status: ${response.status}, body: ${errorResponse}`);
+      }
       const result = await response.json();
       setData(result);
     } catch (e) {
-      setError(e.message);
+      setError(e.toString()); // ここを改善
     } finally {
       setLoading(false);
     }
   }, []);
 
-  // 4.Delete
   const deleteData = useCallback(async (endpoint) => {
     setLoading(true);
     try {
@@ -73,7 +72,7 @@ const useFetchApi = () => {
       });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
     } catch (e) {
-      setError(e.message);
+      setError(e.toString());
     } finally {
       setLoading(false);
     }

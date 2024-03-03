@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import useFetchUsers from './useFetchUsers';
 import useFetchGoogleId from './useFetchGoogleId';
 
-{/* ログインユーザーの取得 */}
+/* ログインユーザーの取得 */
 const useFetchLoginUser = () => {
     const accessToken = localStorage.getItem("access_token");
     const googleId = useFetchGoogleId(accessToken);

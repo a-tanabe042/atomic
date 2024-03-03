@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-{/*　名前 */} 
+/*　ユーザーネーム */
 const UserName = ({ item }) => {
   return (
     <div className="flex items-center space-x-3">
@@ -10,12 +10,8 @@ const UserName = ({ item }) => {
         </div>
       </div>
       <div>
-        <div className="font-bold text-xs">
-          {item.attributes.first_name}
-        </div>
-        <div className="text-xs text-gray-500">
-          {item.attributes.last_name}
-        </div>
+        <div className="font-bold text-xs">{item.attributes.first_name}</div>
+        <div className="text-xs text-gray-500">{item.attributes.last_name}</div>
       </div>
     </div>
   );

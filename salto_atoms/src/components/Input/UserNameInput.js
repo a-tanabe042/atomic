@@ -1,12 +1,13 @@
-// FirstNameInput.js
 import React from "react";
 
+/* ログインユーザー名前フォーム */
 const UserNameInput = ({ firstName, setFirstName, lastName, setLastName }) => {
   return (
-    <div className="">
-      <div>
-        <label className="label">性</label>
+    <div className="flex items-center space-x-4 w-full"> 
+      <div className="flex-1">
+        <label htmlFor="firstName"  className="label">性</label>
         <input
+          id="firstName"
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
@@ -14,9 +15,10 @@ const UserNameInput = ({ firstName, setFirstName, lastName, setLastName }) => {
           placeholder="First Name"
         />
       </div>
-      <div>
-        <label className="label">名</label>
+      <div className="flex-1"> 
+        <label htmlFor="lastName"  className="label">名</label>
         <input
+          id="lastName"
           type="text"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}

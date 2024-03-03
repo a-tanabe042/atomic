@@ -1,14 +1,18 @@
 import React from "react";
-
+/* ログインユーザー所属部署 */
 const UserAffiliation = ({ departments, sections, groups, loginUser }) => {
-  // loginUserを使用して正しいIDを取得
-  const departmentName = departments[loginUser.attributes.dep_id]?.dep_name || 'Unknown';
-  const sectionName = sections[loginUser.attributes.section_id]?.section_name || 'Unknown';
-  const groupName = groups[loginUser.attributes.group_id]?.group_name || 'Unknown';
+  const departmentName =
+    departments[loginUser.attributes.dep_id - 1]?.dep_name || "-";
+  const sectionName =
+    sections[loginUser.attributes.section_id - 1]?.section_name || "-";
+  const groupName =
+    groups[loginUser.attributes.group_id - 1]?.group_name || "-";
 
   return (
     <div className="mb-4">
-      <span>{departmentName} {sectionName} {groupName}</span>
+      <span>
+        {departmentName} {sectionName} {groupName}
+      </span>
     </div>
   );
 };

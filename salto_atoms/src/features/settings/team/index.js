@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from 'react';
 //api request hooks
 import useFetchLoginUser from "../../../hooks/useFetchLoginUser";
 import useFilterUsers from "../../../hooks/useFilterUsers";
@@ -9,10 +9,12 @@ import useFetchGroups from "../../../hooks/useFetchGroups";
 //layout components
 import UserName from "../../../components/layout/UserName";
 import Post from "../../../components/layout/Post";
+import Email from "../../../components/layout/Email";
 import UserAffiliation from "../../../components/layout/UserAffiliation";
 // UI components
 import TitleCard from "../../../components/Cards/TitleCard";
 import Table from "../../../components/layout/Table";
+import JoinDate from '../../../components/layout/JoinDate';
 
 {/* 所属部署 */} 
 function Team() {
@@ -23,13 +25,11 @@ function Team() {
   const groups = useFetchGroups();
 
   // フィルタ条件 : ログインユーザーと条件が一致したユーザー情報を取得
-  const filterAffiliation = loginUser
-    ? {
-        dep_id: loginUser.attributes.dep_id,
-        section_id: loginUser.attributes.section_id,
-        group_id: loginUser.attributes.group_id,
-      }
-    : {};
+  const filterAffiliation = useMemo(() => loginUser ? {
+    dep_id: loginUser.attributes.dep_id,
+    section_id: loginUser.attributes.section_id,
+    group_id: loginUser.attributes.group_id,
+  } : {}, [loginUser]);
 
   const filterUsers = useFilterUsers(filterAffiliation);
 
@@ -39,8 +39,16 @@ function Team() {
       render: (item) => <UserName item={item} />,
     },
     {
+      header: "Email",
+      render: (item) => <Email item={item} />,
+    },
+    {
       header: "役職",
       render: (item) => <Post item={item} posts={posts} />,
+    },
+    {
+      header: "入社日",
+      render: (item) => <JoinDate item={item} />,
     },
   ];
 

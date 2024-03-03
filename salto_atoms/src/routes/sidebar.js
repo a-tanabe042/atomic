@@ -1,7 +1,6 @@
 import React from "react";
 import UserIcon from "@heroicons/react/24/outline/UserIcon";
 import Cog6ToothIcon from "@heroicons/react/24/outline/Cog6ToothIcon";
-import ChartBarIcon from "@heroicons/react/24/outline/ChartBarIcon";
 import BookOpenIcon from "@heroicons/react/24/outline/BookOpenIcon";
 import BuildingOfficeIcon from "@heroicons/react/24/outline/BuildingOffice2Icon";
 
@@ -13,11 +12,6 @@ const routes = [
     path: "/app/members",
     icon: <BookOpenIcon className={iconClasses} />, // アイコン変更
     name: "Salto 図鑑",
-  },
-  {
-    path: "/app/charts",
-    icon: <ChartBarIcon className={iconClasses} />,
-    name: "Analytics",
   },
   {
     path: "", 

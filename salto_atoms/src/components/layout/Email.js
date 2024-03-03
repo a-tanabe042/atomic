@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-{/* MailAddress */} 
+/* メールアドレス*/
 const Email = ({ item }) => {
   return (
-    <div className='text-center text-xs'>
-    <span>{item.attributes.email}</span>
+    <div className="text-center text-xs">
+      <span>{item.attributes.email}</span>
     </div>
   );
 };

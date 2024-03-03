@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import useFetchUsers from './useFetchUsers';
 
-{/* フィルター条件に沿ったユーザー情報の取得 */} 
+/* フィルター条件に沿ったユーザー情報の取得 */
 const useFilterUsers = (filterCriteria) => {
   const users = useFetchUsers();
   const [filterUsers, setFilterUsers] = useState([]);

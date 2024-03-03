@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
 
-{/* 役職の取得 */} 
+/* 所属部署の取得 */
 const useFetchPosts = () => {
   const API_ENDPOINT = 'api/posts';
   const { data, fetchData } = useFetchApi({});
@@ -13,11 +13,11 @@ const useFetchPosts = () => {
 
   useEffect(() => {
     if (data && data[API_ENDPOINT]) {
-      const map = data[API_ENDPOINT].data.reduce((acc, {attributes}) => {
-        acc[attributes.pos_id] =  attributes.pos_name;
-        return acc;
-      }, {});
-      setPosts(map);
+      const postArray = data[API_ENDPOINT].data.map(({ attributes }) => ({
+        pos_id: attributes.pos_id,
+        pos_name: attributes.pos_name
+      }));
+      setPosts(postArray);
     }
   }, [data]);
 

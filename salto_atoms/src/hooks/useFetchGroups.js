@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
 
-{/* 所属グループの取得 */} 
+/* 所属グループの取得 */
 const useFetchGroups = () => {
   const API_ENDPOINT = 'api/groups';
   const { data, fetchData } = useFetchApi({});

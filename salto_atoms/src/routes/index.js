@@ -1,6 +1,5 @@
 import Welcome from '../pages/protected/Welcome';
 import Page404 from '../pages/protected/404';
-import Charts from '../pages/protected/Charts';
 import Members from '../pages/protected/Members';
 import Team from '../pages/protected/Team';
 import ProfileSettings from '../pages/protected/ProfileSettings';
@@ -26,10 +25,6 @@ const routes = [
   {
     path: '/getting-started',
     component: GettingStarted,
-  },
-  {
-    path: '/charts',
-    component: Charts,
   },
   {
     path: '/404',
