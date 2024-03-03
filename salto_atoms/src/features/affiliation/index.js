@@ -1,4 +1,4 @@
-import React, { useState,useMemo, useEffect } from 'react';
+import React, { useMemo } from 'react';
 //api request hooks
 import useFetchLoginUser from "../../hooks/useFetchLoginUser";
 import useFilterUsers from "../../hooks/useFilterUsers";
@@ -6,6 +6,7 @@ import useFetchPosts from "../../hooks/useFetchPosts";
 import useFetchDepartments from "../../hooks/useFetchDepartments";
 import useFetchSections from "../../hooks/useFetchSections";
 import useFetchGroups from "../../hooks/useFetchGroups";
+import useLoading from '../../hooks/useLoading';
 //layout components
 import UserName from "../../components/layout/UserName";
 import Post from "../../components/layout/Post";
@@ -20,7 +21,8 @@ import Loading from "../../components/loading/Loading";
 
 /* 所属部署 */
 function Affiliation() {
-  const [isLoading, setLoading] = useState(true);
+  const delay = parseInt(process.env.REACT_APP_LOADING_DELAY, 10) || 2000; 
+  const isLoading = useLoading(delay);
   const loginUser = useFetchLoginUser(); 
   const posts = useFetchPosts();
   const departments = useFetchDepartments();
@@ -55,15 +57,10 @@ function Affiliation() {
     },
   ];
 
-  useEffect(() => {
-    // マウント時に1秒後にローディング状態を解除
-    const timer = setTimeout(() => setLoading(false), 1000);
-    return () => clearTimeout(timer); // クリーンアップ関数でタイマーをクリア
-  }, []); // 空の依存配列でマウント時のみ実行
-
   if (isLoading) {
-    return <Loading />; // ローディング中はLoadingコンポーネントを表示
+    return <Loading />;
   }
+
 
 
 

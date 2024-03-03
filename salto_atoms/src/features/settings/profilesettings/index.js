@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import TitleCard from "../../../components/Cards/TitleCard";
 import useFetchApi from "../../../hooks/useFetchApi";
+import useLoading from '../../../hooks/useLoading';
+
 import useFetchLoginUser from "../../../hooks/useFetchLoginUser";
 import UserNameInput from "../../../components/Input/UserNameInput";
 import EmailInput from "../../../components/Input/EmailInput";
@@ -9,9 +11,14 @@ import PostInput from "../../../components/Input/PostInput";
 import DepartmentsInput from "../../../components/Input/DepartmentsInput";
 import SectionsInput from "../../../components/Input/SectionsInput";
 import GroupsInput from "../../../components/Input/GroupsInput";
+import Loading from "../../../components/loading/Loading";
+
+
 
 const ProfileSettings = () => {
   const { updateData } = useFetchApi();
+  const delay = parseInt(process.env.REACT_APP_LOADING_DELAY, 10) || 2000; 
+  const isLoading = useLoading(delay);
   const loginUser = useFetchLoginUser();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -56,6 +63,10 @@ const ProfileSettings = () => {
       alert(`更新に失敗しました: ${error.message}`);
     }
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <TitleCard title="プロフィール" topMargin="mt-2">

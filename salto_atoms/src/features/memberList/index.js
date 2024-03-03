@@ -5,6 +5,7 @@ import useFetchPosts from '../../hooks/useFetchPosts';
 import useFetchDepartments from '../../hooks/useFetchDepartments';
 import useFetchSections from '../../hooks/useFetchSections';
 import useFetchGroups from '../../hooks/useFetchGroups';
+import useLoading from '../../hooks/useLoading';
 //layout components
 import UserName from "../../components/layout/UserName";
 import Email from '../../components/layout/Email';
@@ -14,9 +15,13 @@ import JoinDate from '../../components/layout/JoinDate';
 // UI components
 import TitleCard from "../../components/Cards/TitleCard";
 import Table from "../../components/layout/Table";
+//loading component
+import Loading from "../../components/loading/Loading";
 
 /* 社員名簿 */
 function MemberList() {
+  const delay = parseInt(process.env.REACT_APP_LOADING_DELAY, 10) || 2000; 
+  const isLoading = useLoading(delay);
   const users = useFetchUsers();
   const posts = useFetchPosts();
   const departments = useFetchDepartments();
@@ -45,6 +50,12 @@ function MemberList() {
       render: (item) => <JoinDate item={item} />,
     },
   ];
+
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
 
   return (
     <>

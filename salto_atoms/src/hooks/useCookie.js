@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { cookieState } from "../state"; 
 
-/* クッキーの取得(実装なし) */
+/* クッキーの取得*/
 export const useCookie = (name, initialValue) => {
   const setRecoilCookie = useSetRecoilState(cookieState(name));
   const [value, setValue] = useState(() => {
