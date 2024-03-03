@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/app/*" element={<Layout />} />
-          <Route path="/oauth/callback" element={<AuthCallback />} />
+          <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </AuthGuard>
