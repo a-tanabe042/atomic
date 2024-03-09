@@ -1,32 +1,30 @@
 import Header from "./Header";
-import {  Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import routes from "../routes";
-import  Page404  from "../pages/protected/404";
+import Page404 from "../pages/protected/404";
+import RightSidebar from "./RightSidebar";
+import "../index.css";
 
-/* header, main */
 function PageContent() {
-
   return (
-    <div className="drawer-content flex flex-col ">
-      <Header />
-      <main
-        className="flex-1 overflow-y-auto pt-8 px-6  bg-base-200"
-      >
+    <div className="flex flex-col h-screen bg-base-200">
+      <Header className="sticky top-0 z-10" />
+      <div className="flex flex-1 overflow-hidden">
+        <main className="hidden-scroll-bar flex-1 px-6 py-8 overflow-y-auto">
           <Routes>
-            {routes.map((route, key) => {
-              return (
-                <Route
-                  key={key}
-                  exact={true}
-                  path={`${route.path}`}
-                  element={<route.component />}
-                />
-              );
-            })}
+            {routes.map((route, key) => (
+              <Route
+                key={key}
+                exact={true}
+                path={`${route.path}`}
+                element={<route.component />}
+              />
+            ))}
             <Route path="*" element={<Page404 />} />
           </Routes>
-        <div className="h-16"></div>
-      </main>
+        </main>
+        <RightSidebar />
+      </div>
     </div>
   );
 }

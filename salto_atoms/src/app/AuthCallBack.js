@@ -134,11 +134,11 @@ function AuthCallback() {
 
 
   if (loading) {
-    return <div>Loading...</div>; // ローディング表示
+    return <div>Loading...</div>; 
   }
 
   if (error) {
-    return <div>Error: {error}</div>; // エラー表示
+    return <div>Error: {error}</div>; 
   }
 
   return <div>Loading...</div>;

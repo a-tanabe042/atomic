@@ -56,11 +56,9 @@ function MemberList() {
     },
   ];
 
-
   if (isLoading) {
     return <Loading />;
   }
-
 
   return (
     <>

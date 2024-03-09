@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { themeChange } from "theme-change";
 import { Link } from "react-router-dom";
-import Bars3Icon from "@heroicons/react/24/outline/Bars3Icon";
 import MoonIcon from "@heroicons/react/24/outline/MoonIcon";
 import SunIcon from "@heroicons/react/24/outline/SunIcon";
 import useFetchGoogleId from "../hooks/useFetchGoogleId";
@@ -42,12 +41,16 @@ function Header() {
 
   return (
     <>
-      {/*メニュー レスポンシブ*/}
       <div className="navbar  flex justify-between bg-base-100  z-10 shadow-md ">
-        <div className="">
-          <label htmlFor="left-sidebar-drawer" className="btn lg:hidden">
-            <Bars3Icon className="h-4 inline-block w-4" />
-          </label>
+        <div className="flex items-center font-semibold text-xl space-x-2">
+          <Link to={"/app/welcome"} className="flex items-center">
+            <img
+              className="mask mask-squircle w-10 mr-3"
+              src="/logo192.png"
+              alt="Salto Atoms Logo"
+            />
+            <span>SALTO Atoms</span>
+          </Link>
         </div>
         {/*テーマ*/}
         <div className="order-last">
