@@ -1,4 +1,4 @@
-import Subtitle from "../Typography/Subtitle";
+import Subtitle from "../typography/Subtitle";
 
 function TitleCard({ title, children, topMargin, topSideButtons }) {
   return (
@@ -9,7 +9,7 @@ function TitleCard({ title, children, topMargin, topSideButtons }) {
         {title}
         {topSideButtons && <div className="inline-block float-right">{topSideButtons}</div>}
       </Subtitle>
-      
+    
       <div className="divider mt-2"></div>
   
       <div className='h-full w-full pb-6 bg-base-100'>

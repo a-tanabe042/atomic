@@ -3,6 +3,7 @@ import {  Route, Routes } from "react-router-dom";
 import routes from "../routes";
 import  Page404  from "../pages/protected/404";
 
+/* header, main */
 function PageContent() {
 
   return (

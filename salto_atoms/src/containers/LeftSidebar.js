@@ -13,13 +13,14 @@ function LeftSidebar() {
     <div className="drawer-side">
       <label htmlFor="left-sidebar-drawer" className="drawer-overlay"></label>
       <ul className="menu w-80 bg-base-100 text-base-content">
+        {/* ×ボタン レスポンシブ */}
         <button
           className="btn btn-ghost bg-base-300 z-50 top-0 right-0 m-4 absolute lg:hidden"
           onClick={() => close()}
         >
           <XMarkIcon className="h-4 inline-block w-4" />
         </button>
-
+        {/* ロゴ */}
         <li className=" font-semibold text-xl">
           <Link to={"/app/welcome"}>
             <img
@@ -30,6 +31,7 @@ function LeftSidebar() {
             SALTO Atoms
           </Link>
         </li>
+        {/* レフトサイドバー */}
         {routes.map((route, k) => {
           return (
             <li className="" key={k}>

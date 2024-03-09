@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from "react";
-import TitleCard from "../../../components/Cards/TitleCard";
+import TitleCard from "../../../components/cards/TitleCard";
 import useFetchApi from "../../../hooks/useFetchApi";
 import useLoading from '../../../hooks/useLoading';
 
 import useFetchLoginUser from "../../../hooks/useFetchLoginUser";
-import UserNameInput from "../../../components/Input/UserNameInput";
-import EmailInput from "../../../components/Input/EmailInput";
-import JoinDateInput from "../../../components/Input/JoinDateInput";
-import PostInput from "../../../components/Input/PostInput";
-import DepartmentsInput from "../../../components/Input/DepartmentsInput";
-import SectionsInput from "../../../components/Input/SectionsInput";
-import GroupsInput from "../../../components/Input/GroupsInput";
+import UserNameInput from "../../../components/input/UserNameInput";
+import EmailInput from "../../../components/input/EmailInput";
+import JoinDateInput from "../../../components/input/JoinDateInput";
+import PostInput from "../../../components/input/PostInput";
+import DepartmentsInput from "../../../components/input/DepartmentsInput";
+import SectionsInput from "../../../components/input/SectionsInput";
+import GroupsInput from "../../../components/input/GroupsInput";
 import Loading from "../../../components/loading/Loading";
 
 
-
 const ProfileSettings = () => {
+  const loginUser = useFetchLoginUser();
   const { updateData } = useFetchApi();
+
+
   const delay = parseInt(process.env.REACT_APP_LOADING_DELAY, 10) || 2000; 
   const isLoading = useLoading(delay);
-  const loginUser = useFetchLoginUser();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -71,7 +73,7 @@ const ProfileSettings = () => {
   return (
     <TitleCard title="プロフィール" topMargin="mt-2">
       <div className="w-full">
-        {/* ------ ユーザー名 ------ */}
+        {/* ------ ユーザープロフィール ------ */}
         <UserNameInput
           firstName={firstName}
           setFirstName={setFirstName}

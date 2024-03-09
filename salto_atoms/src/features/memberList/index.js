@@ -12,8 +12,9 @@ import Email from '../../components/layout/Email';
 import Post from '../../components/layout/Post';
 import Affiliation from '../../components/layout/Affiliation';
 import JoinDate from '../../components/layout/JoinDate';
+import Button from '../../components/button/Button';
 // UI components
-import TitleCard from "../../components/Cards/TitleCard";
+import TitleCard from "../../components/cards/TitleCard";
 import Table from "../../components/layout/Table";
 //loading component
 import Loading from "../../components/loading/Loading";
@@ -48,6 +49,10 @@ function MemberList() {
     {
       header: '入社日',
       render: (item) => <JoinDate item={item} />,
+    },
+    {
+      header: 'プロフィール',
+      render: (item) => <Button item={item} />,
     },
   ];
 

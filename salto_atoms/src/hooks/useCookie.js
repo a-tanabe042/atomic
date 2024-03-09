@@ -17,12 +17,14 @@ export const useCookie = (name, initialValue) => {
   return [value, setValue];
 };
 
+/* 1週間の有効期限を持つクッキーを設定 */
 const setCookie = (name, value, days) => {
   const d = new Date();
   d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
   const expires = "expires=" + d.toUTCString();
   document.cookie = name + "=" + value + ";" + expires + ";path=/";
 };
+
 
 const getCookie = (name) => {
   const nameEQ = name + "=";

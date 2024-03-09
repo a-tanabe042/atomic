@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import ErrorAnimation from "../../assets/lottie/error.json"; 
 
-/* エラーページ */
+/* エラーページ Error fetching Google profile: */
 const ErrorPage = () => {
   const navigate = useNavigate();
 
@@ -16,8 +16,7 @@ const ErrorPage = () => {
       <div className="text-center">
         <div style={{ width: '300px', height: '300px', margin: '0 auto' }}>
           <Lottie animationData={ErrorAnimation} />
-        </div>
-        
+        </div>    
         <p className="mb-4">予期しないエラーが発生しました。お手数ですが、再度ログインしてください。</p>
         <button
           onClick={redirectToLogin}

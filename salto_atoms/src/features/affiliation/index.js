@@ -12,8 +12,9 @@ import UserName from "../../components/layout/UserName";
 import Post from "../../components/layout/Post";
 import Email from "../../components/layout/Email";
 import UserAffiliation from "../../components/layout/UserAffiliation";
+import Button from "../../components/button/Button";
 // UI components
-import TitleCard from "../../components/Cards/TitleCard";
+import TitleCard from "../../components/cards/TitleCard";
 import Table from "../../components/layout/Table";
 import JoinDate from '../../components/layout/JoinDate';
 //loading component
@@ -54,6 +55,10 @@ function Affiliation() {
     {
       header: "入社日",
       render: (item) => <JoinDate item={item} />,
+    },
+    {
+      header: "プロフィール",
+      render: (item) => <Button item={item} />,
     },
   ];
 

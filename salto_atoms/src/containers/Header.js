@@ -42,18 +42,16 @@ function Header() {
 
   return (
     <>
+      {/*メニュー レスポンシブ*/}
       <div className="navbar  flex justify-between bg-base-100  z-10 shadow-md ">
         <div className="">
-          <label
-            htmlFor="left-sidebar-drawer"
-            className="btn lg:hidden"
-          >
+          <label htmlFor="left-sidebar-drawer" className="btn lg:hidden">
             <Bars3Icon className="h-4 inline-block w-4" />
           </label>
         </div>
-
+        {/*テーマ*/}
         <div className="order-last">
-          <label className="swap ">
+          <label className="swap">
             <input type="checkbox" />
             <SunIcon
               data-set-theme="light"
@@ -72,6 +70,7 @@ function Header() {
               }
             />
           </label>
+          {/*ユーザーアイコン ドロップダウン*/}
           <div className="dropdown dropdown-end ml-4">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
@@ -90,7 +89,9 @@ function Header() {
               </li>
               <div className="divider mt-0 mb-0"></div>
               <li>
-                <button href="" onClick={logoutUser}>Logout</button>
+                <button href="" onClick={logoutUser}>
+                  Logout
+                </button>
               </li>
             </ul>
           </div>

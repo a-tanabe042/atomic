@@ -1,6 +1,7 @@
 import PageContent from "./PageContent"
 import LeftSidebar from "./LeftSidebar"
 
+/* PageContent→ header,main */
 function Layout(){
     return(
       <>
