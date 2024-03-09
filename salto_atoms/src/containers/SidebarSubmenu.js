@@ -4,29 +4,25 @@ import { Link, useLocation } from "react-router-dom";
 function SidebarSubmenu({ submenu, icon }) {
   const location = useLocation();
   const [isExpanded, setIsExpanded] = useState(false);
-  // ドロップダウンメニューの参照を保持するための ref
   const dropdownRef = useRef(null);
 
-  // ドロップダウンメニュー外のクリックを検出するためのイベントリスナーを追加
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsExpanded(false); // メニューの外側がクリックされたら非表示にする
+        setIsExpanded(false); 
       }
     };
 
-    // イベントリスナーをドキュメントに追加
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      // コンポーネントがアンマウントされる時にイベントリスナーを削除
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   const toggleSubmenu = (e) => {
-    e.stopPropagation(); // イベントの伝播を停止
-    setIsExpanded(!isExpanded); // ドロップダウンメニューの表示状態を切り替え
+    e.stopPropagation(); 
+    setIsExpanded(!isExpanded); 
   };
 
   return (
