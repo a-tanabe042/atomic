@@ -72,7 +72,7 @@ function Affiliation() {
 
   return (
     <>
-      <TitleCard title="所属部署" topMargin="mt-2">
+      <TitleCard title="所属部署" >
         {loginUser && (
           <UserAffiliation
             loginUser={loginUser}

@@ -14,11 +14,6 @@ const routes = [
     name: "社員一覧",
   },
   {
-    path: "/app/affiliation",
-    icon: <BuildingOfficeIcon className={iconClasses} />,
-    name: "所属部署",
-  },
-  {
     path: "",
     icon: <Cog6ToothIcon className={`${iconClasses} inline`} />,
     name: "設定",

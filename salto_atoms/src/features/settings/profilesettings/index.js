@@ -71,7 +71,7 @@ const ProfileSettings = () => {
   }
 
   return (
-    <TitleCard title="プロフィール" topMargin="mt-2">
+    <TitleCard title="プロフィール" >
       <div className="w-full">
         {/* ------ ユーザープロフィール ------ */}
         <UserNameInput
@@ -112,8 +112,9 @@ const ProfileSettings = () => {
         </div>
         <div className="divider my-10"></div>
         {/* ------ スキルセット 目標 ------ */}
+        
 
-        <div className="mt-16">
+        <div className="absolute right-5 bottom-5">
           <button
             className="btn btn-primary float-right"
             onClick={handleUpdateProfile}

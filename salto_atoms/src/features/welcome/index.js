@@ -13,7 +13,7 @@ function Welcome() {
         title: "大項目1",
         description: "中項目1(大項目についての説明)",
         content:
-          "<ul><li>React</li><li>Tailwind CSS</li><li>DaisyUI</li></ul><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>a",
+          "<ul><li>React</li><li>Tailwind CSS</li><li>DaisyUI</li></ul><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>",
       },
       {
         id: "2",
@@ -27,7 +27,7 @@ function Welcome() {
 
   return (
     <>
-      <TitleCard title="Welcomeページ" topMargin="mt-2">
+      <TitleCard title="Welcomeページ" >
         {sections.map((section) => (
           <article key={section.id} className="prose">
             <h2 id={section.id}>{section.title}</h2>

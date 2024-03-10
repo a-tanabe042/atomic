@@ -6,7 +6,7 @@ const RightSidebarDropdown = ({ isExpanded, submenu, toggle, location }) => (
     {isExpanded && (
       <ul
         tabIndex={0}
-        className="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded-box w-52 absolute z-10 right-0 mr-10 mt-2"
+        className="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded-box w-52 absolute z-10 right-0 mr-10"
       >
         {submenu.map((m, index) => (
           <li key={index} className="justify-between mb-1">

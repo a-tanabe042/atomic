@@ -62,7 +62,7 @@ function MemberList() {
 
   return (
     <>
-      <TitleCard title="社員名簿" topMargin="mt-2">
+      <TitleCard title="社員名簿">
         <Table columns={columns} data={users || []} />
       </TitleCard>
     </>

@@ -17,7 +17,9 @@ function SidebarSubmenu({ submenu, icon }) {
           {icon}
         </div>
       </div>
+      <div className="mt-1">
       <RightSidebarDropdown isExpanded={isExpanded} submenu={submenu} toggle={toggle} location={location} />
+      </div>
     </div>
   );
 }
