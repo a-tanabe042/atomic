@@ -16,7 +16,7 @@ function Login() {
           <div className="py-24 flex justify-center">
             <button
               type="button"
-              className="bg-white border border-gray-300 shadow-lg rounded-md flex items-center justify-center text-sm text-gray-700 px-4 py-2 hover:shadow-md transition duration-200 ease-in-out"
+              className="bg-white border border-gray-300 shadow-lg rounded-md flex items-center justify-center text-sm text-gray-700 px-4 py-2 hover:shadow-xl transition duration-200 ease-in-out"
               onClick={handleGoogleLogin}
             >
               <div className="flex items-center justify-center">

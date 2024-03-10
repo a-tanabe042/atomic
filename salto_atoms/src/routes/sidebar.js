@@ -11,22 +11,27 @@ const routes = [
   {
     path: "/app/member-list",
     icon: <BookOpenIcon className={iconClasses} />,
-    name: "Member List",
+    name: "社員一覧",
+  },
+  {
+    path: "/app/affiliation",
+    icon: <BuildingOfficeIcon className={iconClasses} />,
+    name: "所属部署",
   },
   {
     path: "",
     icon: <Cog6ToothIcon className={`${iconClasses} inline`} />,
-    name: "Settings",
+    name: "設定",
     submenu: [
       {
         path: "/app/settings-profile",
         icon: <UserIcon className={submenuIconClasses} />,
-        name: "Profile Settings",
+        name: "プロフィール編集",
       },
       {
         path: "/app/affiliation",
         icon: <BuildingOfficeIcon className={iconClasses} />,
-        name: "Affiliation",
+        name: "所属部署",
       },
     ],
   },

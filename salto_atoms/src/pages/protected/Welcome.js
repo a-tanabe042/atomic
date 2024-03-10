@@ -1,9 +1,9 @@
-import DocGettingStarted from "../../features/documentation/DocGettingStarted";
+import Welcome from "../../features/welcome";
 
 function InternalPage() {
   return (
     <div className="h-3/5 bg-base-200">
-      <DocGettingStarted />
+      <Welcome />
     </div>
   );
 }

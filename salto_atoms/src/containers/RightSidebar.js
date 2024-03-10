@@ -4,11 +4,11 @@ import SidebarSubmenu from "./SidebarSubmenu";
 
 function RightSidebar() {
   return (
-    <div className="w-30 bg-base-100 m-5  rounded-2xl"> {/* サイドバーの幅と背景を調整 */}
+    <div className="w-30 bg-base-100 opacity-90 mx-5 my-8 shadow-xl rounded-2xl">
       <label htmlFor="right-sidebar-drawer" className="drawer-overlay"></label>
-      <ul className="p-4 overflow-y-auto"> {/* 'menu'クラスを削除し、パディングとスクロール設定を追加 */}
+      <ul className="p-4 overflow-y-auto"> 
         {routes.map((route, k) => (
-            <li key={k} className="my-2"> {/* リスト項目のマージンを調整 */}
+            <li key={k} className="my-2">
               {route.submenu ? (
                 <SidebarSubmenu {...route} />
               ) : (
@@ -16,11 +16,11 @@ function RightSidebar() {
                   end
                   to={route.path}
                   className={({ isActive }) =>
-                    `block p-2 rounded-full transition duration-300 shadow-md
-                     ${isActive ? "bg-gray-300 text-white" : "text-gray-700 hover:bg-gray-100"}` 
+                    `block p-2 rounded-full transition duration-300 shadow-xl
+                     ${isActive ? "bg-gray-300 text-white" : " hover:bg-gray-100"}` 
                   }
                 >
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full"> {/* アイコンを中央に配置し、丸くする */}
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full"> 
                     {route.icon}
                   </div>
                 </NavLink>

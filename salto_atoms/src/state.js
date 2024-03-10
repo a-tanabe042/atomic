@@ -9,3 +9,8 @@ export const errorState = atom({
     key: 'errorState', 
     default: null, 
   });
+
+  export const sectionState = atom({
+    key: 'sectionState', 
+    default: [] 
+  });

@@ -5,7 +5,7 @@ import AuthGuard from "./app/AuthGuard";
 import Login from "./pages/Login";
 import AuthCallback from "./app/AuthCallBack";
 import ErrorPage from "./features/user/ErrorPage";
-import PageContent from "./containers/PageContent";
+import MainPage from "./containers/MainPage";
 
 function App() {
   useEffect(() => {
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/app/*" element={<PageContent />} />
+          <Route path="/app/*" element={<MainPage />} />
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/error" element={<ErrorPage />} />
         </Routes>
