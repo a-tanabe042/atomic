@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useFetchDepartments from "../../hooks/useFetchDepartments";
+import useFetchDepartments from "../../hooks/api/useFetchDepartments";
 
 /* 部署フォーム */
 const DepartmentsInput = ({ departmentId, setDepartmentId }) => {

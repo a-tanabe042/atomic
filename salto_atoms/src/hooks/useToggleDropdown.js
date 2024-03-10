@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
+/* ドロップダウン　表示/非表示 */
 const useToggleDropdown = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const dropdownRef = useRef(null);

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+/* ナビ */
 function useSectionNavigator(initialSections, activeIndex) {
     const [sections, setSections] = useState([]);
 

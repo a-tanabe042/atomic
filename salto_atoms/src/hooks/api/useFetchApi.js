@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { loadingState } from '../state'; 
-import { errorState } from '../state'; 
+import { loadingState } from '../../state'; 
+import { errorState } from '../../state'; 
 
 const API_HOST = process.env.REACT_APP_API_HOST;
 

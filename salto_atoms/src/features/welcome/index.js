@@ -13,7 +13,7 @@ function Welcome() {
         title: "大項目1",
         description: "中項目1(大項目についての説明)",
         content:
-          "<ul><li>React</li><li>Tailwind CSS</li><li>DaisyUI</li></ul><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>",
+          "<ul><li>React</li><li>Tailwind CSS</li><li>DaisyUI</li></ul><br><br><br><br><br><br><br><br><br><br><br>",
       },
       {
         id: "2",

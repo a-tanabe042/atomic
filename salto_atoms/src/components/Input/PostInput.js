@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useFetchPosts from "../../hooks/useFetchPosts";
+import useFetchPosts from "../../hooks/api/useFetchPosts";
 
 /* 役職フォーム */
 const PostInput = ({ postId, setPostId }) => {

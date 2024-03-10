@@ -1,11 +1,11 @@
 import React from "react";
 //api request hooks
-import useFetchUsers from '../../hooks/useFetchUsers';
-import useFetchPosts from '../../hooks/useFetchPosts';
-import useFetchDepartments from '../../hooks/useFetchDepartments';
-import useFetchSections from '../../hooks/useFetchSections';
-import useFetchGroups from '../../hooks/useFetchGroups';
-import useLoading from '../../hooks/useLoading';
+import useFetchUsers from '../../hooks/api/useFetchUsers';
+import useFetchPosts from '../../hooks/api/useFetchPosts';
+import useFetchDepartments from '../../hooks/api/useFetchDepartments';
+import useFetchSections from '../../hooks/api/useFetchSections';
+import useFetchGroups from '../../hooks/api/useFetchGroups';
+import useLoading from '../../hooks/api/useLoading';
 //layout components
 import UserName from "../../components/layout/UserName";
 import Email from '../../components/layout/Email';

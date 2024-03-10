@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import TitleCard from "../../../components/cards/TitleCard";
-import useFetchApi from "../../../hooks/useFetchApi";
-import useLoading from '../../../hooks/useLoading';
+import useFetchApi from "../../../hooks/api/useFetchApi";
+import useLoading from '../../../hooks/api/useLoading';
 
-import useFetchLoginUser from "../../../hooks/useFetchLoginUser";
+import useFetchLoginUser from "../../../hooks/api/useFetchLoginUser";
 import UserNameInput from "../../../components/input/UserNameInput";
 import EmailInput from "../../../components/input/EmailInput";
 import JoinDateInput from "../../../components/input/JoinDateInput";
@@ -72,7 +72,7 @@ const ProfileSettings = () => {
 
   return (
     <TitleCard title="プロフィール" >
-      <div className="w-full">
+      <div className="w-full px-1">
         {/* ------ ユーザープロフィール ------ */}
         <UserNameInput
           firstName={firstName}

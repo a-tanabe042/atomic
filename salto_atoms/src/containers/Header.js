@@ -3,8 +3,8 @@ import { themeChange } from "theme-change";
 import Logo from "../components/common/Logo";
 import UserIconDropdown from "../components/dropdown/UserIconDropdown";
 import ThemeSwitch from "../components/common/ThemeSwitch"; 
-import useFetchGoogleId from "../hooks/useFetchGoogleId";
-import useFetchLoginUser from "../hooks/useFetchLoginUser";
+import useFetchGoogleId from "../hooks/api/useFetchGoogleId";
+import useFetchLoginUser from "../hooks/api/useFetchLoginUser";
 
 function Header() {
   const [currentTheme, setCurrentTheme] = useState(localStorage.getItem("theme") || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));

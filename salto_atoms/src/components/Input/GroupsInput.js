@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useFetchGroups from "../../hooks/useFetchGroups";
+import useFetchGroups from "../../hooks/api/useFetchGroups";
 
 /* グループフォーム */
 const GroupsInput = ({ groupId, setGroupId }) => {

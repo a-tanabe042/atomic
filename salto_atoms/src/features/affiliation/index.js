@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 //api request hooks
-import useFetchLoginUser from "../../hooks/useFetchLoginUser";
-import useFilterUsers from "../../hooks/useFilterUsers";
-import useFetchPosts from "../../hooks/useFetchPosts";
-import useFetchDepartments from "../../hooks/useFetchDepartments";
-import useFetchSections from "../../hooks/useFetchSections";
-import useFetchGroups from "../../hooks/useFetchGroups";
-import useLoading from '../../hooks/useLoading';
+import useFetchLoginUser from "../../hooks/api/useFetchLoginUser";
+import useFilterUsers from "../../hooks/api/useFilterUsers";
+import useFetchPosts from "../../hooks/api/useFetchPosts";
+import useFetchDepartments from "../../hooks/api/useFetchDepartments";
+import useFetchSections from "../../hooks/api/useFetchSections";
+import useFetchGroups from "../../hooks/api/useFetchGroups";
+import useLoading from '../../hooks/api/useLoading';
 //layout components
 import UserName from "../../components/layout/UserName";
 import Post from "../../components/layout/Post";

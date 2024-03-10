@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import useFetchSections from "../../hooks/useFetchSections";
+import useFetchSections from "../../hooks/api/useFetchSections";
 
 /* 課フォーム */
 const SectionsInput = ({ sectionId, setSectionId }) => {
