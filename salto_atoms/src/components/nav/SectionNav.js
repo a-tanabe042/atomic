@@ -33,7 +33,7 @@ function SectionNav() {
         <span className="mb-1">セクション1</span>
       </li>
       {navSections.map((section, index) => (
-        <li key={section.id} className={section.isActive ? "" : ""}>
+        <li key={section.id} className={section.isActive ? "mb-1" : "mb-1"}>
           <button onClick={() => scrollToSection(index)}>
             {section.title}
           </button>

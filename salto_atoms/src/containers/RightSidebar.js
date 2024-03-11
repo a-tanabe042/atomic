@@ -1,11 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import SidebarSubmenu from "./SidebarSubmenu";
 import routes from "../routes/sidebar";
+import RightSideBarNavLink from './RightSideBarNavLink'; 
 
 function RightSidebar() {
   const settings = routes.filter((route) => route.name === "設定");
-
   const otherRoutes = routes.filter((route) => route.name !== "設定");
 
   return (
@@ -16,11 +15,7 @@ function RightSidebar() {
             {route.submenu ? (
               <SidebarSubmenu {...route} />
             ) : (
-              <NavLink to={route.path} className="block p-2 rounded-full shadow-xl">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full">
-                  {route.icon}
-                </div>
-              </NavLink>
+              <RightSideBarNavLink route={route} />
             )}
           </li>
         ))}
@@ -31,11 +26,7 @@ function RightSidebar() {
             {route.submenu ? (
               <SidebarSubmenu {...route} />
             ) : (
-              <NavLink to={route.path} className="block p-2 rounded-full shadow-xl">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full">
-                  {route.icon}
-                </div>
-              </NavLink>
+              <RightSideBarNavLink route={route} />
             )}
           </li>
         ))}
