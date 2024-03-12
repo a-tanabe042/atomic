@@ -8,7 +8,7 @@ import RightSidebar from "./RightSidebar";
 
 function MainPage() {
   return (
-    <div className="flex flex-col h-screen bg-base-200">
+    <div className="flex flex-col h-screen ">
       <Header className="sticky top-0 z-10" />
       <div className="flex flex-1 overflow-hidden">
         <LeftSidebar />

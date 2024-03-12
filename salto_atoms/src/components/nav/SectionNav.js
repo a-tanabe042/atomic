@@ -20,7 +20,7 @@ function SectionNav() {
       <li className="menu-title">
         <span className="mb-1">開発中</span>
       </li>
-      <li>
+      <li className="bg-black rounded-lg text-white">
         <button>セクション1</button>
       </li>
     </ul>
@@ -33,7 +33,7 @@ function SectionNav() {
         <span className="mb-1">セクション1</span>
       </li>
       {navSections.map((section, index) => (
-        <li key={section.id} className={section.isActive ? "mb-1" : "mb-1"}>
+        <li key={section.id} className={section.isActive ? "mb-1 bg-black rounded-lg text-white" : "mb-1 rounded-lg"}>
           <button onClick={() => scrollToSection(index)}>
             {section.title}
           </button>

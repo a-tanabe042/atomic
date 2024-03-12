@@ -8,7 +8,7 @@ function LeftSidebar() {
   const sections = useRecoilValue(sectionState);
 
   return (
-    <div className="w-40 bg-base-100 my-8 shadow-xl rounded-2xl opacity-70">
+    <div className="w-40 bg-base-100 my-8 shadow-xl rounded-2xl opacity-80">
       <SectionNav sections={sections} />
     </div>
   );
