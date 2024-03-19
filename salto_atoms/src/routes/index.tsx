@@ -1,10 +1,16 @@
+import React from 'react';
 import Welcome from '../pages/protected/Welcome';
 import Page404 from '../pages/protected/404';
 import MemberList from '../pages/protected/MemberList';
 import Affiliation from '../pages/protected/Affiliation';
 import ProfileSettings from '../pages/protected/ProfileSettings';
 
-const routes = [
+interface Route {
+  path: string;
+  component: React.ComponentType;
+}
+
+const routes: Route[] = [
   {
     path: '/welcome', 
     component: Welcome, 
@@ -27,4 +33,4 @@ const routes = [
   },
 ]
 
-export default routes
+export default routes;

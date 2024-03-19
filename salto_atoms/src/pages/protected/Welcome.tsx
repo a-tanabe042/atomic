@@ -1,6 +1,6 @@
 import Welcome from "../../features/welcome";
 
-function InternalPage() {
+const InternalPage: React.FC = () => {
   return (
       <Welcome />
   );

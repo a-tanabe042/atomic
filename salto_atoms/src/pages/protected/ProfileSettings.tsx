@@ -1,7 +1,7 @@
 import ProfileSettings from "../../features/settings/profilesettings";
 
-function InternalPage() {
+const InternalPage: React.FC = () => {
   return <ProfileSettings />;
-}
+};
 
 export default InternalPage;

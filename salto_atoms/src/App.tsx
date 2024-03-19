@@ -4,7 +4,7 @@ import { themeChange } from "theme-change";
 import SquareBackgroundAnimation from "./components/SquareBackgroundAnimation";
 import AuthGuard from "./app/AuthGuard";
 import Login from "./pages/Login";
-import AuthCallback from "./app/AuthCallBack";
+import AuthCallback from "./app/AuthCallback";
 import ErrorPage from "./features/user/ErrorPage";
 import MainPage from "./containers/MainPage";
 

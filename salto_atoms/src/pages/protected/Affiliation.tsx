@@ -1,7 +1,7 @@
 import Affiliation from "../../features/affiliation";
 
-function InternalPage() {
+const InternalPage: React.FC = () => {
   return <Affiliation />;
-}
+};
 
 export default InternalPage;

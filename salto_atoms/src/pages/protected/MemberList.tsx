@@ -1,7 +1,7 @@
 import MemberList from "../../features/memberList/index";
 
-function InternalPage() {
+const InternalPage: React.FC = () => {
   return <MemberList />;
-}
+};
 
 export default InternalPage;
