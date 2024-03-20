@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-/* loading */
-function useLoading(delay) {
+// loadingステータスを管理するカスタムフック
+const useLoading=(delay: number): boolean => {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -21,6 +21,7 @@ export interface SidebarSection {
     group_id: number;
     join_date: string | null;
     div_id: number;
+    [key: string]: any;
   };
 }
   
