@@ -1,35 +1,37 @@
 import React from "react";
-//api request hooks
 import useFetchUsers from '../../hooks/api/useFetchUsers';
 import useFetchPosts from '../../hooks/api/useFetchPosts';
 import useFetchDepartments from '../../hooks/api/useFetchDepartments';
 import useFetchSections from '../../hooks/api/useFetchSections';
 import useFetchGroups from '../../hooks/api/useFetchGroups';
 import useLoading from '../../hooks/api/useLoading';
-//layout components
 import UserName from "../../components/layout/UserName";
 import Email from '../../components/layout/Email';
 import Post from '../../components/layout/Post';
 import Affiliation from '../../components/layout/Affiliation';
 import JoinDate from '../../components/layout/JoinDate';
 import Button from '../../components/button/Button';
-// UI components
 import TitleCard from "../../components/cards/TitleCard";
 import Table from "../../components/layout/Table";
-//loading component
 import Loading from "../../components/loading/Loading";
+// 型定義のインポート（仮定）
+import { UserType, PostType, DepartmentType, SectionType, GroupType } from '../../types';
 
-/* 社員名簿 */
+interface ColumnType {
+  header: string;
+  render: (item: UserType) => JSX.Element;
+}
+
 function MemberList() {
-  const delay = parseInt(process.env.REACT_APP_LOADING_DELAY, 10) || 2000; 
-  const isLoading = useLoading(delay);
-  const users = useFetchUsers();
-  const posts = useFetchPosts();
-  const departments = useFetchDepartments();
-  const sections = useFetchSections();
-  const groups = useFetchGroups();
+  const delay: number = parseInt(process.env.REACT_APP_LOADING_DELAY || '2000', 10); 
+  const isLoading: boolean = useLoading(delay);
+  const users: UserType[] = useFetchUsers();
+  const posts: PostType[] = useFetchPosts();
+  const departments: DepartmentType[] = useFetchDepartments();
+  const sections: SectionType[] = useFetchSections();
+  const groups: GroupType[] = useFetchGroups();
 
-  const columns = [
+  const columns: ColumnType[] = [
     {
       header: "名前",
       render: (item) => <UserName item={item} />,
@@ -52,7 +54,7 @@ function MemberList() {
     },
     {
       header: 'プロフィール',
-      render: (item) => <Button item={item} />,
+      render: (item) => <Button />,
     },
   ];
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
-import { Department } from '../../types'; // 適宜パスを調整してください
+import { DepartmentType } from '../../types'; // 適宜パスを調整してください
 
-interface ApiResponse {
+interface ApiResponseType {
   data: {
     id: string;
     attributes: {
@@ -15,7 +15,7 @@ interface ApiResponse {
 const useFetchDepartments = () => {
   const API_ENDPOINT = 'api/departments';
   const { data: departmentsData, fetchData: fetchDepartments } = useFetchApi();
-  const [departmentsList, setDepartmentsList] = useState<Department[]>([]);
+  const [departmentsList, setDepartmentsList] = useState<DepartmentType[]>([]);
 
   useEffect(() => {
     fetchDepartments(API_ENDPOINT);
@@ -23,7 +23,7 @@ const useFetchDepartments = () => {
 
   useEffect(() => {
     if (departmentsData && departmentsData[API_ENDPOINT]) {
-      const departmentsArray = (departmentsData[API_ENDPOINT] as ApiResponse).data.map(({ id, attributes }) => ({
+      const departmentsArray = (departmentsData[API_ENDPOINT] as ApiResponseType).data.map(({ id, attributes }) => ({
         dep_id: id,
         dep_name: attributes.dep_name
       }));

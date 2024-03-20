@@ -1,4 +1,4 @@
-export interface SidebarSection {
+export interface SidebarSectionType {
     id: string;
     title: string;
     description: string;
@@ -6,7 +6,7 @@ export interface SidebarSection {
     isActive: boolean;
   }
 
- export interface User {
+ export interface UserType {
   attributes: {
     google_id: string;
     email: string;
@@ -25,22 +25,22 @@ export interface SidebarSection {
   };
 }
   
-export interface Department {
+export interface DepartmentType {
   dep_id: string;
   dep_name: string;
 }
 
-export interface Section {
+export interface SectionType {
   section_id: string;
   section_name: string;
 }
 
-export interface Group {
+export interface GroupType {
   group_id: string;
   group_name: string;
 }
 
-export interface Post {
+export interface PostType {
   pos_id: string;
   pos_name: string;
 }

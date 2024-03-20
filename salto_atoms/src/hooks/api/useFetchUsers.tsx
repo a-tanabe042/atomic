@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
-import { User } from '../../types'; 
+import { UserType } from '../../types'; 
 
 /* 全ユーザー情報の取得 */
 const useFetchUsers = () => {
   const API_ENDPOINT = 'api/user-saltos';
   const { data: usersData, fetchData: fetchUsers } = useFetchApi(); 
-  const [usersList, setUsersList] = useState<User[]>([]); 
+  const [usersList, setUsersList] = useState<UserType[]>([]); 
 
   useEffect(() => {
     fetchUsers(API_ENDPOINT);

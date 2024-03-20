@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useFetchDepartments from "../../hooks/api/useFetchDepartments";
-import { Department } from "../../types";
+import { DepartmentType } from "../../types";
 
 
 interface DepartmentsInputProps {
@@ -35,7 +35,7 @@ const DepartmentsInput: React.FC<DepartmentsInputProps> = ({ departmentId, setDe
         onChange={handleChange}
       >
         <option value="">選択してください</option>
-        {departments.map((dep: Department) => (
+        {departments.map((dep: DepartmentType) => (
           <option key={dep.dep_id} value={dep.dep_id}>
             {dep.dep_name}
           </option>

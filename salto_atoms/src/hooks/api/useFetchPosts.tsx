@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
-import { Post } from '../../types';
+import { PostType } from '../../types';
 
-interface ApiResponse{
+interface ApiResponseType{
   data:{
     id: string;
     attributes:{
@@ -15,7 +15,7 @@ interface ApiResponse{
 const useFetchPosts = () => {
   const API_ENDPOINT = 'api/posts';
   const { data: postData, fetchData: fetchPosts } = useFetchApi();
-  const [postsList, setPostsList] = useState<Post[]>([]);
+  const [postsList, setPostsList] = useState<PostType[]>([]);
 
   useEffect(() => {
     fetchPosts(API_ENDPOINT);
@@ -23,7 +23,7 @@ const useFetchPosts = () => {
 
   useEffect(() => {
     if (postData && postData[API_ENDPOINT]) {
-      const postsArray = (postData[API_ENDPOINT] as ApiResponse).data.map(({ id, attributes }) => ({
+      const postsArray = (postData[API_ENDPOINT] as ApiResponseType).data.map(({ id, attributes }) => ({
         pos_id: id,
         pos_name: attributes.pos_name
       }));

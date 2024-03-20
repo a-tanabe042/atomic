@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
-import { Section } from '../../types';
+import { SectionType } from '../../types';
 
-interface ApiResponse {
+interface ApiResponseType {
   data: {
     id: string;
     attributes: {
@@ -15,7 +15,7 @@ interface ApiResponse {
 const useFetchSections = () => {
   const API_ENDPOINT = 'api/sections';
   const { data: sectionsData, fetchData: fetchSections } = useFetchApi();
-  const [sectionsList, setSectionsList] = useState<Section[]>([]);
+  const [sectionsList, setSectionsList] = useState<SectionType[]>([]);
 
   useEffect(() => {
     fetchSections(API_ENDPOINT);
@@ -23,7 +23,7 @@ const useFetchSections = () => {
 
   useEffect(() => {
     if (sectionsData && sectionsData[API_ENDPOINT]) {
-      const sectionsArray = (sectionsData[API_ENDPOINT] as ApiResponse).data.map(({ id, attributes }) => ({
+      const sectionsArray = (sectionsData[API_ENDPOINT] as ApiResponseType).data.map(({ id, attributes }) => ({
         section_id: id,
         section_name: attributes.section_name
       }));

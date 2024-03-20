@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useFetchPosts from "../../hooks/api/useFetchPosts";
-import { Post } from "../../types";
+import { PostType } from "../../types";
 
 interface PostInputProps {
   postId: string | "";
@@ -33,7 +33,7 @@ const PostInput : React.FC<PostInputProps> = ({ postId, setPostId }) => {
         onChange={handleChange}
       >
         <option value="">選択してください</option>
-        {posts.map((pos: Post) => (
+        {posts.map((pos: PostType) => (
           <option key={pos.pos_id} value={pos.pos_id}>
             {pos.pos_name}
           </option>

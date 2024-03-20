@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useFetchGroups from "../../hooks/api/useFetchGroups";
-import { Group } from "../../types";
+import { GroupType } from "../../types";
 
 interface GroupsInputProps {
   groupId: string | "";
@@ -33,7 +33,7 @@ const GroupsInput: React.FC<GroupsInputProps> = ({ groupId, setGroupId }) => {
         onChange={handleChange}
       >
         <option value="">選択してください</option>
-        {groups.map((group: Group) => (
+        {groups.map((group: GroupType) => (
           <option key={group.group_id} value={group.group_id}>
             {group.group_name}
           </option>

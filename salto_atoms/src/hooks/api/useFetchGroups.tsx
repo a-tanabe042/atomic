@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import useFetchApi from './useFetchApi';
-import { Group } from '../../types'; // Groupインターフェースを適切な場所からインポートします
+import { GroupType } from '../../types'; // Groupインターフェースを適切な場所からインポートします
 
-interface ApiResponse {
+interface ApiResponseType {
   data: {
     id: string;
     attributes: {
@@ -15,7 +15,7 @@ interface ApiResponse {
 const useFetchGroups = () => {
   const API_ENDPOINT = 'api/groups';
   const { data: groupsData, fetchData: fetchGroups } = useFetchApi();
-  const [groupsList, setGroupsList] = useState<Group[]>([]); 
+  const [groupsList, setGroupsList] = useState<GroupType[]>([]); 
 
   useEffect(() => {
     fetchGroups(API_ENDPOINT);
@@ -23,7 +23,7 @@ const useFetchGroups = () => {
 
   useEffect(() => {
     if (groupsData && groupsData[API_ENDPOINT]) {
-      const groupsArray= (groupsData[API_ENDPOINT] as ApiResponse).data.map(({ id,attributes }) => ({
+      const groupsArray= (groupsData[API_ENDPOINT] as ApiResponseType).data.map(({ id,attributes }) => ({
         group_id: id,
         group_name: attributes.group_name
       }));

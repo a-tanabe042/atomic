@@ -3,7 +3,7 @@ import { useRecoilValue, useResetRecoilState } from "recoil";
 import { useLocation } from "react-router-dom";
 import { sidebarSectionState } from "../../state";
 import useSidebarSectionNavigator from "../../hooks/useSidebarSectionNavigator";
-import { SidebarSection } from "../../types"; // Adjusted import for the Section type
+import { SidebarSectionType } from "../../types"; // Adjusted import for the Section type
 
 const SidebarSectionNav:React.FC=()=> {
   const location = useLocation();
@@ -33,7 +33,7 @@ const SidebarSectionNav:React.FC=()=> {
       <li className="menu-title">
         <span>セクション</span>
       </li>
-      {navSidebarSection.map((sidebarSection: SidebarSection, index: number) => (
+      {navSidebarSection.map((sidebarSection: SidebarSectionType, index: number) => (
         <li key={sidebarSection.id} className={sidebarSection.isActive ? "mb-1 bg-black rounded-lg text-white" : "mb-1 rounded-lg"}>
           <button onClick={() => scrollToSidebarSection(index)}>
             {sidebarSection.title}

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { SidebarSection } from "../types";
+import { SidebarSectionType } from "../types";
 
 interface SidebarSectionNavigator {
-  sidebarSection: SidebarSection[];
+  sidebarSection: SidebarSectionType[];
   scrollToSidebarSection: (index: number) => void;
 }
 
-const useSidebarSectionNavigator = (initialSidebarSection: SidebarSection[], activeIndex: number): SidebarSectionNavigator => {
-  const [sidebarSection, setSidebarSection] = useState<SidebarSection[]>(() => 
+const useSidebarSectionNavigator = (initialSidebarSection: SidebarSectionType[], activeIndex: number): SidebarSectionNavigator => {
+  const [sidebarSection, setSidebarSection] = useState<SidebarSectionType[]>(() => 
     initialSidebarSection.map((sidebarSection, index) => ({
       ...sidebarSection,
       isActive: index === activeIndex,

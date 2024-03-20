@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useFetchSections from "../../hooks/api/useFetchSections";
-import { Section } from "../../types";
+import { SectionType } from "../../types";
 
 
 interface SectionsInputProps {
@@ -37,7 +37,7 @@ const SectionsInput:React.FC<SectionsInputProps> = ({ sectionId, setSectionId })
         onChange={handleChange}
       >
         <option value="">選択してください</option>
-        {sections.map((section: Section) => (
+        {sections.map((section: SectionType) => (
           <option key={section.section_id} value={section.section_id}>
             {section.section_name}
           </option>

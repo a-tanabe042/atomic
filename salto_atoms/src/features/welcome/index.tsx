@@ -2,16 +2,16 @@ import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { sidebarSectionState } from "../../state";
 import TitleCard from "../../components/cards/TitleCard";
-import { SidebarSection } from "../../types";
+import { SidebarSectionType } from "../../types";
 
 
 
 
 const Welcome: React.FC = () => {
-  const [sidebarSections, setSidebarSections] = useRecoilState<SidebarSection[]>(sidebarSectionState);
+  const [sidebarSections, setSidebarSections] = useRecoilState<SidebarSectionType[]>(sidebarSectionState);
 
   useEffect(() => {
-    const newSidebarSections: SidebarSection[] = [
+    const newSidebarSections: SidebarSectionType[] = [
       {
         id: "1",
         title: "大項目1",

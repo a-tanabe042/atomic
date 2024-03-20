@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import useFetchUsers from './useFetchUsers';
-import { User } from '../../types'; 
+import { UserType } from '../../types'; 
 
-interface FilterCriteria {
+interface FilterCriteriaType {
   [key: string]: any;
 }
 
-const useFilterUsers = (filterCriteria: FilterCriteria) => {
+const useFilterUsers = (filterCriteria: FilterCriteriaType) => {
   const users = useFetchUsers();
-  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
+  const [filteredUsers, setFilteredUsers] = useState<UserType[]>([]);
 
   useEffect(() => {
     const filtered = users.filter(user =>
