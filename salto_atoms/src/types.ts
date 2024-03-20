@@ -11,16 +11,16 @@ export interface SidebarSectionType {
     google_id: string;
     email: string;
     picture: string;
-    deleted_flag: number;
+    deleted_flag: string;
     first_name: string | null;
     last_name: string | null;
     hd: string | null;
-    pos_id: number;
-    dep_id: number;
-    section_id: number;
-    group_id: number;
+    pos_id: string;
+    dep_id: string;
+    section_id: string;
+    group_id: string;
     join_date: string | null;
-    div_id: number;
+    div_id: string;
     [key: string]: any;
   };
 }

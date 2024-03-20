@@ -19,9 +19,9 @@ import Loading from "../../components/loading/Loading";
 import { UserType, PostType, DepartmentType, SectionType, GroupType } from '../../types';
 
 interface FilterCriteriaType {
-  dep_id?: number;
-  section_id?: number;
-  group_id?: number;
+  dep_id?: string;
+  section_id?: string;
+  group_id?: string;
 }
 
 interface ColumnType {
