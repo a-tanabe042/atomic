@@ -3,14 +3,31 @@ export interface Section {
     title: string;
     isActive: boolean;
   }
-  
-export interface LoginUser {
+
+ export interface LoginUser {
   attributes: {
     google_id: string;
-    picture?: string;
+    email: string;
+    picture: string;
+    deleted_flag: number;
+    first_name: string | null;
+    last_name: string | null;
+    verified_email: string;
+    hd: string | null;
+    pos_id: number;
+    skills: string | null;
+    goals: string | null;
+    dep_id: number;
+    section_id: number;
+    group_id: number;
+    join_date: string | null;
+    div_id: number;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
   };
 }
-
+  
 export interface Department {
   dep_id: string;
   dep_name: string;
