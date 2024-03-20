@@ -1,10 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
-import ErrorAnimation from "../../assets/lottie/error.json"; 
+import ErrorAnimation from "../../assets/lottie/error.json";
 
-/* エラーページ Error fetching Google profile: */
-const ErrorPage = () => {
+const ErrorPage: React.FC = () => {
   const navigate = useNavigate();
 
   const redirectToLogin = () => {

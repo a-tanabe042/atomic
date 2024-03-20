@@ -3,11 +3,18 @@ import { useRecoilState } from "recoil";
 import { sectionState } from "../../state";
 import TitleCard from "../../components/cards/TitleCard";
 
-function Welcome() {
-  const [sections, setSections] = useRecoilState(sectionState);
+interface Section {
+  id: string;
+  title: string;
+  description: string;
+  content: string; 
+}
+
+const Welcome: React.FC = () => {
+  const [sections, setSections] = useRecoilState<Section[]>(sectionState);
 
   useEffect(() => {
-    const newSections = [
+    const newSections: Section[] = [
       {
         id: "1",
         title: "大項目1",
@@ -27,7 +34,7 @@ function Welcome() {
 
   return (
     <>
-      <TitleCard title="Welcomeページ" >
+      <TitleCard title="Welcomeページ">
         {sections.map((section) => (
           <article key={section.id} className="prose">
             <h2 id={section.id}>{section.title}</h2>
@@ -38,6 +45,6 @@ function Welcome() {
       </TitleCard>
     </>
   );
-}
+};
 
 export default Welcome;
