@@ -6,7 +6,7 @@ export interface SidebarSection {
     isActive: boolean;
   }
 
- export interface LoginUser {
+ export interface User {
   attributes: {
     google_id: string;
     email: string;

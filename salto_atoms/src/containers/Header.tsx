@@ -6,7 +6,7 @@ import ThemeSwitch from "../components/common/ThemeSwitch";
 import useFetchGoogleId from "../hooks/api/useFetchGoogleId";
 import useFetchLoginUser from "../hooks/api/useFetchLoginUser";
 
-interface LoginUser {
+interface User {
   attributes: {
     google_id: string;
     picture?: string;
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   const [profilePicture, setProfilePicture] = useState<string>("");
   const accessToken = localStorage.getItem("access_token") || "";
   const googleId = useFetchGoogleId(accessToken);
-  const loginUser = useFetchLoginUser() as LoginUser | null;
+  const loginUser = useFetchLoginUser() as User | null;
 
   useEffect(() => {
     if (loginUser && loginUser.attributes.google_id === googleId) {
