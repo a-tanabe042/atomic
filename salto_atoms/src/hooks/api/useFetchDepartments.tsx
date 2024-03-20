@@ -11,7 +11,6 @@ interface ApiResponse {
   }[];
 }
 
-
 // 所属部署の取得
 const useFetchDepartments = () => {
   const API_ENDPOINT = 'api/departments';

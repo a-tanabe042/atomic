@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-/* GoogleIdの取得 */
-const useFetchGoogleId = (accessToken) => {
-  const [googleId, setGoogleId] = useState("");
+// GoogleIdの取得
+const useFetchGoogleId = (accessToken: string) => {
+  const [googleId, setGoogleId] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    let isMounted = true; 
+    let isMounted = true;
 
     const fetchGoogleProfile = async () => {
       if (!accessToken) return;
@@ -19,7 +19,7 @@ const useFetchGoogleId = (accessToken) => {
           throw new Error("Failed to fetch Google profile");
         }
         const profile = await response.json();
-        if (isMounted) setGoogleId(profile.id); 
+        if (isMounted) setGoogleId(profile.id);
       } catch (error) {
         console.error("Error fetching Google profile:", error);
         navigate('/error');
@@ -29,7 +29,7 @@ const useFetchGoogleId = (accessToken) => {
     fetchGoogleProfile();
 
     return () => {
-      isMounted = false; 
+      isMounted = false;
     };
   }, [accessToken, navigate]);
 
