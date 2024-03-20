@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useFetchGroups from "../../hooks/api/useFetchGroups";
-
-interface Group {
-  group_id: string;
-  group_name: string;
-}
+import { Group } from "../../types";
 
 interface GroupsInputProps {
   groupId: string | "";

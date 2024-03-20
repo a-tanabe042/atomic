@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useFetchDepartments from "../../hooks/api/useFetchDepartments";
+import { Department } from "../../types";
 
-interface Department {
-  dep_id: string;
-  dep_name: string;
-}
 
 interface DepartmentsInputProps {
   departmentId: string | "";

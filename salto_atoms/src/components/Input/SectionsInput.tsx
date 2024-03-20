@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useFetchSections from "../../hooks/api/useFetchSections";
+import { Section } from "../../types";
 
-
-interface Section{
-  section_id: string;
-  section_name: string;
-}
 
 interface SectionsInputProps {
   sectionId: string | "";

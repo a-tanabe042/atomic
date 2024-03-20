@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useFetchPosts from "../../hooks/api/useFetchPosts";
-
-interface Post {
-  pos_id: string;
-  pos_name: string;
-}
-
+import { Post } from "../../types";
 
 interface PostInputProps {
   postId: string | "";

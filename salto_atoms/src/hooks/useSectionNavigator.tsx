@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-
-interface Section {
-  id: string;
-  name: string;
-  isActive: boolean;
-}
+import { Section } from "../types";
 
 interface SectionNavigator {
   sections: Section[];
