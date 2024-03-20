@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const UserIconDropdown = ({ profilePicture, logoutUser }) => {
+interface UserIconDropdownProps {
+  profilePicture: string;
+  logoutUser: () => void;
+}
+
+const UserIconDropdown:React.FC<UserIconDropdownProps> = ({ profilePicture, logoutUser }) => {
   return (
     <div className="dropdown dropdown-end ml-4">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

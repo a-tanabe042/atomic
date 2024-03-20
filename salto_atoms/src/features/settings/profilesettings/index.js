@@ -43,6 +43,7 @@ const ProfileSettings = () => {
       setGroupId(loginUser.attributes.group_id || "");
     }
   }, [loginUser]);
+  
 
   const handleUpdateProfile = async () => {
     const endpoint = `api/user-saltos/${loginUser.id}`;

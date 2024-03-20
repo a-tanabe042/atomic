@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const RightSidebarDropdown = ({ isExpanded, submenu, toggle, location }) => (
+interface RightSidebarDropdownProps {
+  isExpanded: boolean;
+  submenu: { name: string; path: string; icon: JSX.Element }[];
+  toggle: () => void;
+  location: { pathname: string };
+}
+
+const RightSidebarDropdown:React.FC<RightSidebarDropdownProps> = ({ isExpanded, submenu, toggle, location }) => (
   <div className="flex flex-col">
     {isExpanded && (
       <ul

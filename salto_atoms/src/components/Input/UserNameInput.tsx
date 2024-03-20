@@ -1,7 +1,14 @@
 import React from "react";
 
+interface UserNameInputProps {
+  firstName: string | "";
+  setFirstName: (value: string | "") => void;
+  lastName: string | "";
+  setLastName: (value: string | "") => void;
+}
+
 /* ユーザー名フォーム */
-const UserNameInput = ({ firstName, setFirstName, lastName, setLastName }) => {
+const UserNameInput:React.FC<UserNameInputProps> = ({ firstName, setFirstName, lastName, setLastName }) => {
   return (
     <div className="flex items-center space-x-4 w-full">
       <div className="flex-1">

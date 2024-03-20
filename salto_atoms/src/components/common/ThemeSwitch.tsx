@@ -3,7 +3,12 @@ import MoonIcon from "@heroicons/react/24/outline/MoonIcon";
 import SunIcon from "@heroicons/react/24/outline/SunIcon";
 import { themeChange } from "theme-change";
 
-const ThemeSwitch = ({ currentTheme, setCurrentTheme }) => {
+interface ThemeSwitchProps {
+    currentTheme: string;
+    setCurrentTheme: (theme: string) => void;
+}
+
+const ThemeSwitch: React.FC<ThemeSwitchProps> = ({ currentTheme, setCurrentTheme }) => {
     const toggleTheme = () => {
       const newTheme = currentTheme === "light" ? "dark" : "light";
       setCurrentTheme(newTheme);

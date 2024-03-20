@@ -1,36 +1,43 @@
 import React, { useState, useEffect } from "react";
 import useFetchGroups from "../../hooks/api/useFetchGroups";
 
-/* グループフォーム */
-const GroupsInput = ({ groupId, setGroupId }) => {
+interface Group {
+  group_id: string;
+  group_name: string;
+}
+
+interface GroupsInputProps {
+  groupId: string | "";
+  setGroupId: (groupId: string | "") => void;
+}
+
+const GroupsInput: React.FC<GroupsInputProps> = ({ groupId, setGroupId }) => {
   const groups = useFetchGroups();
-  const [selectedGroup, setSelectedGroup] = useState(
-    groupId || ""
-  );
+  const [selectedGroup, setSelectedGroup] = useState<string | "">(groupId);
 
   useEffect(() => {
-    setSelectedGroup(groupId || "");
+    setSelectedGroup(groupId);
   }, [groupId]);
 
-  const handleChange = (e) => {
-    const newGroupId = e.target.value === "" ? null : e.target.value;
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newGroupId = e.target.value || "";
     setSelectedGroup(newGroupId);
     setGroupId(newGroupId);
   };
 
   return (
     <div className="flex-1">
-      <label htmlFor="group"  className="label">
+      <label htmlFor="group" className="label">
         グループ
       </label>
       <select
         id="group"
         className="select w-full border border-gray-300 rounded-lg bg-slate-100 text-black"
-        value={selectedGroup}
+        value={selectedGroup ?? ""}
         onChange={handleChange}
       >
         <option value="">選択してください</option>
-        {groups.map((group) => (
+        {groups.map((group: Group) => (
           <option key={group.group_id} value={group.group_id}>
             {group.group_name}
           </option>

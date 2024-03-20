@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from "react";
 import useFetchPosts from "../../hooks/api/useFetchPosts";
 
-/* 役職フォーム */
-const PostInput = ({ postId, setPostId }) => {
+interface Post {
+  pos_id: string;
+  pos_name: string;
+}
+
+
+interface PostInputProps {
+  postId: string | "";
+  setPostId: (postId: string | "") => void;
+}
+
+const PostInput : React.FC<PostInputProps> = ({ postId, setPostId }) => {
   const posts = useFetchPosts();
-  const [selectedPost, setSelectedPost] = useState(
-    postId || ""
-  );
+  const [selectedPost, setSelectedPost] = useState<string | "">(postId);
 
   useEffect(() => {
-    setSelectedPost(postId || "");
+    setSelectedPost(postId);
   }, [postId]);
 
-  const handleChange = (e) => {
-    const newPostId = e.target.value === "" ? null : e.target.value;
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newPostId = e.target.value || "";
     setSelectedPost(newPostId);
     setPostId(newPostId);
   };
@@ -30,7 +38,7 @@ const PostInput = ({ postId, setPostId }) => {
         onChange={handleChange}
       >
         <option value="">選択してください</option>
-        {posts.map((pos) => (
+        {posts.map((pos: Post) => (
           <option key={pos.pos_id} value={pos.pos_id}>
             {pos.pos_name}
           </option>

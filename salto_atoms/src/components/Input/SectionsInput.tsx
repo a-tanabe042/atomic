@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
 import useFetchSections from "../../hooks/api/useFetchSections";
 
+
+interface Section{
+  section_id: string;
+  section_name: string;
+}
+
+interface SectionsInputProps {
+  sectionId: string | "";
+  setSectionId: (sectionId: string | "") => void;
+}
+
 /* 課フォーム */
-const SectionsInput = ({ sectionId, setSectionId }) => {
+const SectionsInput:React.FC<SectionsInputProps> = ({ sectionId, setSectionId }) => {
   const sections = useFetchSections();
   const [selectedSection, setSelectedSection] = useState(
     sectionId || ""
@@ -12,8 +23,8 @@ const SectionsInput = ({ sectionId, setSectionId }) => {
     setSelectedSection(sectionId || "");
   }, [sectionId]);
 
-  const handleChange = (e) => {
-    const newSectionId = e.target.value === "" ? null : e.target.value;
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newSectionId = e.target.value || "";
     setSelectedSection(newSectionId);
     setSectionId(newSectionId);
   };
@@ -30,7 +41,7 @@ const SectionsInput = ({ sectionId, setSectionId }) => {
         onChange={handleChange}
       >
         <option value="">選択してください</option>
-        {sections.map((section) => (
+        {sections.map((section: Section) => (
           <option key={section.section_id} value={section.section_id}>
             {section.section_name}
           </option>

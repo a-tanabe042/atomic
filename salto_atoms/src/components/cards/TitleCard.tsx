@@ -1,14 +1,17 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Subtitle from "../typography/Subtitle";
 import "../../index.css";
 
-function TitleCard({ title, children, topMargin, topSideButtons }) {
+interface TitleCardProps {
+  title: string | ReactNode; 
+  children?: ReactNode; 
+  topMargin?: string; 
+  topSideButtons?: ReactNode; 
+}
+
+const TitleCard: React.FC<TitleCardProps> = ({ title, children, topMargin = "", topSideButtons }) => {
   return (
-    <div
-      className={`card w-full h-full p-6 bg-base-100 shadow-xl ${
-        topMargin
-      }`}
-    >
+    <div className={`card w-full h-full p-6 bg-base-100 shadow-xl ${topMargin}`}>
       <Subtitle styleClass={`${topSideButtons ? "inline-block" : ""}`}>
         {title}
         {topSideButtons && (

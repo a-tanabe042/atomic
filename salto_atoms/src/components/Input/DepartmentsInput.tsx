@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from "react";
 import useFetchDepartments from "../../hooks/api/useFetchDepartments";
 
-/* 部署フォーム */
-const DepartmentsInput = ({ departmentId, setDepartmentId }) => {
+interface Department {
+  dep_id: string;
+  dep_name: string;
+}
+
+interface DepartmentsInputProps {
+  departmentId: string | "";
+  setDepartmentId: (departmentId: string | "") => void;
+}
+
+const DepartmentsInput: React.FC<DepartmentsInputProps> = ({ departmentId, setDepartmentId }) => {
   const departments = useFetchDepartments();
-  const [selectedDepartment, setSelectedDepartment] = useState(
-    departmentId || ""
-  );
+
+  const [selectedDepartment, setSelectedDepartment] = useState<string | "">(departmentId);
 
   useEffect(() => {
-    setSelectedDepartment(departmentId || "");
+    setSelectedDepartment(departmentId);
   }, [departmentId]);
 
-  const handleChange = (e) => {
-    const newDepartmentId = e.target.value === "" ? null : e.target.value;
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newDepartmentId = e.target.value || "";
     setSelectedDepartment(newDepartmentId);
     setDepartmentId(newDepartmentId);
   };
@@ -26,11 +34,11 @@ const DepartmentsInput = ({ departmentId, setDepartmentId }) => {
       <select
         id="department"
         className="select w-full border border-gray-300 rounded-lg bg-slate-100 text-black"
-        value={selectedDepartment || ""} 
+        value={selectedDepartment ?? ""} 
         onChange={handleChange}
       >
         <option value="">選択してください</option>
-        {departments.map((dep) => (
+        {departments.map((dep: Department) => (
           <option key={dep.dep_id} value={dep.dep_id}>
             {dep.dep_name}
           </option>
