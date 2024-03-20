@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import Loading from "../components/loading/Loading";
 
 interface Profile {
-  id: string; // id を number から string に修正してください。API の実装に応じて適宜調整してください。
+  id: string; 
   email: string;
   verified_email: boolean;
   picture: string;
