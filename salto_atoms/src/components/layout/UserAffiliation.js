@@ -9,7 +9,7 @@ const UserAffiliation = ({ departments, sections, groups, loginUser }) => {
     groups[loginUser.attributes.group_id - 1]?.group_name || "";
 
   return (
-    <div className="mb-4">
+    <div className="">
       <span>
         {departmentName} {sectionName} {groupName}
       </span>
