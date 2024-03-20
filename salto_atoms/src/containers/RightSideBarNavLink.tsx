@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
-import useDisableLinkIfActive from '../hooks/useDisableLinkIfActive'; 
+import useDisableLinkIfActive from '../hooks/useDisableLinkIfActive';
 
-const RightSidebarNavLink = ({ route }) => {
+// Route型を定義します
+interface Route {
+  path: string;
+  icon?: ReactNode; // iconは任意で、Reactのノードです
+}
+
+// `route`プロパティの型をRoute型で指定します
+interface RightSidebarNavLinkProps {
+  route: Route;
+}
+
+const RightSidebarNavLink: React.FC<RightSidebarNavLinkProps> = ({ route }) => {
   const isLinkActive = useDisableLinkIfActive(route.path);
 
   if (isLinkActive) {
