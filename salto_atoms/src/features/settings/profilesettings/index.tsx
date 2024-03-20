@@ -12,44 +12,47 @@ import DepartmentsInput from "../../../components/input/DepartmentsInput";
 import SectionsInput from "../../../components/input/SectionsInput";
 import GroupsInput from "../../../components/input/GroupsInput";
 import Loading from "../../../components/loading/Loading";
+import { UserType } from "../../../types"; // 仮の型定義の場所
 
 
-const ProfileSettings = () => {
-  const loginUser = useFetchLoginUser();
+const ProfileSettings: React.FC = () => {
+  const loginUser: UserType | null = useFetchLoginUser();
   const { updateData } = useFetchApi();
 
+  const delay: number = parseInt(process.env.REACT_APP_LOADING_DELAY ?? '2000', 10); 
+  const isLoading: boolean = useLoading(delay);
 
-  const delay = parseInt(process.env.REACT_APP_LOADING_DELAY, 10) || 2000; 
-  const isLoading = useLoading(delay);
-
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [joinDate, setJoinDate] = useState({ startDate: null, endDate: null });
-  const [postId, setPostId] = useState("");
-  const [departmentId, setDepartmentId] = useState("");
-  const [sectionId, setSectionId] = useState("");
-  const [groupId, setGroupId] = useState("");
+  // useStateに型注釈を追加
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [joinDate, setJoinDate] = useState<string | { startDate: Date | null; endDate: Date | null }>({ startDate: null, endDate: null });
+  const [postId, setPostId] = useState<string>("");
+  const [departmentId, setDepartmentId] = useState<string>("");
+  const [sectionId, setSectionId] = useState<string>("");
+  const [groupId, setGroupId] = useState<string>("");
 
   useEffect(() => {
     if (loginUser) {
-      setFirstName(loginUser.attributes.first_name || "");
-      setLastName(loginUser.attributes.last_name || "");
-      setEmail(loginUser.attributes.email || "");
-      setJoinDate(loginUser.attributes.join_date || "");
-      setPostId(loginUser.attributes.pos_id || "");
-      setDepartmentId(loginUser.attributes.dep_id || "");
-      setSectionId(loginUser.attributes.section_id || "");
-      setGroupId(loginUser.attributes.group_id || "");
+      const { attributes } = loginUser;
+      setFirstName(attributes.first_name ?? "");
+      setLastName(attributes.last_name ?? "");
+      setEmail(attributes.email ?? "");
+      setJoinDate(attributes.join_date ?? { startDate: null, endDate: null }); // joinDate の初期値を修正
+      setPostId(attributes.pos_id ?? "");
+      setDepartmentId(attributes.dep_id ?? "");
+      setSectionId(attributes.section_id ?? "");
+      setGroupId(attributes.group_id ?? "");
     }
   }, [loginUser]);
-  
 
   const handleUpdateProfile = async () => {
+    if (!loginUser) return; // loginUser が null の場合は早期リターン
+
     const endpoint = `api/user-saltos/${loginUser.id}`;
     const payload = {
       data: {
-        email: email,
+        email,
         first_name: firstName,
         last_name: lastName,
         join_date: joinDate,
@@ -59,17 +62,23 @@ const ProfileSettings = () => {
         group_id: groupId,
       },
     };
+
     try {
       await updateData(endpoint, payload);
       alert("プロフィールが更新されました。");
-    } catch (error) {
-      alert(`更新に失敗しました: ${error.message}`);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        alert(`更新に失敗しました: ${error.message}`);
+      } else {
+        alert("予期せぬエラーが発生しました。");
+      }
     }
   };
 
   if (isLoading) {
     return <Loading />;
   }
+
 
   return (
     <TitleCard title="プロフィール" >
@@ -82,11 +91,10 @@ const ProfileSettings = () => {
           setLastName={setLastName}
         />
         <div className="flex w-full space-x-4">
-          <EmailInput email={email} className="flex-1" />
+          <EmailInput email={email} />
           <JoinDateInput
             joinDate={joinDate}
             setJoinDate={setJoinDate}
-            className="flex-1"
           />
         </div>
         <div className="divider my-10"></div>
@@ -98,17 +106,14 @@ const ProfileSettings = () => {
           <DepartmentsInput
             departmentId={departmentId}
             setDepartmentId={setDepartmentId}
-            className="flex-1"
           />
           <SectionsInput
             sectionId={sectionId}
             setSectionId={setSectionId}
-            className="flex-1"
           />
           <GroupsInput
             groupId={groupId}
             setGroupId={setGroupId}
-            className="flex-1"
           />
         </div>
         <div className="divider my-10"></div>

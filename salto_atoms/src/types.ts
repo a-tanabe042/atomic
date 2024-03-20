@@ -7,6 +7,7 @@ export interface SidebarSectionType {
   }
 
  export interface UserType {
+  id: string;
   attributes: {
     google_id: string;
     email: string;
@@ -21,6 +22,7 @@ export interface SidebarSectionType {
     group_id: string;
     join_date: string | null;
     div_id: string;
+    className: string;
     [key: string]: any;
   };
 }
