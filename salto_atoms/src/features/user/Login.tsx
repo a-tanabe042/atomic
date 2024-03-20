@@ -1,7 +1,10 @@
+import React from 'react';
 import LandingIntro from "./LandingIntro";
 
-function Login() {
-  const API_HOST = process.env.REACT_APP_API_HOST;
+const Login: React.FC = () => {
+
+  const API_HOST = process.env.REACT_APP_API_HOST ?? 'http://localhost:3000';
+
   const handleGoogleLogin = () => {
     window.location.href = `${API_HOST}/api/connect/google`;
   };
@@ -29,7 +32,7 @@ function Login() {
                     <path fill="none" d="M0 0h48v48H0z"></path>
                 </svg>
                 <span>Sign in with Google</span>
-            </div>
+              </div>
             </button>
           </div>
         </div>

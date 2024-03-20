@@ -6,12 +6,21 @@ import ThemeSwitch from "../components/common/ThemeSwitch";
 import useFetchGoogleId from "../hooks/api/useFetchGoogleId";
 import useFetchLoginUser from "../hooks/api/useFetchLoginUser";
 
-function Header() {
-  const [currentTheme, setCurrentTheme] = useState(localStorage.getItem("theme") || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
-  const [profilePicture, setProfilePicture] = useState("");
-  const accessToken = localStorage.getItem("access_token");
+interface LoginUser {
+  attributes: {
+    google_id: string;
+    picture?: string;
+  };
+}
+
+const Header: React.FC = () => {
+  const [currentTheme, setCurrentTheme] = useState<string>(() => {
+    return localStorage.getItem("theme") || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  });
+  const [profilePicture, setProfilePicture] = useState<string>("");
+  const accessToken = localStorage.getItem("access_token") || "";
   const googleId = useFetchGoogleId(accessToken);
-  const loginUser = useFetchLoginUser();
+  const loginUser = useFetchLoginUser() as LoginUser | null;
 
   useEffect(() => {
     if (loginUser && loginUser.attributes.google_id === googleId) {
@@ -22,7 +31,6 @@ function Header() {
   useEffect(() => {
     themeChange(false); 
   }, [currentTheme]);
-  
 
   function logoutUser() {
     localStorage.removeItem("id_token");
@@ -41,6 +49,6 @@ function Header() {
       </div>
     </>
   );
-}
+};
 
 export default Header;
