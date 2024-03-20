@@ -1,6 +1,8 @@
-export interface Section {
+export interface SidebarSection {
     id: string;
     title: string;
+    description: string;
+    content: string;
     isActive: boolean;
   }
 
@@ -12,19 +14,13 @@ export interface Section {
     deleted_flag: number;
     first_name: string | null;
     last_name: string | null;
-    verified_email: string;
     hd: string | null;
     pos_id: number;
-    skills: string | null;
-    goals: string | null;
     dep_id: number;
     section_id: number;
     group_id: number;
     join_date: string | null;
     div_id: number;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
   };
 }
   

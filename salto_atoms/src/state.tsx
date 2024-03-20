@@ -10,8 +10,8 @@ export const errorState = atom<string | null>({
   default: null, 
 });
 
-export const sectionState = atom<any[]>({
-  key: 'sectionState', 
+export const sidebarSectionState = atom<any[]>({
+  key: 'SidebarSectionState', 
   default: [] 
 });
 
