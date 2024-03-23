@@ -29,12 +29,6 @@
       "required": false,
       "maxLength": 1000
     },
-    "deleted_flag": {
-      "type": "integer",
-      "default": 0,
-      "required": true,
-      "max": 1
-    },
     "first_name": {
       "type": "string",
       "required": false
@@ -50,10 +44,6 @@
       "type": "string",
       "required": false
     },
-    "pos_id": {
-      "default": 8,
-      "type": "integer"
-    },
     "skills": {
       "type": "json",
       "required": false
@@ -61,24 +51,20 @@
     "goals": {
       "type": "json"
     },
-    "dep_id": {
-      "type": "integer",
-      "default": 0
-    },
-    "section_id": {
-      "type": "integer",
-      "default": 0
-    },
-    "group_id": {
-      "type": "integer",
-      "default": 0
-    },
     "join_date": {
       "type": "json"
     },
-    "div_id": {
-      "type": "integer",
-      "default": 0
+    "pos_id": {
+      "type": "string"
+    },
+    "dep_id": {
+      "type": "string"
+    },
+    "section_id": {
+      "type": "string"
+    },
+    "group_id": {
+      "type": "string"
     }
   }
 }

@@ -12,11 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "pos_id": {
-      "type": "integer",
-      "default": 1
-    },
     "pos_name": {
+      "type": "string"
+    },
+    "pos_id": {
       "type": "string"
     }
   }

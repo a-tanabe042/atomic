@@ -12,10 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "dep_id": {
-      "type": "integer"
-    },
     "dep_name": {
+      "type": "string"
+    },
+    "dep_id": {
       "type": "string"
     }
   }

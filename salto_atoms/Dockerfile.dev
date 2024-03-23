@@ -5,7 +5,7 @@ FROM node:18
 WORKDIR /app
 
 # 依存関係のファイルをコピー
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
 # 依存関係のインストール
 RUN npm install
@@ -13,9 +13,11 @@ RUN npm install
 # アプリケーションのソースコードをコピー
 COPY . .
 
-# 環境変数を設定
-ENV NODE_ENV=${NODE_ENV}
+# 環境変数を設定（デフォルト値をdevelopmentに）
+ENV NODE_ENV=development
+
+# 開発サーバーのポートを公開
+EXPOSE 3000
 
 # 開発サーバーを起動
-EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

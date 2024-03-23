@@ -12,13 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "group_id": {
-      "type": "integer",
-      "required": true
-    },
     "group_name": {
       "type": "string",
       "required": true
+    },
+    "group_id": {
+      "type": "string"
     }
   }
 }

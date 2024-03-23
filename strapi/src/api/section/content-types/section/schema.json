@@ -12,13 +12,12 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "section_id": {
-      "type": "integer",
-      "required": true
-    },
     "section_name": {
       "type": "string",
       "required": true
+    },
+    "section_id": {
+      "type": "string"
     }
   }
 }
