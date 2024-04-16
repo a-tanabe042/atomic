@@ -1,0 +1,943 @@
+.required::after {
+  content: "必須";
+  background-color: #f94b4b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 10px;
+  padding: 3px 7px;
+  margin: 0px 5px;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.tab_item {
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.tab_item:hover {
+  background-color: #3e3838;
+  color: #FFFFFF;
+  opacity: 0.8;
+}
+
+.basic_info {
+  padding: 10px;
+  border: 1px solid #333333;
+}
+
+.datail_title_style th {
+  background-color: #3e3838;
+  color: white;
+  text-align: center;
+}
+
+.info_summary_title {
+  background-color: #3e3838;
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
+
+.info_summary_work th,
+.info_summary_work td,
+.info_summary_role th,
+.info_summary_role td {
+  padding: 2x;
+}
+
+.license_input {
+  width: 90%;
+  margin: 0.25rem;
+}
+
+.license_foam_area {
+  width: 100%;
+  display: flex;
+  margin-top: 0.25rem;
+}
+
+.my_pr_height {
+  height: 200px;
+}
+
+.initial-W {
+  width: 10%;
+}
+
+.label-style {
+  border-top: 5px solid #3e3838;
+}
+
+.career_list_area .detail-btn {
+  display: flex;
+  width: 100%;
+}
+
+.num-change {
+  display: none;
+  text-align: center !important;
+  border-right: 1px solid #333333;
+  max-width: 50px;
+  min-width: 50px;
+}
+
+.num-change input {
+  margin: 1.5px;
+}
+
+.num-changes {
+  display: none;
+  text-align: center !important;
+}
+
+.change-btn1 button {
+  font-size: 14px;
+  height: 35px;
+}
+
+.change-btn button {
+  font-size: 14px;
+  height: 35px;
+  margin: 3px;
+}
+
+.arrow {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+}
+
+.arrow::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-top: solid 2px #5070e3;
+  border-right: solid 2px #5070e3;
+  position: absolute;
+  left: 10px;
+  top: 8px;
+}
+
+.arrow.arrow-top::before {
+  transform: rotate(-45deg);
+  top: 10px;
+}
+
+#review-button {
+  width: 100px;
+  height: 35px;
+  color: #FFFFFF;
+  border: solid 1px red;
+  outline: none;
+  background-color: red;
+  border-radius: 9999px;
+}
+
+#review-button:hover {
+  filter: brightness(80%);
+}
+
+.review-state-key {
+  width: 20%;
+  background-color: #3e3838;
+  color: #FFFFFF;
+}
+
+.review-state-value-common {
+  width: 10%;
+  background-color: #eee;
+  border: 1px solid #343a40;
+}
+
+.review-state-value-wait {
+  width: 18%;
+  background-color: #eee;
+  border: 1px solid #343a40;
+}
+
+.review-state-value-back {
+  width: 15%;
+  background-color: #eee;
+  border: 1px solid #343a40;
+}
+
+.review-back-container {
+  border-top: 1px solid #3e3838;
+  border-bottom: 1px solid #3e3838;
+}
+
+.review-container {
+  background-color: #eee;
+}
+
+.review-warning-area {
+  color: red;
+}
+
+.review-back-area {
+  background-color: #eee;
+}
+
+.radiobutton+label {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100px;
+  height: 35px;
+  margin: auto 0 auto 1rem;
+  padding: 6px;
+  color: #FFFFFF;
+  background-color: #626263;
+  border-radius: 9999px;
+}
+
+.radiobutton:checked+label {
+  background-color: #3e3838;
+}
+
+.radiobutton+label:hover {
+  background-color: #3e3838;
+}
+
+.review-message {
+  width: 75%;
+  height: 120px;
+}
+
+/*基本情報のスキルテーブル---START*/
+.basic_info_th {
+  width: 24%;
+}
+
+.basic_info_skill {
+  padding: 10px;
+  border: 1px solid #333333;
+}
+
+.basic_info_skil_foam_area {
+  width: 100%;
+  display: flex;
+  margin-top: 0.25rem;
+}
+
+.basic_skil_name_select {
+  width: 100%;
+  margin-right: 3px;
+}
+
+.basic_evaluation_name_select {
+  margin-right: 5px;
+}
+
+.basic_info_skill_area .basic_skill_edit {
+  display: none;
+}
+
+.basic_info_skill_area .basic_skill_edit_bt_area {
+  display: block;
+}
+
+.basic_info_skill_area .basic_skill_cancel_bt_area {
+  display: none;
+}
+
+.basic_skill_area {
+  display: flex;
+  width: 100%;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.basic_skill_item_area {
+  display: flex;
+  width: 100%;
+}
+
+#main-style {
+  font-weight: bold;
+
+}
+
+.edit_license_flex {
+  display: flex;
+}
+
+#basic_skill_edit .basic_skil_bt {
+  display: none;
+}
+
+.basic_info_area .basic_info_show {
+  display: block;
+}
+
+.basic_info_area .basic_info_edit {
+  display: none;
+}
+
+.basic_info_area .basic_info_edit_bt_area {
+  display: block;
+}
+
+.basic_info_area .basic_info_cancel_bt_area {
+  display: none;
+}
+
+.posQ {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
+
+.tooltip1 {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.tooltip1 img {
+  margin: 0;
+  padding: 0;
+}
+
+.description1 {
+  display: none;
+  position: absolute;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 1.6em;
+  color: #fff;
+  border-radius: 5px;
+  background: #000;
+  width: 250px;
+}
+
+.description1:before {
+  content: "";
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  border: 15px solid transparent;
+  border-top: 15px solid #000;
+  margin-left: -15px;
+}
+
+.tooltip1:hover .description1 {
+  display: inline-block;
+  bottom: 10%;
+}
+
+.w-5 {
+  width: 5%;
+}
+
+.work_role {
+  text-align: center;
+  margin: 0px;
+}
+
+.skill-tb-w {
+  width: 665px;
+}
+
+.list-back label {
+  color: #065FD4;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.list-back label:hover {
+  filter: brightness(60%);
+}
+
+/*基本情報のサマリーテーブル---START*/
+
+.basic_info_skill td {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.pj_sum {
+  flex-basis: 20%;
+  border: 1px solid #333333;
+}
+
+.info_summary_work {
+  flex-basis: 45%;
+  border: 1px solid #333333;
+}
+
+.info_summary_work p,
+.info_summary_role p {
+  margin: 0px;
+}
+
+.work_title th {
+  height: 165px;
+}
+
+.info_summary_mgmt_role {
+  flex-basis: 40%;
+  border: 1px solid #333333;
+}
+
+.info_summary {
+  padding: 10px;
+  overflow-x: scroll;
+  display: flex;
+}
+
+.vertical_title th {
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.info_summary td {
+  border: 1px solid #333333;
+}
+
+.summary_round td {
+  text-align: center;
+}
+
+.basic_info_summary_area .basic_summary_cancel_bt_area {
+  display: none;
+}
+
+.mgmt-container {
+  width: 75%;
+}
+
+.summary_flex_area {
+  display: flex;
+}
+
+/*基本情報のサマリーテーブル---END*/
+
+/*経歴一覧テーブル---START*/
+
+#career_list_content .datail_title_style div,
+#career_list_content .datail_title_style th {
+  background-color: #3e3838;
+  color: white;
+  border-color: #343a40 !important;
+}
+
+.career-no {
+  max-width: 30px;
+  min-width: 30px;
+}
+
+.career-no label {
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+.career-no-title {
+  padding: 5px;
+}
+
+.career-title {
+  max-width: 250px;
+  width: 100%;
+  padding: 5px;
+  border-right: 1px solid #333333;
+  border-left: 1px solid #333333;
+}
+
+.career-date {
+  min-width: 130px;
+  max-width: 150px;
+  border-left: 1px solid #333333;
+}
+
+.career-contents {
+  width: 100%;
+  padding: 5px;
+  border-left: 1px solid #333333;
+  border-right: 1px solid #333333;
+}
+
+.career-action {
+  width: 100%;
+  max-width: 95px;
+}
+
+.career_list_itms_area label {
+  margin-bottom: 0rem;
+}
+
+.careert_datail_edit_area {
+  display: none;
+}
+
+.career_list_itms button:hover,
+.modal-footer button:hover {
+  filter: brightness(80%);
+}
+
+/*経歴一覧テーブル---END*/
+
+
+/*経歴一覧の詳細テーブル---START*/
+
+.career_list_itms {
+  display: flex;
+  border-left: 1px solid #333333;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+}
+
+.skill_foam_area {
+  display: flex;
+  width: 100%;
+  text-align: center;
+}
+
+.skill_foam_input {
+  width: 32%;
+  margin-top: 0.25rem;
+}
+
+.skill_foam_input_middle {
+  width: 30%;
+  margin: 0.25rem 10px;
+}
+
+.career_datail_top {
+  border-top: 1px solid #333333;
+}
+
+.career_datail_top th,
+.career_role_title {
+  width: 25%;
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
+}
+
+.career_datail_top {
+  width: 100%;
+  border-right: 1px solid #333333;
+  border-left: 1px solid #333333;
+}
+
+.career_datail_top tbody tr td {
+  border-bottom: 1px solid #333333;
+}
+
+.career_datail_top .select2-container {
+  width: 33% !important;
+}
+
+.role_title {
+  border-right: 1px solid #333333;
+  border-bottom: none;
+}
+
+.career_list_datail {
+  border-bottom: 1px solid #333333;
+}
+
+.career_datail_bottom tr,
+.career_datail_bottom th,
+.career_datail_bottom td {
+  border-left: 1px solid #333333;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+}
+
+.career-close-click {
+  border-right: 1px solid #333333;
+  border-left: 1px solid #333333;
+}
+
+.career_role td {
+  width: 25px;
+}
+
+.pj-textarea {
+  height: 275px;
+}
+
+.modal .skill_foam_area {
+  width: 100%;
+  text-align: center;
+}
+
+
+.form-select-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.form-select-wrap>select {
+  padding: 8px 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.modal .responsive-px-3 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.batsu_show_m {
+  margin-left: 97%;
+}
+
+.career_skil_name_select {
+  width: 30%;
+  margin: 0.15rem;
+}
+
+.select2-container--default .select2-selection--single {
+  margin: 0.15rem;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  margin: 0.15rem;
+}
+
+.career_skil_name_select_middle {
+  width: 30%;
+  margin: 0.15rem 8px;
+}
+
+.career_skill_area_display {
+  display: flex;
+  text-align: center;
+}
+
+/*経歴一覧の詳細アコーディオン---START*/
+.career_list_datail {
+  transition-property: line-height color;
+  transition-duration: 2s;
+  transition-timing-function: ease-in-out;
+  display: none;
+}
+
+/** チェックONなら表示 */
+input[type="checkbox"]:checked+.career_list_datail {
+  display: block;
+}
+
+input[type="checkbox"]:checked+.career_list {
+  display: none;
+}
+
+/*-アコーデオン---END*/
+
+#add_text_current,
+#edit_text_current {
+  display: none;
+}
+
+.period_text {
+  text-align: center;
+  height: 28px;
+  line-height: 28px;
+}
+
+.period_none {
+  display: none;
+}
+
+.period_block {
+  display: block;
+}
+
+.sukoshi:hover {
+  opacity: 0.7;
+  color: rgb(14, 13, 13);
+}
+
+.pj_contents_row,
+.pj_contents_row td textarea {
+  height: 275px;
+}
+
+.pc-none {
+  display: none;
+}
+
+.basic_skill_item_area .select2-container {
+  width: 70% !important;
+}
+
+.basic_evaluation_name_select {
+  width: 30% !important;
+}
+
+.back_button_area {
+  padding-top: 1px;
+}
+
+.arrow {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+}
+
+.arrow::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-top: solid 2px #fff;
+  border-right: solid 2px #fff;
+  position: absolute;
+  top: 5px;
+  left: 2px;
+}
+
+.arrow.arrow-left::before {
+  transform: rotate(-135deg);
+}
+
+@media (max-width:1360px) {
+  .mgmt-container {
+    width: 100%;
+  }
+}
+
+/*経歴一覧の詳細テーブル---END*/
+@media screen and (max-width: 870px) {
+
+  .edit_license_flex {
+    display: block;
+  }
+
+  /*基本情報の保有資格*/
+  .form-select-wrap {
+    display: block;
+  }
+
+  /*基本情報のスキル*/
+  .basic_skill_area,
+  .basic_skill_item_area {
+    display: block;
+  }
+
+  .career_skil_name_select {
+    width: 28%;
+    margin: 0.15rem;
+  }
+
+  .career_skil_name_select_middle {
+    width: 28%;
+    margin: 0.15rem 8px;
+  }
+}
+
+@media screen and (max-width: 807px) {
+  .modal .skill_foam_input {
+    width: 28%;
+    margin: 0.25rem;
+  }
+
+  .skill_foam_input_middle {
+    width: 28%;
+    margin: 0.25rem 10px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+  /*基本情報の保有資格*/
+  .edit_license_flex {
+    display: block;
+  }
+
+  /*基本情報のスキル*/
+  .basic_skill_area,
+  .basic_skill_item_area {
+    display: block;
+  }
+
+  .datail_title_style,
+  .datail_title_style tbody,
+  .datail_title_style tr,
+  .datail_title_style th,
+  .summary_flex_area {
+    display: block;
+    width: 100%;
+  }
+
+  .vertical_title {
+    width: 100%;
+  }
+
+  .vertical_title th {
+    width: 8%;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    height: auto;
+    padding-left: 0.5rem;
+  }
+
+  .vertical_title td {
+    width: 8%;
+  }
+
+  .main_container {
+    min-width: 300px;
+  }
+
+  .basic_info_summary {
+    overflow-x: scroll
+  }
+
+  .career-title {
+    min-width: 150px;
+  }
+
+  .career-date {
+    display: none
+  }
+
+  .career-contents {
+    min-width: 200px;
+  }
+
+  .career-action {
+    min-width: 75px;
+    max-width: 300px;
+  }
+
+  .modal .btn--orange,
+  a.btn--orange {
+    font-size: 15px;
+    color: #fff;
+    background-color: #0090a8;
+    border-radius: 9999px;
+    padding: 9px 24px;
+    width: 130px;
+  }
+
+  .btn--orange:hover,
+  a.btn--orange:hover {
+    color: #fff;
+    opacity: 0.7;
+  }
+
+  .skill_foam_area {
+    display: block;
+  }
+
+  .skill_foam_input_middle {
+    width: 100%;
+    margin: 0px;
+  }
+
+  .career_skil_name_select {
+    width: 100%;
+    margin: 0px;
+  }
+
+  .career_skil_name_select_middle {
+    width: 100%;
+    margin: 0px;
+  }
+
+  .career_datail_top .select2-container {
+    width: 100% !important;
+    margin: 0px;
+  }
+
+  .form-select-wrap {
+    display: block;
+  }
+
+  .responsive-px-3 {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  .sp-none {
+    display: none;
+  }
+
+  .sp-block {
+    display: block;
+  }
+
+  .sp-title {
+    min-width: 340px;
+  }
+
+  .sp-modal-title {
+    min-width: 300px;
+  }
+
+  .sp-kensyu {
+    height: 26.5px;
+  }
+
+  .sp_foam_height {
+    height: 35px;
+    min-height: 35px;
+  }
+
+  .posQ {
+    position: absolute;
+    bottom: 14%;
+    right: 40%;
+  }
+
+  .career_datail_top th,
+  .career_role_title {
+    border-right: none;
+  }
+
+  .tooltip1:hover .description1 {
+    display: inline-block;
+    bottom: 15%;
+    right: 25%;
+  }
+
+  .career_skill_area_display {
+    display: block;
+  }
+
+  .review-state-key {
+    width: 36%;
+  }
+
+  .review-state-value-wait {
+    width: 30%;
+  }
+}
+
+/* ローディング画面 */
+#loader-bg {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: #000;
+  opacity: 0.7;
+}
+
+#loader {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin-top: -100px;
+  margin-left: -100px;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
