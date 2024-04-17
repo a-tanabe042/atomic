@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pos_name": {
+      "type": "string"
+    },
+    "pos_id": {
+      "type": "string"
+    }
+  }
+}
